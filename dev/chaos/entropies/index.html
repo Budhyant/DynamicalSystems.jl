@@ -831,9 +831,9 @@ R_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<p>Partition a dataset into tabulated intervals (boxes) of size <code>ε</code> and return the sum-normalized histogram in an unordered 1D form, discarding all zero elements.</p>
+<p>Partition a dataset into tabulated intervals (boxes) of size <code>ε</code> and return the sum-normalized histogram in an unordered 1D form, discarding all zero elements and bin edge information.</p>
 <p><strong>Performances Notes</strong></p>
-<p>This method has a linearithmic time complexity and a linear space complexity in <code>length(data)</code>. This allows computation of entropies of high-dimensional datasets and with small box sizes <code>ε</code> without memory overflow.</p>
+<p>This method has a linearithmic time complexity (<code>n log(n)</code> for <code>in</code>n=length(data)<code>) and a linear space complexity (</code>l<code>for</code>l = dimension(data)<code>). This allows computation of entropies of high-dimensional datasets and with small box sizes</code>ε` without memory overflow.</p>
 <p>Use e.g. <code>fit(Histogram, ...)</code> from <a href="http://juliastats.github.io/StatsBase.jl/stable/"><code>StatsBase</code></a> if you wish to keep information about the edges of the binning as well as the zero elements.</p>
 <hr />
 <p>For example, the Shannon entropy of a coin-flip process should be one bit, <a href="https://en.wikipedia.org/wiki/Shannon_(unit)">by definition</a>. Let's see...</p>
@@ -991,7 +991,7 @@ R_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.2587073925912615
+<div class="codehilite"><pre><span></span>1.2587117052204544
 </pre></div>
                 
                   
