@@ -719,10 +719,18 @@
 <li><code>"ac_zero"</code> : first delay at which the auto-correlation function becomes &lt;0.</li>
 <li><code>"ac_min"</code> : delay of first minimum of the auto-correlation function.</li>
 <li><code>"mi_min"</code> : delay of first minimum of mutual information of <code>s</code> with itself (shifted for various <code>τs</code>). Keywords <code>nbins, binwidth</code> are propagated into <a href="./#DelayEmbeddings.mutualinformation"><code>mutualinformation</code></a>.</li>
-<li><code>"exp_decay"</code> : <a href="../@ref"><code>exponential_decay_fit</code></a> of the correlation function rounded  to an integer (uses least squares on <code>c(t) = exp(-t/τ)</code> to find <code>τ</code>).</li>
+<li><code>"exp_decay"</code> : <a href="./#DelayEmbeddings.exponential_decay_fit"><code>exponential_decay_fit</code></a> of the correlation function rounded  to an integer (uses least squares on <code>c(t) = exp(-t/τ)</code> to find <code>τ</code>).</li>
 <li><code>"exp_extrema"</code> : same as above but the exponential fit is done to the absolute value of the local extrema of the correlation function.</li>
 </ul>
 <p>Both the mutual information and correlation function (<code>autocor</code>) are computed <em>only</em> for delays <code>τs</code>. This means that the <code>min</code> methods can never return the first value of <code>τs</code>!</p>
+<p><a id='DelayEmbeddings.exponential_decay_fit' href='#DelayEmbeddings.exponential_decay_fit'>#</a>
+<strong><code>DelayEmbeddings.exponential_decay_fit</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>exponential_decay_fit(x, y, weight = :equal) -&gt; τ
+</pre></div>
+
+
+<p>Perform a least square fit of the form <code>y = exp(-x/τ)</code> and return <code>τ</code>. Taken from:  http://mathworld.wolfram.com/LeastSquaresFittingExponential.html. Assumes equal lengths of <code>x, y</code> and that <code>y ≥ 0</code>.</p>
+<p>To use the method that gives more weight to small values of <code>y</code>, use <code>weight = :small</code>.</p>
 <p><a id='Mutual-Information-1'></a></p>
 <h3 id="mutual-information">Mutual Information</h3>
 <p><a id='DelayEmbeddings.mutualinformation' href='#DelayEmbeddings.mutualinformation'>#</a>
