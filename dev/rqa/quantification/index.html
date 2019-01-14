@@ -691,21 +691,21 @@
 </pre></div>
 
 
-<p>Calculate the average of the diagonal lines contained in the recurrence matrix <code>x</code>,  ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the average of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
 <p><a id='RecurrenceAnalysis.dl_max' href='#RecurrenceAnalysis.dl_max'>#</a>
 <strong><code>RecurrenceAnalysis.dl_max</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>dl_max(x; lmin=2, theiler=0)
 </pre></div>
 
 
-<p>Calculate the longest diagonal line contained in the recurrence matrix <code>x</code>,  ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the longest diagonal line contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
 <p><a id='RecurrenceAnalysis.dl_entropy' href='#RecurrenceAnalysis.dl_entropy'>#</a>
 <strong><code>RecurrenceAnalysis.dl_entropy</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>dl_entropy(x; lmin=2, theiler=0)
 </pre></div>
 
 
-<p>Calculate the entropy of the diagonal lines contained in the recurrence matrix <code>x</code>,  ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the entropy of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
 <p><a id='RecurrenceAnalysis.divergence' href='#RecurrenceAnalysis.divergence'>#</a>
 <strong><code>RecurrenceAnalysis.divergence</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>divergence(x; theiler=0)
@@ -741,21 +741,21 @@
 </pre></div>
 
 
-<p>Calculate the average of the vertical lines contained in the recurrence matrix <code>x</code>,  ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the average of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
 <p><a id='RecurrenceAnalysis.vl_max' href='#RecurrenceAnalysis.vl_max'>#</a>
 <strong><code>RecurrenceAnalysis.vl_max</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>vl_max(x; lmin=2, theiler=0)
 </pre></div>
 
 
-<p>Calculate the longest vertical line contained in the recurrence matrix <code>x</code>,  ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the longest vertical line contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
 <p><a id='RecurrenceAnalysis.vl_entropy' href='#RecurrenceAnalysis.vl_entropy'>#</a>
 <strong><code>RecurrenceAnalysis.vl_entropy</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>vl_entropy(x; lmin=2, theiler=0)
 </pre></div>
 
 
-<p>Calculate the entropy of the vertical lines contained in the recurrence matrix <code>x</code>,  ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the entropy of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
 <p><a id='RecurrenceAnalysis.recurrencestructures' href='#RecurrenceAnalysis.recurrencestructures'>#</a>
 <strong><code>RecurrenceAnalysis.recurrencestructures</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="nt">recurrencestructures</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">AbstractRecurrenceMatrix</span><span class="o">;</span>
@@ -830,14 +830,14 @@
 <ul>
 <li>"RR": recurrence rate (see <code>recurrencerate</code>)</li>
 <li>"DET": determinsm (see <code>determinism</code>)</li>
-<li>"L": average length of diagonal structures (see <code>avgdiag</code>)</li>
-<li>"Lmax": maximum length of diagonal structures (see <code>maxdiag</code>)</li>
+<li>"L": average length of diagonal structures (see <code>dl_average</code>)</li>
+<li>"Lmax": maximum length of diagonal structures (see <code>dl_max</code>)</li>
 <li>"DIV": divergence (see <code>divergence</code>)</li>
-<li>"ENTR": entropy of diagonal structures (see <code>rqaentropy</code>)</li>
+<li>"ENTR": entropy of diagonal structures (see <code>dl_entropy</code>)</li>
 <li>"TREND": trend of recurrences (see <code>trend</code>)</li>
 <li>"LAM": laminarity (see <code>laminarity</code>)</li>
 <li>"TT": trapping time (see <code>trappingtime</code>)</li>
-<li>"Vmax": maximum length of vertical structures (<code>see</code>maxvert`)</li>
+<li>"Vmax": maximum length of vertical structures (<code>see</code>vl_max`)</li>
 </ul>
 <p>The keyword argument <code>onlydiagonal</code> (<code>false</code> by default) can be set to <code>true</code> in order to restrict the analysis to the recurrence rate and the parameters related to diagonal structures ("RR", "DET", "L", "Lmax", "DIV" and "ENTR").</p>
 <hr />
