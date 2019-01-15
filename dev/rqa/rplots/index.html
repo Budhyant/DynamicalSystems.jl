@@ -713,13 +713,13 @@
 <p>The central structure used in these recurrences is the (cross-) recurrence matrix:</p>
 <div>
 <div class="MathJax_Preview">
-R(i, j) = \begin{cases}
+R[i, j] = \begin{cases}
 1 \quad \text{if}\quad d(x[i], y[j]) \le \varepsilon\\
 0 \quad \text{else}
 \end{cases}
 </div>
 <script type="math/tex; mode=display">
-R(i, j) = \begin{cases}
+R[i, j] = \begin{cases}
 1 \quad \text{if}\quad d(x[i], y[j]) \le \varepsilon\\
 0 \quad \text{else}
 \end{cases}
@@ -786,7 +786,33 @@ R(i, j) = \begin{cases}
 <span class="n">N</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ro</span><span class="p">,</span> <span class="n">N</span><span class="o">*</span><span class="n">dt</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span><span class="p">,</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">)</span>
 <span class="n">R</span> <span class="o">=</span> <span class="n">RecurrenceMatrix</span><span class="p">(</span><span class="n">tr</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">;</span> <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;euclidean&quot;</span><span class="p">)</span>
-<span class="n">Rp</span> <span class="o">=</span> <span class="n">recurrenceplot</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>RecurrenceMatrix of size (2001, 2001) with 361531 entries:
+  [1   ,    1]
+  [2   ,    1]
+  [3   ,    1]
+  [4   ,    1]
+  [5   ,    1]
+  [6   ,    1]
+  [7   ,    1]
+  [8   ,    1]
+  [9   ,    1]
+  ⋮
+  [1993, 2001]
+  [1994, 2001]
+  [1995, 2001]
+  [1996, 2001]
+  [1997, 2001]
+  [1998, 2001]
+  [1999, 2001]
+  [2000, 2001]
+  [2001, 2001]
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">Rp</span> <span class="o">=</span> <span class="n">recurrenceplot</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 </pre></div>
 
 
