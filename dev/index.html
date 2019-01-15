@@ -380,11 +380,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
-      Dynamical Systems
+      DynamicalSystemsBase
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-2">
-        Dynamical Systems
+        DynamicalSystemsBase
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -548,11 +548,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
     
     <label class="md-nav__link" for="nav-4">
-      Delay Coordinates Embedding
+      DelayEmbeddings
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-4">
-        Delay Coordinates Embedding
+        DelayEmbeddings
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -608,11 +608,11 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
     
     <label class="md-nav__link" for="nav-5">
-      Recurrence Quantification Analysis
+      RecurrenceAnalysis
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-5">
-        Recurrence Quantification Analysis
+        RecurrenceAnalysis
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -852,6 +852,7 @@
 </div>
 <p><a id='Contents-1'></a></p>
 <h2 id="contents">Contents</h2>
+<p>The <em>module</em> <code>DynamicalSystems</code> re-exports all following functionality, grouped into different packages.</p>
 <p><a id='<a href="ds/general">DynamicalSystemsBase</a>-1'></a></p>
 <h3 id="dynamicalsystemsbase"><a href="./ds/general"><code>DynamicalSystemsBase</code></a></h3>
 <ul>
@@ -922,7 +923,7 @@
 </ol>
 <p><a id='Installation-1'></a></p>
 <h2 id="installation">Installation</h2>
-<p>Simply use <code>]add DynamicalSystems</code> to install everything.</p>
+<p>Simply use <code>]add DynamicalSystems</code> to install everything. Alternatively you can also do <code>using Pkg; Pkg.add("DynamicalSystems")</code>.</p>
 <hr />
 <p>For more advanced users, you can choose which packages to install and use at a high level. The <em>package</em> <code>DynamicalSystems</code> serves two purposes: it re-exports everything under a single module <code>DynamicalSystems</code> and it also builds the documentation.</p>
 <p>All packages depend on <code>DelayEmbeddings</code> which defines core numeric data structures and methods. For example <code>RecurrenceAnalysis</code> and <code>TimeseriesPrediction</code> depend only on <code>DelayEmbeddings</code>. Packages that require equations of motion also depend on <code>DynamicalSystemsBase</code>, like for example <code>ChaosTools</code>.</p>
