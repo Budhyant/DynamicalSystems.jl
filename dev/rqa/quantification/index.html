@@ -894,21 +894,15 @@
 </thead>
 <tbody>
 <tr>
-<td align="right"><code>scale</code></td>
-<td align="right">1</td>
-<td align="right"><code>RecurrenceMatrix</code><br/><code>CrossRecurrenceMatrix</code><br/><code>JointRecurrenceMatrix</code></td>
-<td align="right">Function or fixed number to scale the threshold or radius that is used to identify recurrences. Use <code>maximum</code> if the threshold is to be taken as a fraction of the maximum distance, <code>mean</code> if it is a fraction of the mean distance, etc., and <code>1</code> (identity scale, applied by default) to keep the threshold without scaling.</td>
-</tr>
-<tr>
 <td align="right"><code>theiler</code></td>
 <td align="right">0</td>
-<td align="right"><code>recurrencerate</code><br/><code>determinism</code><br/><code>_average</code><br/><code>_max</code><br/><code>divergence</code><br/><code>_entropy</code><br/><code>trend</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
+<td align="right"><code>recurrencerate</code><br/><code>determinism</code><br/><code>*_average</code><br/><code>*_max</code><br/><code>*_entropy</code><br/><code>divergence</code><br/><code>trend</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
 <td align="right">Theiler window: number of diagonals around the LOI <strong>excluded</strong> from the analysis. The value <code>0</code> means that the LOI is <em>included</em> in the analysis. Use <code>1</code> to exclude the LOI.</td>
 </tr>
 <tr>
 <td align="right"><code>lmin</code></td>
 <td align="right">2</td>
-<td align="right"><code>determinism</code><br/><code>dl_average</code><br/><code>_max</code><br/><code>divergence</code><br/><code>_entropy</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
+<td align="right"><code>determinism</code><br/><code>*_average</code><br/><code>*_max</code><br/><code>*_entropy</code><br/><code>divergence</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
 <td align="right">Minimum length of the recurrent structures (diagonal or vertical) considered in the analysis.</td>
 </tr>
 <tr>
