@@ -723,6 +723,7 @@
 <li><code>"exp_extrema"</code> : same as above but the exponential fit is done to the absolute value of the local extrema of the correlation function.</li>
 </ul>
 <p>Both the mutual information and correlation function (<code>autocor</code>) are computed <em>only</em> for delays <code>τs</code>. This means that the <code>min</code> methods can never return the first value of <code>τs</code>!</p>
+<p>The method <code>mi_min</code> is significantly more accurate than the others and also returns good results for most timeseries. It is however the slowest method (but still quite fast!).</p>
 <p><a id='DelayEmbeddings.exponential_decay_fit' href='#DelayEmbeddings.exponential_decay_fit'>#</a>
 <strong><code>DelayEmbeddings.exponential_decay_fit</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>exponential_decay_fit(x, y, weight = :equal) -&gt; τ

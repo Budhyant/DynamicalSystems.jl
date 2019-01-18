@@ -104,6 +104,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#reconstructembed" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -462,9 +466,43 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Delay Coordinates
+      </label>
+    
     <a href="./" title="Delay Coordinates" class="md-nav__link md-nav__link--active">
       Delay Coordinates
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reconstructembed" title="Reconstruct/Embed" class="md-nav__link">
+    Reconstruct/Embed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-functors" title="Embedding Functors" class="md-nav__link">
+    Embedding Functors
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -589,6 +627,42 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reconstructembed" title="Reconstruct/Embed" class="md-nav__link">
+    Reconstruct/Embed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-functors" title="Embedding Functors" class="md-nav__link">
+    Embedding Functors
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -600,7 +674,9 @@
                   <h1>Delay Coordinates</h1>
                 
                 <p>A timeseries recorded in some manner from a dynamical system can be used to gain information about the dynamics of the entire phase-space of the system. This can be done by reconstructing a new phase-space from the timeseries. One method that can do this is what is known as <a href="https://en.wikipedia.org/wiki/Takens%27_theorem">delay coordinates embedding</a> or delay coordinates <em>reconstruction</em>.</p>
-<p>This is done through <code>reconstruct</code> or <code>embed</code>:</p>
+<p><a id='Reconstruct/Embed-1'></a></p>
+<h2 id="reconstructembed">Reconstruct/Embed</h2>
+<p>Delay embedding reconstructions are done through <code>reconstruct</code> or <code>embed</code>:</p>
 <p><a id='DelayEmbeddings.reconstruct' href='#DelayEmbeddings.reconstruct'>#</a>
 <strong><code>DelayEmbeddings.reconstruct</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>reconstruct(s, γ, τ)
@@ -710,26 +786,26 @@
 
 
 <div class="codehilite"><pre><span></span>9-dimensional Dataset{Float64} with 996 points
- 0.308286    0.688669    0.17921    …  0.469889  0.638095    0.877154
- 0.767421    0.199493    0.806438      0.365708  0.57641     0.0899089
- 0.802698    0.093089    0.97577       0.79923   0.788924    0.33945
- 0.00557613  0.757788    0.745792      0.468166  0.844355    0.518472
- 0.469889    0.638095    0.877154      0.622708  0.75991     0.531856
- 0.365708    0.57641     0.0899089  …  0.815256  0.0483824   0.723305
- 0.79923     0.788924    0.33945       0.868997  0.584422    0.197629
- 0.468166    0.844355    0.518472      0.223633  0.407836    0.724929
- 0.622708    0.75991     0.531856      0.462956  0.495705    0.905896
- 0.815256    0.0483824   0.723305      0.810162  0.0064695   0.876909
- ⋮                                  ⋱
- 0.149611    0.301341    0.417443      0.233198  0.00730507  0.78525
- 0.511346    0.683122    0.574995      0.670626  0.362061    0.394597
- 0.183574    0.814999    0.680572      0.846578  0.360129    0.141402
- 0.0499723   0.968146    0.516713      0.165517  0.437336    0.903347
- 0.233198    0.00730507  0.78525    …  0.24224   0.634977    0.909709
- 0.670626    0.362061    0.394597      0.480985  0.777057    0.89946
- 0.846578    0.360129    0.141402      0.909629  0.550463    0.398046
- 0.165517    0.437336    0.903347      0.178674  0.819075    0.866711
- 0.24224     0.634977    0.909709      0.862427  0.0856179   0.829185
+ 0.808878   0.32022    0.0880579  …  0.818803   0.611195   0.55917
+ 0.553893   0.0105252  0.246754      0.440543   0.213978   0.559612
+ 0.356091   0.532109   0.298748      0.362128   0.841239   0.156406
+ 0.102617   0.140985   0.902855      0.527951   0.573006   0.618278
+ 0.818803   0.611195   0.55917       0.402809   0.82836    0.571476
+ 0.440543   0.213978   0.559612   …  0.546227   0.784391   0.563333
+ 0.362128   0.841239   0.156406      0.829367   0.141025   0.880165
+ 0.527951   0.573006   0.618278      0.146682   0.122646   0.638674
+ 0.402809   0.82836    0.571476      0.381608   0.816117   0.807189
+ 0.546227   0.784391   0.563333      0.159357   0.592787   0.0631131
+ ⋮                                ⋱
+ 0.819611   0.514065   0.65297       0.74061    0.803063   0.791742
+ 0.206564   0.645      0.1908        0.937547   0.660445   0.70065
+ 0.0131992  0.0520505  0.867354      0.756511   0.726123   0.717971
+ 0.359181   0.529962   0.525102      0.90333    0.0921715  0.496148
+ 0.74061    0.803063   0.791742   …  0.444136   0.0746561  0.544647
+ 0.937547   0.660445   0.70065       0.415695   0.884282   0.08468
+ 0.756511   0.726123   0.717971      0.863171   0.100691   0.929537
+ 0.90333    0.0921715  0.496148      0.0437367  0.805671   0.0899153
+ 0.444136   0.0746561  0.544647      0.0185743  0.834243   0.48065
 </pre></div>
 
 
@@ -760,6 +836,37 @@
  0.430816   0.0535742   0.62743      0.836353   0.0363264   0.380351
  0.936955  -0.0200112   0.894333     0.515471   0.0534613   0.898152
 </pre></div>
+
+
+<p><a id='Embedding-Functors-1'></a></p>
+<h2 id="embedding-functors">Embedding Functors</h2>
+<p>The high level functions <a href="./#DelayEmbeddings.embed"><code>embed</code></a>, <a href="./#DelayEmbeddings.reconstruct"><code>reconstruct</code></a> utilize a low-level interface for creating embedded vectors on-the-fly. The high level interface simply loops over the low level interface. The low level interface is composed of the following two structures:</p>
+<p><a id='DelayEmbeddings.DelayEmbedding' href='#DelayEmbeddings.DelayEmbedding'>#</a>
+<strong><code>DelayEmbeddings.DelayEmbedding</code></strong> &mdash; <em>Type</em>.</p>
+<div class="codehilite"><pre><span></span>DelayEmbedding(γ, τ) -&gt; `embedding`
+</pre></div>
+
+
+<p>Return a delay coordinates embedding structure to be used as a functor, given a timeseries and some index. Calling</p>
+<div class="codehilite"><pre><span></span><span class="n">embedding</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will create the <code>n</code>-th reconstructed vector of the embedded space, which has <code>γ</code> temporal neighbors with delay(s) <code>τ</code>. See <a href="./#DelayEmbeddings.reconstruct"><code>reconstruct</code></a> for more.</p>
+<p><strong>Be very careful when choosing <code>n</code>, because <code>@inbounds</code> is used internally.</strong></p>
+<p><a id='DelayEmbeddings.MTDelayEmbedding' href='#DelayEmbeddings.MTDelayEmbedding'>#</a>
+<strong><code>DelayEmbeddings.MTDelayEmbedding</code></strong> &mdash; <em>Type</em>.</p>
+<div class="codehilite"><pre><span></span>MTDelayEmbedding(γ, τ, B) -&gt; `embedding`
+</pre></div>
+
+
+<p>Return a delay coordinates embedding structure to be used as a functor, given multiple timeseries (<code>B</code> in total), either as a <a href="../dataset/#DelayEmbeddings.Dataset"><code>Dataset</code></a> or a <code>SizedArray</code>), and some index. Calling</p>
+<div class="codehilite"><pre><span></span><span class="n">embedding</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+
+
+<p>will create the <code>n</code>-th reconstructed vector of the embedded space, which has <code>γ</code> temporal neighbors with delay(s) <code>τ</code>. See <a href="./#DelayEmbeddings.reconstruct"><code>reconstruct</code></a> for more.</p>
+<p><strong>Be very careful when choosing <code>n</code>, because <code>@inbounds</code> is used internally.</strong></p>
                 
                   
                 

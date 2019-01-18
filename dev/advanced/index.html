@@ -621,6 +621,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#dynamicalsystem-implementation" title="DynamicalSystem implementation" class="md-nav__link">
+    DynamicalSystem implementation
+  </a>
+  
+</li>
+      
       
       
       
@@ -720,6 +727,13 @@
         <li class="md-nav__item">
   <a href="#using-callbacks-with-integrators" title="Using callbacks with integrators" class="md-nav__link">
     Using callbacks with integrators
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamicalsystem-implementation" title="DynamicalSystem implementation" class="md-nav__link">
+    DynamicalSystem implementation
   </a>
   
 </li>
@@ -893,49 +907,72 @@
 <h2 id="using-callbacks-with-integrators">Using callbacks with integrators</h2>
 <p>For the case of continuous systems you can add callbacks from the event handling of <strong>DifferentialEquations.jl</strong>. This is done simply as a keyword argument to the initializers.</p>
 <p>In this example we use a simple <code>SavingCallback</code> to save the distance between the two states of a <a href="./#DynamicalSystemsBase.parallel_integrator"><code>parallel_integrator</code></a>.</p>
-<p>```@example callback
-using DynamicalSystems, DiffEqCallbacks
-using LinearAlgebra: norm</p>
-<p>kwargs = (abstol=1e-14, reltol=1e-14, maxiters=1e9)
-ds = Systems.lorenz()
-d0 = 1e-9
-T = 100.0</p>
-<p>save_func(u, t, integrator) = norm(u[1] - u[2])
-saved_values = SavedValues(eltype(ds.t0), eltype(get_state(ds)))
-cb = SavingCallback(save_func, saved_values)</p>
-<p>u0 = get_state(ds)
-pinteg = parallel_integrator(ds, [u0, u0 + rand(SVector{3})<em>d0</em>√3];
-kwargs..., callback = cb)
-step!(pinteg, T)
-t = saved_values.t
-n = saved_values.saveval</p>
-<div class="codehilite"><pre><span></span>As expected you can see that the recorded distance between two states is increasing.
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span><span class="p">,</span> <span class="n">DiffEqCallbacks</span>
+<span class="k">using</span> <span class="n">LinearAlgebra</span><span class="o">:</span> <span class="n">norm</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">(</span><span class="n">abstol</span><span class="o">=</span><span class="mf">1e-14</span><span class="p">,</span> <span class="n">reltol</span><span class="o">=</span><span class="mf">1e-14</span><span class="p">,</span> <span class="n">maxiters</span><span class="o">=</span><span class="mf">1e9</span><span class="p">)</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">()</span>
+<span class="n">d0</span> <span class="o">=</span> <span class="mf">1e-9</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">100.0</span>
+
+<span class="n">save_func</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">integrator</span><span class="p">)</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">saved_values</span> <span class="o">=</span> <span class="n">SavedValues</span><span class="p">(</span><span class="n">eltype</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">t0</span><span class="p">),</span> <span class="n">eltype</span><span class="p">(</span><span class="n">get_state</span><span class="p">(</span><span class="n">ds</span><span class="p">)))</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">SavingCallback</span><span class="p">(</span><span class="n">save_func</span><span class="p">,</span> <span class="n">saved_values</span><span class="p">)</span>
+
+<span class="n">u0</span> <span class="o">=</span> <span class="n">get_state</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+<span class="n">pinteg</span> <span class="o">=</span> <span class="n">parallel_integrator</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="p">[</span><span class="n">u0</span><span class="p">,</span> <span class="n">u0</span> <span class="o">+</span> <span class="n">rand</span><span class="p">(</span><span class="n">SVector</span><span class="p">{</span><span class="mi">3</span><span class="p">})</span><span class="o">*</span><span class="n">d0</span><span class="o">*√</span><span class="mi">3</span><span class="p">];</span>
+<span class="n">kwargs</span><span class="o">...</span><span class="p">,</span> <span class="n">callback</span> <span class="o">=</span> <span class="n">cb</span><span class="p">)</span>
+<span class="n">step!</span><span class="p">(</span><span class="n">pinteg</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">saved_values</span><span class="o">.</span><span class="n">t</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">saved_values</span><span class="o">.</span><span class="n">saveval</span>
+</pre></div>
 
 
-<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;DynamicalSystem-implementation-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
+<div class="codehilite"><pre><span></span>18090-element Array{Float64,1}:
+  1.4487173671501725e-9
+  1.445561519073072e-9
+  1.4445053257770185e-9
+  1.4440779145326657e-9
+  1.4443393147712454e-9
+  1.4452741970226496e-9
+  1.4468486001510086e-9
+  1.449103455391396e-9
+  1.4518996133393844e-9
+  1.455267219098037e-9
+  ⋮
+ 18.985968137658322
+ 19.45051154953605
+ 19.91276381388389
+ 20.3644313989576
+ 20.810830756944636
+ 21.232151000291484
+ 21.629126380865365
+ 22.016565652873716
+ 22.363774200000453
+</pre></div>
 
-## `DynamicalSystem` implementation
 
-
-```julia
-abstract type DynamicalSystem{
-        IIP,     # is in place , for dispatch purposes and clarity
-        S,       # state type
-        D,       # dimension
-        F,       # equations of motion
-        P,       # parameters
-        JAC,     # jacobian
-        JM,      # jacobian matrix
-        IAD}     # is auto-differentiated
-    # one-liner: {IIP, S, D, F, P, JAC, JM, IAD}
-    # Subtypes of DynamicalSystem have fields:
-    # 1. f
-    # 2. u0
-    # 3. p
-    # 4. t0
-    # 5. jacobian (function)
-    # 6. J (matrix)
-end
+<p>As expected you can see that the recorded distance between two states is increasing.</p>
+<p><a id='DynamicalSystem-implementation-1'></a></p>
+<h2 id="dynamicalsystem-implementation"><code>DynamicalSystem</code> implementation</h2>
+<div class="codehilite"><pre><span></span><span class="k">abstract</span> <span class="k">type</span> <span class="n">DynamicalSystem</span><span class="p">{</span>
+        <span class="n">IIP</span><span class="p">,</span>     <span class="c"># is in place , for dispatch purposes and clarity</span>
+        <span class="n">S</span><span class="p">,</span>       <span class="c"># state type</span>
+        <span class="n">D</span><span class="p">,</span>       <span class="c"># dimension</span>
+        <span class="n">F</span><span class="p">,</span>       <span class="c"># equations of motion</span>
+        <span class="n">P</span><span class="p">,</span>       <span class="c"># parameters</span>
+        <span class="n">JAC</span><span class="p">,</span>     <span class="c"># jacobian</span>
+        <span class="n">JM</span><span class="p">,</span>      <span class="c"># jacobian matrix</span>
+        <span class="n">IAD</span><span class="p">}</span>     <span class="c"># is auto-differentiated</span>
+    <span class="c"># one-liner: {IIP, S, D, F, P, JAC, JM, IAD}</span>
+    <span class="c"># Subtypes of DynamicalSystem have fields:</span>
+    <span class="c"># 1. f</span>
+    <span class="c"># 2. u0</span>
+    <span class="c"># 3. p</span>
+    <span class="c"># 4. t0</span>
+    <span class="c"># 5. jacobian (function)</span>
+    <span class="c"># 6. J (matrix)</span>
+<span class="k">end</span>
 </pre></div>
 
 
