@@ -761,7 +761,7 @@
                 
                 <p><a id='Quantification-and-Analysis-functions-1'></a></p>
 <h1 id="quantification-analysis-functions">Quantification &amp; Analysis functions</h1>
-<p>A <a href="../rplots/#RecurrenceAnalysis.RecurrenceMatrix"><code>RecurrenceMatrix</code></a> can be analyzed in several ways to yield information about the dynamics of the trajectory. All these various <em>measures</em> and functions are collectively called "Recurrence Quantification Analysis".</p>
+<p>A <a href="../rplots/#RecurrenceAnalysis.RecurrenceMatrix"><code>RecurrenceMatrix</code></a> can be analyzed in several ways to yield information about the dynamics of the trajectory. All these various <em>measures</em> and functions are collectively called "Recurrence Quantification Analysis" (RQA).</p>
 <p>To understand how each measure can be useful, we suggest to see the review articles listed in our documentation strings, namely:</p>
 <ol>
 <li>N. Marwan <em>et al.</em>, "Recurrence plots for the analysis of complex systems", <em>Phys. Reports 438</em>(5-6), 237-329 (2007).</li>
@@ -903,7 +903,7 @@
 <td align="right"><code>theiler</code></td>
 <td align="right">0</td>
 <td align="right"><code>recurrencerate</code><br/><code>determinism</code><br/><code>_average</code><br/><code>_max</code><br/><code>divergence</code><br/><code>_entropy</code><br/><code>trend</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
-<td align="right">'Theiler' window: number of diagonals around the LOI excluded from the analysis.</td>
+<td align="right">Theiler window: number of diagonals around the LOI <strong>excluded</strong> from the analysis. The value <code>0</code> means that the LOI is <em>included</em> in the analysis. Use <code>1</code> to exclude the LOI.</td>
 </tr>
 <tr>
 <td align="right"><code>lmin</code></td>
@@ -952,7 +952,7 @@
 <hr />
 <div class="admonition note">
 <p class="admonition-title">Return values for empty histograms</p>
-<p>It may be the case that for a given recurrence matrix some structures do not exist at all. For example there are recurrence matrices that have no vertical lengths. In such cases the behavior of our RQA pipeline is the following:</p>
+<p>It may be the case that for a given recurrence matrix some structures do not exist at all. For example there are recurrence matrices that have no vertical lengths (or no vertical lengths with length less than <code>lmin</code>). In such cases the behavior of our RQA pipeline is the following:</p>
 <ol>
 <li>Quantities that represent maximum or average values are <code>0.0</code>.</li>
 <li>Quantities that represent entropies are <code>NaN</code>.</li>

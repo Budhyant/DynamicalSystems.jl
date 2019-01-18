@@ -738,7 +738,7 @@ R[i, j] = \begin{cases}
 <p>The recurrence matrix is a numeric representation of a "recurrence plot" [1, 2], in the form of a sparse square matrix of Boolean values.</p>
 <p><code>x</code> must be a <code>Vector</code> or a <code>Dataset</code> or a <code>Matrix</code> with data points in rows (possibly representing and embedded phase space; see <a href="../../embedding/reconstruction/#DelayEmbeddings.embed"><code>embed</code></a>). If <code>d(x[i], x[j]) ≤ ε</code> (with <code>d</code> the distance function), then the cell <code>(i, j)</code> of the matrix will have a <code>true</code> value. The criteria to evaluate distances between data points are defined by the following keyword arguments:</p>
 <ul>
-<li><code>scale=1</code> : a function of the distance matrix (see <a href="./#RecurrenceAnalysis.distancematrix"><code>distancematrix</code></a>), or a fixed number, used to scale the value of <code>ε</code>. Typical choices are <code>maximum</code> or <code>mean</code>, such that the threshold <code>ε</code> is defined as a ratio of the maximum or the mean distance between data points, respectively. Use <code>1</code> to keep the distances unscaled (default).</li>
+<li><code>scale=1</code> : a function of the distance matrix (see <a href="./#RecurrenceAnalysis.distancematrix"><code>distancematrix</code></a>), or a fixed number, used to scale the value of <code>ε</code>. Typical choices are <code>maximum</code> or <code>mean</code>, such that the threshold <code>ε</code> is defined as a ratio of the maximum or the mean distance between data points, respectively (using <code>mean</code> or <code>maximum</code> calls specialized versions that are faster than the naive approach).  Use <code>1</code> to keep the distances unscaled (default).</li>
 <li><code>fixedrate::Bool=false</code> : a flag that indicates if <code>ε</code> should be taken as a target fixed recurrence rate (see <a href="../quantification/#RecurrenceAnalysis.recurrencerate"><code>recurrencerate</code></a>). If <code>fixedrate</code> is set to <code>true</code>, <code>ε</code> must be a value between 0 and 1, and <code>scale</code> is ignored.</li>
 <li><code>metric="euclidean"</code> : metric of the distances, either <code>Metric</code> or a string,  as in <a href="./#RecurrenceAnalysis.distancematrix"><code>distancematrix</code></a>.</li>
 </ul>
@@ -789,7 +789,7 @@ R[i, j] = \begin{cases}
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>RecurrenceMatrix of size (2001, 2001) with 526247 entries:
+<div class="codehilite"><pre><span></span>RecurrenceMatrix of size (2001, 2001) with 379145 entries:
   [1   ,    1]
   [2   ,    1]
   [3   ,    1]
@@ -800,10 +800,10 @@ R[i, j] = \begin{cases}
   [8   ,    1]
   [9   ,    1]
   ⋮
-  [1877, 2001]
-  [1878, 2001]
-  [1995, 2001]
-  [1996, 2001]
+  [1511, 2001]
+  [1512, 2001]
+  [1513, 2001]
+  [1514, 2001]
   [1997, 2001]
   [1998, 2001]
   [1999, 2001]
@@ -817,16 +817,16 @@ R[i, j] = \begin{cases}
 
 
 <div class="codehilite"><pre><span></span>2001×2001 Array{Float64,2}:
- 1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  …  1.0  1.0  0.0  0.0  0.0  0.0  0.0
  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  …  0.0  0.0  0.0  0.0  0.0  0.0  0.0
- 1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  0.0  0.0  0.0
+ 1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0  …  0.0  0.0  0.0  0.0  0.0  0.0  1.0
  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  0.0  0.0  1.0
  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  0.0  1.0  1.0
  1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  0.0  1.0  1.0  1.0
+ 1.0  1.0  1.0  1.0  1.0  1.0  1.0  1.0     0.0  0.0  0.0  1.0  1.0  1.0  1.0
  ⋮                        ⋮              ⋱       ⋮                        ⋮
  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     1.0  1.0  1.0  1.0  1.0  1.0  1.0
  0.0  0.0  0.0  0.0  0.0  0.0  0.0  0.0     1.0  1.0  1.0  1.0  1.0  1.0  1.0
