@@ -547,8 +547,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#rqa-measures" title="RQA Measures" class="md-nav__link">
+    RQA Measures
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classical-rqa-measures" title="Classical RQA Measures" class="md-nav__link">
+    Classical RQA Measures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extended-rqa-measures" title="Extended RQA Measures" class="md-nav__link">
+    Extended RQA Measures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recurrence-time-measures" title="Recurrence Time Measures" class="md-nav__link">
+    Recurrence Time Measures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyword-table" title="Keyword table" class="md-nav__link">
+    Keyword table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#all-in-one-bundle" title="All-in-one Bundle" class="md-nav__link">
     All-in-one Bundle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recurrence-structures-histograms" title="Recurrence Structures Histograms" class="md-nav__link">
+    Recurrence Structures Histograms
   </a>
   
 </li>
@@ -638,8 +686,56 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#rqa-measures" title="RQA Measures" class="md-nav__link">
+    RQA Measures
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#classical-rqa-measures" title="Classical RQA Measures" class="md-nav__link">
+    Classical RQA Measures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#extended-rqa-measures" title="Extended RQA Measures" class="md-nav__link">
+    Extended RQA Measures
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recurrence-time-measures" title="Recurrence Time Measures" class="md-nav__link">
+    Recurrence Time Measures
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#keyword-table" title="Keyword table" class="md-nav__link">
+    Keyword table
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#all-in-one-bundle" title="All-in-one Bundle" class="md-nav__link">
     All-in-one Bundle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recurrence-structures-histograms" title="Recurrence Structures Histograms" class="md-nav__link">
+    Recurrence Structures Histograms
   </a>
   
 </li>
@@ -665,12 +761,18 @@
                 
                 <p><a id='Quantification-and-Analysis-functions-1'></a></p>
 <h1 id="quantification-analysis-functions">Quantification &amp; Analysis functions</h1>
-<p>A <a href="../rplots/#RecurrenceAnalysis.RecurrenceMatrix"><code>RecurrenceMatrix</code></a> can be analyzed in several ways to yield information about the dynamics of the timeseries. All these various quantities and functions listed in this section are also listed in the wikipedia page for <a href="https://en.wikipedia.org/wiki/Recurrence_quantification_analysis">Recurrence quantification analysis</a>. We also suggest the review articles listed in our documentation strings, namely:</p>
+<p>A <a href="../rplots/#RecurrenceAnalysis.RecurrenceMatrix"><code>RecurrenceMatrix</code></a> can be analyzed in several ways to yield information about the dynamics of the trajectory. All these various <em>measures</em> and functions are collectively called "Recurrence Quantification Analysis".</p>
+<p>To understand how each measure can be useful, we suggest to see the review articles listed in our documentation strings, namely:</p>
 <ol>
 <li>N. Marwan <em>et al.</em>, "Recurrence plots for the analysis of complex systems", <em>Phys. Reports 438</em>(5-6), 237-329 (2007).</li>
 <li>N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</li>
 </ol>
-<p>The following functions all accept a recurrence matrix, see the <a href="../rplots">previous page</a>.</p>
+<p>You can also check the wikipedia page for <a href="https://en.wikipedia.org/wiki/Recurrence_quantification_analysis">Recurrence quantification analysis</a>.</p>
+<p>The functions described in this page all accept a recurrence matrix (<code>x</code>), see the <a href="../rplots">previous page</a>.</p>
+<p><a id='RQA-Measures-1'></a></p>
+<h2 id="rqa-measures">RQA Measures</h2>
+<p><a id='Classical-RQA-Measures-1'></a></p>
+<h3 id="classical-rqa-measures">Classical RQA Measures</h3>
 <p><a id='RecurrenceAnalysis.recurrencerate' href='#RecurrenceAnalysis.recurrencerate'>#</a>
 <strong><code>RecurrenceAnalysis.recurrencerate</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>recurrencerate(x; theiler=0)
@@ -680,7 +782,7 @@
 <p>Calculate the recurrence rate of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code>.</p>
 <p><a id='RecurrenceAnalysis.determinism' href='#RecurrenceAnalysis.determinism'>#</a>
 <strong><code>RecurrenceAnalysis.determinism</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">determinism</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">AbstractRecurrenceMatrix</span><span class="o">;</span> <span class="nt">lmin</span><span class="o">=</span><span class="nt">2</span><span class="o">,</span> <span class="nt">theiler</span><span class="o">=</span><span class="nt">0</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span>determinism(x; lmin=2, theiler=0)
 </pre></div>
 
 
@@ -720,20 +822,23 @@
 
 
 <p>Calculate the trend of recurrences in the recurrence matrix <code>x</code> towards its edges, ruling out the points within the Theiler window of size <code>theiler</code> and in the outermost diagonals (at <code>border</code> from the corners of the matrix).</p>
+<hr />
+<p><a id='Extended-RQA-Measures-1'></a></p>
+<h3 id="extended-rqa-measures">Extended RQA Measures</h3>
 <p><a id='RecurrenceAnalysis.laminarity' href='#RecurrenceAnalysis.laminarity'>#</a>
 <strong><code>RecurrenceAnalysis.laminarity</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>laminarity(x; lmin=2, theiler=0)
 </pre></div>
 
 
-<p>Calculate the laminarity of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the laminarity of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
 <p><a id='RecurrenceAnalysis.trappingtime' href='#RecurrenceAnalysis.trappingtime'>#</a>
 <strong><code>RecurrenceAnalysis.trappingtime</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>trappingtime(x; lmin=2, theiler=0)
 </pre></div>
 
 
-<p>Calculate the trapping time of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
+<p>Calculate the trapping time of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
 <p>The trapping time is the average of the vertical line structures and thus equal to <a href="./#RecurrenceAnalysis.vl_average"><code>vl_average</code></a>.</p>
 <p><a id='RecurrenceAnalysis.vl_average' href='#RecurrenceAnalysis.vl_average'>#</a>
 <strong><code>RecurrenceAnalysis.vl_average</code></strong> &mdash; <em>Function</em>.</p>
@@ -756,28 +861,27 @@
 
 
 <p>Calculate the entropy of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.recurrencestructures' href='#RecurrenceAnalysis.recurrencestructures'>#</a>
-<strong><code>RecurrenceAnalysis.recurrencestructures</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">recurrencestructures</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">AbstractRecurrenceMatrix</span><span class="o">;</span>
-                         <span class="nt">diagonal</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
-                         <span class="nt">vertical</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
-                         <span class="nt">recurrencetimes</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
-                         <span class="nt">kwargs</span><span class="o">...)</span>
+<hr />
+<p><a id='Recurrence-Time-Measures-1'></a></p>
+<h3 id="recurrence-time-measures">Recurrence Time Measures</h3>
+<p><a id='RecurrenceAnalysis.meanrecurrencetime' href='#RecurrenceAnalysis.meanrecurrencetime'>#</a>
+<strong><code>RecurrenceAnalysis.meanrecurrencetime</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>meanrecurrencetime(x; lmin=2, theiler=0)
 </pre></div>
 
 
-<p>Histograms of the recurrence structures contained in the recurrence matrix <code>x</code>.</p>
-<p><strong>Description:</strong></p>
-<p>Returns a dictionary with the keys <code>"diagonal"</code>, <code>"vertical"</code> or <code>"recurrencetimes"</code>, depending on what keyword arguments are given as <code>true</code>. Each item of the dictionary is a vector of integers, such that the <code>i</code>-th element of the vector is the number of lines of length <code>i</code> contained in <code>x</code>.</p>
-<ul>
-<li><code>"diagonal"</code> counts the diagonal lines, i.e. the recurrent trajectories.</li>
-<li><code>"vertical"</code> counts the vertical lines, i.e. the laminar states.</li>
-<li><code>"recurrencetimes"</code> counts the vertical distances between recurrent states,   i.e. the recurrence times. These are calculated as the distance between   the middle points of consecutive vertical lines.</li>
-</ul>
-<p>All the points of the matrix are counted by default. Extra keyword arguments can be passed to rule out the lines shorter than a minimum length or around the main diagonal. See the arguments of the function <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for further details.</p>
-<p><strong>References:</strong></p>
-<p>N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</p>
+<p>Calculate the mean recurrence time of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
+<p>Equivalent to <a href="../@ref"><code>rt_average</code></a>.</p>
+<p><a id='RecurrenceAnalysis.nmprt' href='#RecurrenceAnalysis.nmprt'>#</a>
+<strong><code>RecurrenceAnalysis.nmprt</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>nmprt(x; lmin=2, theiler=0)
+</pre></div>
+
+
+<p>Calculate the number of the most probable recurrence time (NMPRT), ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
 <hr />
+<p><a id='Keyword-table-1'></a></p>
+<h2 id="keyword-table">Keyword table</h2>
 <p>Since most of the above functions can be fined tuned with keyword arguments, here is a table summarizing them that could be of use:</p>
 <table>
 <thead>
@@ -798,13 +902,13 @@
 <tr>
 <td align="right"><code>theiler</code></td>
 <td align="right">0</td>
-<td align="right"><code>recurrencerate</code><br/><code>determinism</code><br/><code>avgdiag</code><br/><code>maxdiag</code><br/><code>divergence</code><br/><code>entropy</code><br/><code>trend</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/><code>maxvert</code></td>
+<td align="right"><code>recurrencerate</code><br/><code>determinism</code><br/><code>_average</code><br/><code>_max</code><br/><code>divergence</code><br/><code>_entropy</code><br/><code>trend</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
 <td align="right">'Theiler' window: number of diagonals around the LOI excluded from the analysis.</td>
 </tr>
 <tr>
 <td align="right"><code>lmin</code></td>
 <td align="right">2</td>
-<td align="right"><code>determinism</code><br/><code>avgdiag</code><br/><code>maxdiag</code><br/><code>divergence</code><br/><code>entropy</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/><code>maxvert</code></td>
+<td align="right"><code>determinism</code><br/><code>dl_average</code><br/><code>_max</code><br/><code>divergence</code><br/><code>_entropy</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
 <td align="right">Minimum length of the recurrent structures (diagonal or vertical) considered in the analysis.</td>
 </tr>
 <tr>
@@ -824,24 +928,63 @@
 </pre></div>
 
 
-<p>Calculate all RQA parameters of a recurrence matrix. See the functions <code>recurrencerate</code>, <code>determinism</code>, <code>dl_average</code>, <code>dl_max</code>, <code>divergence</code>, <code>dl_entropy</code>, <code>trend</code>, <code>laminarity</code>, <code>trappingtime</code> and <code>vl_max</code> for the definition of the different parameters and the default values of the arguments. Using this function is much more efficient than calling all individual functions one by one.</p>
+<p>Calculate all RQA parameters of a recurrence matrix. See the functions referred to below for the definition of the different parameters and the default values of the arguments. Using this function is much more efficient than calling all individual functions one by one.</p>
 <p>The keyword arguments <code>theilerdiag</code>, <code>lmindiag</code> may be used to declare specific values that override the values of <code>theiler</code> and <code>lmin</code> in the calculation of parameters related to diagonal structures. Likewise, <code>theilervert</code> and <code>lminvert</code> can be used for the calculation of parameters related to vertical structures.</p>
 <p>The returned value is a dictionary with the following keys:</p>
 <ul>
-<li>"RR": recurrence rate (see <code>recurrencerate</code>)</li>
-<li>"DET": determinsm (see <code>determinism</code>)</li>
-<li>"L": average length of diagonal structures (see <code>dl_average</code>)</li>
-<li>"Lmax": maximum length of diagonal structures (see <code>dl_max</code>)</li>
-<li>"DIV": divergence (see <code>divergence</code>)</li>
-<li>"ENTR": entropy of diagonal structures (see <code>dl_entropy</code>)</li>
-<li>"TREND": trend of recurrences (see <code>trend</code>)</li>
-<li>"LAM": laminarity (see <code>laminarity</code>)</li>
-<li>"TT": trapping time (see <code>trappingtime</code>)</li>
-<li>"Vmax": maximum length of vertical structures (<code>see</code>vl_max`)</li>
+<li>"RR": recurrence rate (see <a href="./#RecurrenceAnalysis.recurrencerate"><code>recurrencerate</code></a>)</li>
+<li>"DET": determinsm (see <a href="./#RecurrenceAnalysis.determinism"><code>determinism</code></a>)</li>
+<li>"L": average length of diagonal structures (see <a href="./#RecurrenceAnalysis.dl_average"><code>dl_average</code></a>)</li>
+<li>"Lmax": maximum length of diagonal structures (see <a href="./#RecurrenceAnalysis.dl_max"><code>dl_max</code></a>)</li>
+<li>"DIV": divergence (see <a href="./#RecurrenceAnalysis.divergence"><code>divergence</code></a>)</li>
+<li>"ENTR": entropy of diagonal structures (see <a href="./#RecurrenceAnalysis.dl_entropy"><code>dl_entropy</code></a>)</li>
+<li>"TREND": trend of recurrences (see <a href="./#RecurrenceAnalysis.trend"><code>trend</code></a>)</li>
+<li>"LAM": laminarity (see <a href="./#RecurrenceAnalysis.laminarity"><code>laminarity</code></a>)</li>
+<li>"TT": trapping time (see <a href="./#RecurrenceAnalysis.trappingtime"><code>trappingtime</code></a>)</li>
+<li>"Vmax": maximum length of vertical structures (see <a href="./#RecurrenceAnalysis.vl_max"><code>vl_max</code></a>)</li>
+<li>"VENTR": entropy of vertical structures (see <a href="./#RecurrenceAnalysis.vl_entropy"><code>vl_entropy</code></a>)</li>
+<li>"MRT": mean recurrence time (see <a href="./#RecurrenceAnalysis.meanrecurrencetime"><code>meanrecurrencetime</code></a>)</li>
+<li>"RTE" recurrence time entropy (see <a href="../@ref"><code>rt_entropy</code></a>)</li>
+<li>"NMPRT": number of the most probable recurrence time (see <a href="./#RecurrenceAnalysis.nmprt"><code>nmprt</code></a>)</li>
 </ul>
+<p>Notice that in the case of empty histograms (e.g. no existing vertical lines less than the keyword <code>lminvert</code>) the average and maximum values ("L", "Lmax", "TT", "Vmax", "MRT") are returned as <code>0.0</code> but their respective entropies ("ENTR", "VENTR", "RTE") are returned as <code>NaN</code>.</p>
 <p>The keyword argument <code>onlydiagonal</code> (<code>false</code> by default) can be set to <code>true</code> in order to restrict the analysis to the recurrence rate and the parameters related to diagonal structures ("RR", "DET", "L", "Lmax", "DIV" and "ENTR").</p>
 <hr />
-<p>See also the <a href="../windowed/#RecurrenceAnalysis.@windowed"><code>@windowed</code></a> macro for a windowed version of the above!</p>
+<div class="admonition note">
+<p class="admonition-title">Return values for empty histograms</p>
+<p>It may be the case that for a given recurrence matrix some structures do not exist at all. For example there are recurrence matrices that have no vertical lengths. In such cases the behavior of our RQA pipeline is the following:</p>
+<ol>
+<li>Quantities that represent maximum or average values are <code>0.0</code>.</li>
+<li>Quantities that represent entropies are <code>NaN</code>.</li>
+</ol>
+</div>
+<hr />
+<p>See also the <a href="../windowed/#RecurrenceAnalysis.@windowed"><code>@windowed</code></a> macro for a windowed version of <a href="../@def"><code>rqa</code></a>!</p>
+<p><a id='Recurrence-Structures-Histograms-1'></a></p>
+<h2 id="recurrence-structures-histograms">Recurrence Structures Histograms</h2>
+<p>The functions that we list in this page internally compute histograms of some recurrence structures, like e.g. the vertical lengths. You can access these values directly with the following function:</p>
+<p><a id='RecurrenceAnalysis.recurrencestructures' href='#RecurrenceAnalysis.recurrencestructures'>#</a>
+<strong><code>RecurrenceAnalysis.recurrencestructures</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="nt">recurrencestructures</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">AbstractRecurrenceMatrix</span><span class="o">;</span>
+                         <span class="nt">diagonal</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
+                         <span class="nt">vertical</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
+                         <span class="nt">recurrencetimes</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
+                         <span class="nt">kwargs</span><span class="o">...)</span>
+</pre></div>
+
+
+<p>Return a dictionary with the histograms of the recurrence structures contained in the recurrence matrix <code>x</code>.</p>
+<p><strong>Description</strong></p>
+<p>Returns a dictionary with the keys <code>"diagonal"</code>, <code>"vertical"</code> or <code>"recurrencetimes"</code>, depending on what keyword arguments are given as <code>true</code>. Each item of the dictionary is a vector of integers, such that the <code>i</code>-th element of the vector is the number of lines of length <code>i</code> contained in <code>x</code>.</p>
+<ul>
+<li><code>"diagonal"</code> counts the diagonal lines, i.e. the recurrent trajectories.</li>
+<li><code>"vertical"</code> counts the vertical lines, i.e. the laminar states.</li>
+<li><code>"recurrencetimes"</code> counts the vertical distances between recurrent states,   i.e. the recurrence times. These are calculated as the distance between   the middle points of consecutive vertical lines.</li>
+</ul>
+<p>All the points of the matrix are counted by default. Extra keyword arguments can be passed to rule out the lines shorter than a minimum length or around the main diagonal. See the arguments of the function <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for further details.</p>
+<p>"Empty" histograms are represented always as <code>[0]</code>.</p>
+<p><strong>References</strong></p>
+<p>N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</p>
                 
                   
                 
