@@ -555,6 +555,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#all-in-one-bundle" title="All-in-one Bundle" class="md-nav__link">
+    All-in-one Bundle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#classical-rqa-measures" title="Classical RQA Measures" class="md-nav__link">
     Classical RQA Measures
   </a>
@@ -583,13 +590,6 @@
         <li class="md-nav__item">
   <a href="#keyword-table" title="Keyword table" class="md-nav__link">
     Keyword table
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#all-in-one-bundle" title="All-in-one Bundle" class="md-nav__link">
-    All-in-one Bundle
   </a>
   
 </li>
@@ -694,6 +694,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#all-in-one-bundle" title="All-in-one Bundle" class="md-nav__link">
+    All-in-one Bundle
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#classical-rqa-measures" title="Classical RQA Measures" class="md-nav__link">
     Classical RQA Measures
   </a>
@@ -722,13 +729,6 @@
         <li class="md-nav__item">
   <a href="#keyword-table" title="Keyword table" class="md-nav__link">
     Keyword table
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#all-in-one-bundle" title="All-in-one Bundle" class="md-nav__link">
-    All-in-one Bundle
   </a>
   
 </li>
@@ -771,152 +771,9 @@
 <p>The functions described in this page all accept a recurrence matrix (<code>x</code>), see the <a href="../rplots">previous page</a>.</p>
 <p><a id='RQA-Measures-1'></a></p>
 <h2 id="rqa-measures">RQA Measures</h2>
-<p><a id='Classical-RQA-Measures-1'></a></p>
-<h3 id="classical-rqa-measures">Classical RQA Measures</h3>
-<p><a id='RecurrenceAnalysis.recurrencerate' href='#RecurrenceAnalysis.recurrencerate'>#</a>
-<strong><code>RecurrenceAnalysis.recurrencerate</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>recurrencerate(x; theiler=0)
-</pre></div>
-
-
-<p>Calculate the recurrence rate of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code>.</p>
-<p><a id='RecurrenceAnalysis.determinism' href='#RecurrenceAnalysis.determinism'>#</a>
-<strong><code>RecurrenceAnalysis.determinism</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>determinism(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the determinism of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.dl_average' href='#RecurrenceAnalysis.dl_average'>#</a>
-<strong><code>RecurrenceAnalysis.dl_average</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>dl_average(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the average of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.dl_max' href='#RecurrenceAnalysis.dl_max'>#</a>
-<strong><code>RecurrenceAnalysis.dl_max</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>dl_max(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the longest diagonal line contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.dl_entropy' href='#RecurrenceAnalysis.dl_entropy'>#</a>
-<strong><code>RecurrenceAnalysis.dl_entropy</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>dl_entropy(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the entropy of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.divergence' href='#RecurrenceAnalysis.divergence'>#</a>
-<strong><code>RecurrenceAnalysis.divergence</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>divergence(x; theiler=0)
-</pre></div>
-
-
-<p>Calculate the divergence of the recurrence matrix <code>x</code> (actually the inverse of <a href="./#RecurrenceAnalysis.dl_max"><code>dl_max</code></a>), ruling out the points within the Theiler window of size <code>theiler</code>.</p>
-<p><a id='RecurrenceAnalysis.trend' href='#RecurrenceAnalysis.trend'>#</a>
-<strong><code>RecurrenceAnalysis.trend</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>trend(x; theiler=0, border=10)
-</pre></div>
-
-
-<p>Calculate the trend of recurrences in the recurrence matrix <code>x</code> towards its edges, ruling out the points within the Theiler window of size <code>theiler</code>.</p>
-<p>Keyword <code>border</code> can also exclude outermost diagonals (i.e. counting from the corners of the matrix).</p>
-<hr />
-<p><a id='Extended-RQA-Measures-1'></a></p>
-<h3 id="extended-rqa-measures">Extended RQA Measures</h3>
-<p><a id='RecurrenceAnalysis.laminarity' href='#RecurrenceAnalysis.laminarity'>#</a>
-<strong><code>RecurrenceAnalysis.laminarity</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>laminarity(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the laminarity of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.trappingtime' href='#RecurrenceAnalysis.trappingtime'>#</a>
-<strong><code>RecurrenceAnalysis.trappingtime</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>trappingtime(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the trapping time of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
-<p>The trapping time is the average of the vertical line structures and thus equal to <a href="./#RecurrenceAnalysis.vl_average"><code>vl_average</code></a>.</p>
-<p><a id='RecurrenceAnalysis.vl_average' href='#RecurrenceAnalysis.vl_average'>#</a>
-<strong><code>RecurrenceAnalysis.vl_average</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>vl_average(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the average of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.vl_max' href='#RecurrenceAnalysis.vl_max'>#</a>
-<strong><code>RecurrenceAnalysis.vl_max</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>vl_max(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the longest vertical line contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<p><a id='RecurrenceAnalysis.vl_entropy' href='#RecurrenceAnalysis.vl_entropy'>#</a>
-<strong><code>RecurrenceAnalysis.vl_entropy</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>vl_entropy(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the entropy of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and diagonals shorter than <code>lmin</code>.</p>
-<hr />
-<p><a id='Recurrence-Time-Measures-1'></a></p>
-<h3 id="recurrence-time-measures">Recurrence Time Measures</h3>
-<p><a id='RecurrenceAnalysis.meanrecurrencetime' href='#RecurrenceAnalysis.meanrecurrencetime'>#</a>
-<strong><code>RecurrenceAnalysis.meanrecurrencetime</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>meanrecurrencetime(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the mean recurrence time of the recurrence matrix <code>x</code>, ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
-<p>Equivalent to <a href="../@ref"><code>rt_average</code></a>.</p>
-<p><a id='RecurrenceAnalysis.nmprt' href='#RecurrenceAnalysis.nmprt'>#</a>
-<strong><code>RecurrenceAnalysis.nmprt</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>nmprt(x; lmin=2, theiler=0)
-</pre></div>
-
-
-<p>Calculate the number of the most probable recurrence time (NMPRT), ruling out the points within the Theiler window of size <code>theiler</code> and lines shorter than <code>lmin</code>.</p>
-<hr />
-<p><a id='Keyword-table-1'></a></p>
-<h2 id="keyword-table">Keyword table</h2>
-<p>Since most of the above functions can be fined tuned with keyword arguments, here is a table summarizing them that could be of use:</p>
-<table>
-<thead>
-<tr>
-<th align="right">Argument</th>
-<th align="right">Default</th>
-<th align="right">Functions</th>
-<th align="right">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="right"><code>theiler</code></td>
-<td align="right">0</td>
-<td align="right"><code>recurrencerate</code><br/><code>determinism</code><br/><code>*_average</code><br/><code>*_max</code><br/><code>*_entropy</code><br/><code>divergence</code><br/><code>trend</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
-<td align="right">Theiler window: number of diagonals around the LOI <strong>excluded</strong> from the analysis. The value <code>0</code> means that the LOI is <em>included</em> in the analysis. Use <code>1</code> to exclude the LOI.</td>
-</tr>
-<tr>
-<td align="right"><code>lmin</code></td>
-<td align="right">2</td>
-<td align="right"><code>determinism</code><br/><code>*_average</code><br/><code>*_max</code><br/><code>*_entropy</code><br/><code>divergence</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
-<td align="right">Minimum length of the recurrent structures (diagonal or vertical) considered in the analysis.</td>
-</tr>
-<tr>
-<td align="right"><code>border</code></td>
-<td align="right">10</td>
-<td align="right"><code>trend</code></td>
-<td align="right">Number of diagonals excluded from the analysis near the border of the matrix.</td>
-</tr>
-</tbody>
-</table>
 <p><a id='All-in-one-Bundle-1'></a></p>
-<h2 id="all-in-one-bundle">All-in-one Bundle</h2>
-<p>In case you need all of the aforementioned functions and you don't want to write 10 lines of code to compute them all (since they are so many) we also got an all-in-one function that computes all of them and returns a dictionary of the result!</p>
+<h3 id="all-in-one-bundle">All-in-one Bundle</h3>
+<p>In case you need all of the RQA-related functions (see below) and you don't want to write 10 lines of code to compute them all (since they are so many) we provide an all-in-one function that computes all of them and returns a dictionary of the result!</p>
 <p><a id='RecurrenceAnalysis.rqa' href='#RecurrenceAnalysis.rqa'>#</a>
 <strong><code>RecurrenceAnalysis.rqa</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>rqa(x; kwargs...)
@@ -958,6 +815,162 @@
 </div>
 <hr />
 <p>See also the <a href="../windowed/#RecurrenceAnalysis.@windowed"><code>@windowed</code></a> macro for a windowed version of <a href="../@def"><code>rqa</code></a>!</p>
+<p><a id='Classical-RQA-Measures-1'></a></p>
+<h3 id="classical-rqa-measures">Classical RQA Measures</h3>
+<p><a id='RecurrenceAnalysis.recurrencerate' href='#RecurrenceAnalysis.recurrencerate'>#</a>
+<strong><code>RecurrenceAnalysis.recurrencerate</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>recurrencerate(x[; theiler::Integer])
+</pre></div>
+
+
+<p>Calculate the recurrence rate of the recurrence matrix <code>x</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.determinism' href='#RecurrenceAnalysis.determinism'>#</a>
+<strong><code>RecurrenceAnalysis.determinism</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>determinism(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the determinism of the recurrence matrix <code>x</code>, ruling out the diagonal lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.dl_average' href='#RecurrenceAnalysis.dl_average'>#</a>
+<strong><code>RecurrenceAnalysis.dl_average</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>dl_average(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the average of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.dl_max' href='#RecurrenceAnalysis.dl_max'>#</a>
+<strong><code>RecurrenceAnalysis.dl_max</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>dl_max(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the longest diagonal line contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.dl_entropy' href='#RecurrenceAnalysis.dl_entropy'>#</a>
+<strong><code>RecurrenceAnalysis.dl_entropy</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>dl_entropy(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the entropy of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.divergence' href='#RecurrenceAnalysis.divergence'>#</a>
+<strong><code>RecurrenceAnalysis.divergence</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>divergence(x[; theiler])
+</pre></div>
+
+
+<p>Calculate the divergence of the recurrence matrix <code>x</code> (actually the inverse of <a href="./#RecurrenceAnalysis.dl_max"><code>dl_max</code></a>).</p>
+<p><a id='RecurrenceAnalysis.trend' href='#RecurrenceAnalysis.trend'>#</a>
+<strong><code>RecurrenceAnalysis.trend</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>trend(x[; border=10, theiler])
+</pre></div>
+
+
+<p>Calculate the trend of recurrences in the recurrence matrix <code>x</code>.</p>
+<p>The 10 outermost diagonals (counting from the corners of the matrix) are excluded by default to avoid "border effects". Use the keyword argument <code>border</code> to define a different number of excluded lines.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<hr />
+<p><a id='Extended-RQA-Measures-1'></a></p>
+<h3 id="extended-rqa-measures">Extended RQA Measures</h3>
+<p><a id='RecurrenceAnalysis.laminarity' href='#RecurrenceAnalysis.laminarity'>#</a>
+<strong><code>RecurrenceAnalysis.laminarity</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>laminarity(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the laminarity of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.trappingtime' href='#RecurrenceAnalysis.trappingtime'>#</a>
+<strong><code>RecurrenceAnalysis.trappingtime</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>trappingtime(x; lmin=2, theiler=0)
+</pre></div>
+
+
+<p>Calculate the trapping time of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>The trapping time is the average of the vertical line structures and thus equal to <a href="./#RecurrenceAnalysis.vl_average"><code>vl_average</code></a>.</p>
+<p><a id='RecurrenceAnalysis.vl_average' href='#RecurrenceAnalysis.vl_average'>#</a>
+<strong><code>RecurrenceAnalysis.vl_average</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>vl_average(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the average of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.vl_max' href='#RecurrenceAnalysis.vl_max'>#</a>
+<strong><code>RecurrenceAnalysis.vl_max</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>vl_max(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the longest vertical line contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><a id='RecurrenceAnalysis.vl_entropy' href='#RecurrenceAnalysis.vl_entropy'>#</a>
+<strong><code>RecurrenceAnalysis.vl_entropy</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>vl_entropy(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the entropy of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<hr />
+<p><a id='Recurrence-Time-Measures-1'></a></p>
+<h3 id="recurrence-time-measures">Recurrence Time Measures</h3>
+<p><a id='RecurrenceAnalysis.meanrecurrencetime' href='#RecurrenceAnalysis.meanrecurrencetime'>#</a>
+<strong><code>RecurrenceAnalysis.meanrecurrencetime</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>meanrecurrencetime(x; lmin=2, theiler=0)
+</pre></div>
+
+
+<p>Calculate the mean recurrence time of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Equivalent to <a href="../@ref"><code>rt_average</code></a>.</p>
+<p><a id='RecurrenceAnalysis.nmprt' href='#RecurrenceAnalysis.nmprt'>#</a>
+<strong><code>RecurrenceAnalysis.nmprt</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>nmprt(x; lmin=2, theiler=0)
+</pre></div>
+
+
+<p>Calculate the number of the most probable recurrence time (NMPRT), ruling out the lines shorter than <code>lmin</code>.</p>
+<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<hr />
+<p><a id='Keyword-table-1'></a></p>
+<h2 id="keyword-table">Keyword table</h2>
+<p>Since most of the above functions can be fined tuned with keyword arguments, here is a table summarizing them that could be of use:</p>
+<table>
+<thead>
+<tr>
+<th align="right">Argument</th>
+<th align="right">Default</th>
+<th align="right">Functions</th>
+<th align="right">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>theiler</code></td>
+<td align="right">0 for <code>CrossRecurrenceMatrix</code>, 1 otherwise.</td>
+<td align="right"><code>recurrencerate</code><br/><code>determinism</code><br/><code>*_average</code><br/><code>*_max</code><br/><code>*_entropy</code><br/><code>divergence</code><br/><code>trend</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
+<td align="right">Theiler window: number of diagonals around the LOI <strong>excluded</strong> from the analysis. The value <code>0</code> means that the LOI is <em>included</em> in the analysis. Use <code>1</code> to exclude the LOI.</td>
+</tr>
+<tr>
+<td align="right"><code>lmin</code></td>
+<td align="right">2</td>
+<td align="right"><code>determinism</code><br/><code>*_average</code><br/><code>*_max</code><br/><code>*_entropy</code><br/><code>divergence</code><br/><code>laminarity</code><br/><code>trappingtime</code><br/> <code>meanrecurrencetime</code><br/><code>nmprt</code></td>
+<td align="right">Minimum length of the recurrent structures (diagonal or vertical) considered in the analysis.</td>
+</tr>
+<tr>
+<td align="right"><code>border</code></td>
+<td align="right">10</td>
+<td align="right"><code>trend</code></td>
+<td align="right">Number of diagonals excluded from the analysis near the border of the matrix.</td>
+</tr>
+</tbody>
+</table>
 <p><a id='Recurrence-Structures-Histograms-1'></a></p>
 <h2 id="recurrence-structures-histograms">Recurrence Structures Histograms</h2>
 <p>The functions that we list in this page internally compute histograms of some recurrence structures, like e.g. the vertical lengths. You can access these values directly with the following function:</p>
