@@ -801,9 +801,14 @@
 </ul>
 <p>In the case of empty histograms (e.g. no existing vertical lines less than the keyword <code>lminvert</code>) the average and maximum values ("L", "Lmax", "TT", "Vmax", "MRT") are returned as <code>0.0</code> but their respective entropies ("ENTR", "VENTR", "RTE") are returned as <code>NaN</code>.</p>
 <p><strong>Keyword Arguments</strong></p>
-<p>Standard keyword arguments are the ones accepted by the functios listed below, i.e. <code>theiler, lmin, border</code>. In addition <code>theilerdiag</code>, <code>lmindiag</code> may be used to declare specific values that override the values of <code>theiler</code> and <code>lmin</code> in the calculation of parameters related to diagonal structures. Likewise, <code>theilervert</code> and <code>lminvert</code> can be used for the calculation of parameters related to vertical structures.</p>
-<p>Notice that for the Theiler window, <code>theiler=0</code> means that means that the whole matrix is scanned for lines. <code>theiler=1</code> means that the central diagonal (LOI) is exluded. In general, <code>theiler=n</code> means that the <code>n</code> central diagonals are excluded (at both sides of the LOI, i.e. actually <code>2n-1</code> diagonals are excluded).</p>
-<p>The keyword argument <code>onlydiagonal</code> (<code>false</code> by default) can be set to <code>true</code> in order to restrict the analysis to the recurrence rate and the parameters related to diagonal structures ("RR", "DET", "L", "Lmax", "DIV" and "ENTR").</p>
+<p>Standard keyword arguments are the ones accepted by the functions listed below, i.e. <code>theiler</code>, <code>lmin</code>, and <code>border</code>:</p>
+<ul>
+<li><code>theiler</code> is used to define a "Theiler window" around the central diagonal or "line of identity" (LOI): a region of points that are excluded in the calculation of RQA parameters, in order to rule out self-recurrences and apparent recurrences for smooth or high resolution data. The LOI is excluded by default for matrices of the types <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but it is included for matrices of the type <code>CrossRecurrenceMatrix</code>. <code>theiler=0</code> means that the whole matrix is scanned for lines. <code>theiler=1</code> means that the LOI is excluded. In general, <code>theiler=n</code> means that the <code>n</code> central diagonals are excluded (at both sides of the LOI, i.e. actually <code>2n-1</code> diagonals are excluded).</li>
+<li><code>lmin</code> is used to define the minimum line length in the parameters that describe the distributions of diagonal or vertical lines (it is set as 2 by default).</li>
+<li><code>border</code> is used to avoid border effects in the calculation of "TREND" (cf. <a href="./#RecurrenceAnalysis.trend"><code>trend</code></a>).</li>
+</ul>
+<p>In addition <code>theilerdiag</code>, <code>lmindiag</code> may be used to declare specific values that override the values of <code>theiler</code> and <code>lmin</code> in the calculation of parameters related to diagonal structures. Likewise, <code>theilervert</code> and <code>lminvert</code> can be used for the calculation of parameters related to vertical structures.</p>
+<p>The keyword argument <code>onlydiagonal</code> (<code>false</code> by default) can be set to <code>true</code> in order to restrict the analysis to the recurrence rate and the parameters related to diagonal structures ("RR", "DET", "L", "Lmax", "DIV" and "ENTR"), which makes this function slightly faster.</p>
 <hr />
 <div class="admonition note">
 <p class="admonition-title">Return values for empty histograms</p>
@@ -819,44 +824,68 @@
 <h3 id="classical-rqa-measures">Classical RQA Measures</h3>
 <p><a id='RecurrenceAnalysis.recurrencerate' href='#RecurrenceAnalysis.recurrencerate'>#</a>
 <strong><code>RecurrenceAnalysis.recurrencerate</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>recurrencerate(x[; theiler::Integer])
+<div class="codehilite"><pre><span></span>recurrencerate(x[; theiler])
 </pre></div>
 
 
 <p>Calculate the recurrence rate of the recurrence matrix <code>x</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><strong>Description</strong></p>
+<p>The recurrence rate is calculated as:</p>
+<div>
+<div class="MathJax_Preview">
+RR = \frac{1}{S} \sum_{i,j} x[i,j]
+</div>
+<script type="math/tex; mode=display">
+RR = \frac{1}{S} \sum_{i,j} x[i,j]
+</script>
+</div>
+<p>where <em>S</em> is the size of <code>x</code> or the region of <code>x</code> with potential recurrent points. There is not a unique definition of that denominator, which is defined as the full size of the matrix in many sources (e.g. [1]), whereas in others it is adjusted to remove the points of the LOI when they are excluded from the count [2,3].</p>
+<p>For matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, where the points around the central diagonal are usually excluded, the denominator is adjusted to the size of the matrix outside the Theiler window (by default equal to the LOI, and adjustable with the keyword argument <code>theiler</code>; see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for details). For matrices of type <code>CrossRecurrenceMatrix</code>, where normally all points are analyzed, the denominator is always the full size of the matrix, regardless of the Theiler window that might be defined (none by default).</p>
+<p><em>Hint</em>: to reproduce the calculations done following the formulas that use the full size of the matrix in the denominator, use <code>CrossRecurrenceMatrix(s,s,ε)</code> to define the recurrence matrix, instead of <code>RecurrenceMatrix(s,ε)</code>, setting <code>theiler=1</code> (or <code>theiler=n</code> in general) to explicitly exclude the LOI or other diagonals around it.</p>
+<p><strong>References</strong></p>
+<p>[1] : N. Marwan <em>et al.</em>, "Recurrence plots for the analysis of complex systems", <em>Phys. Reports 438</em>(5-6), 237-329 (2007).</p>
+<p>[2] : C.L. Webber &amp; J.P. Zbilut, "Recurrence Quantification Analysis of Nonlinear Dynamical Systems", in: Riley MA &amp; Van Orden GC, Tutorials in Contemporary Nonlinear Methods for the Behavioral Sciences, 26-94 (2005). URL: https://www.nsf.gov/pubs/2005/nsf05057/nmbs/nmbs.pdf</p>
+<p>[3] : N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</p>
 <p><a id='RecurrenceAnalysis.determinism' href='#RecurrenceAnalysis.determinism'>#</a>
 <strong><code>RecurrenceAnalysis.determinism</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>determinism(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the determinism of the recurrence matrix <code>x</code>, ruling out the diagonal lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the determinism of the recurrence matrix <code>x</code>:</p>
+<p><strong>Description</strong></p>
+<p>The determinism is calculated as:</p>
+<div>
+<div class="MathJax_Preview">
+DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}}
+</div>
+<script type="math/tex; mode=display">
+DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}}
+</script>
+</div>
+<p>where <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> stands for the lengths of diagonal lines in the matrix, and <span><span class="MathJax_Preview">P(l)</span><script type="math/tex">P(l)</script></span> is the number of lines of length equal to <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>.</p>
+<p><code>lmin</code> is set to 2 by default, and this calculation rules out all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.dl_average' href='#RecurrenceAnalysis.dl_average'>#</a>
 <strong><code>RecurrenceAnalysis.dl_average</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>dl_average(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the average of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the average of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.dl_max' href='#RecurrenceAnalysis.dl_max'>#</a>
 <strong><code>RecurrenceAnalysis.dl_max</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>dl_max(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the longest diagonal line contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the longest diagonal line contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.dl_entropy' href='#RecurrenceAnalysis.dl_entropy'>#</a>
 <strong><code>RecurrenceAnalysis.dl_entropy</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>dl_entropy(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the entropy of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the Shannon entropy of the diagonal lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.divergence' href='#RecurrenceAnalysis.divergence'>#</a>
 <strong><code>RecurrenceAnalysis.divergence</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>divergence(x[; theiler])
@@ -871,8 +900,20 @@
 
 
 <p>Calculate the trend of recurrences in the recurrence matrix <code>x</code>.</p>
-<p>The 10 outermost diagonals (counting from the corners of the matrix) are excluded by default to avoid "border effects". Use the keyword argument <code>border</code> to define a different number of excluded lines.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p><strong>Description</strong></p>
+<p>The trend is the slope of the linear regression that relates the density of recurrent points in the diagonals parallel to the LOI and the distance between those diagonals and the LOI. It quantifies the degree of system stationarity, such that in recurrence plots where points "fade away" from the central diagonal, the trend will have a negative value.</p>
+<p>It is calculated as:</p>
+<div>
+<div class="MathJax_Preview">
+TREND = \frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\rangle\right)}{\sum_{d=\tau}^{\tilde{N}}\delta[d]^2}
+</div>
+<script type="math/tex; mode=display">
+TREND = \frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\rangle\right)}{\sum_{d=\tau}^{\tilde{N}}\delta[d]^2}
+</script>
+</div>
+<p>where <span><span class="MathJax_Preview">RR[d]</span><script type="math/tex">RR[d]</script></span> is the local recurrence rate of the diagonal <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>, <span><span class="MathJax_Preview">\delta[d]</span><script type="math/tex">\delta[d]</script></span> is a balanced measure of the distance between that diagonal and the LOI, <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> is the Theiler window (number of central diagonals that are excluded), and <span><span class="MathJax_Preview">\tilde{N}</span><script type="math/tex">\tilde{N}</script></span> is the number of the outmost diagonal that is included.</p>
+<p>The 10 outermost diagonals (counting from the corners of the matrix) are excluded by default to avoid "border effects". Use the keyword argument <code>border</code> to define a different number of excluded lines, and <code>theiler</code> to define the size of the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for details).</p>
+<p><em>Note</em>: In rectangular cross-recurrence plots (i.e. when the time series that originate them are not of the same length), the limits of the formula for TREND are not clearly defined. For the sake of consistency, this function limits the calculations to the biggest square matrix that contains the LOI.</p>
 <hr />
 <p><a id='Extended-RQA-Measures-1'></a></p>
 <h3 id="extended-rqa-measures">Extended RQA Measures</h3>
@@ -882,16 +923,26 @@
 </pre></div>
 
 
-<p>Calculate the laminarity of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the laminarity of the recurrence matrix <code>x</code>.</p>
+<p><strong>Description</strong></p>
+<p>The laminarity is calculated as:</p>
+<div>
+<div class="MathJax_Preview">
+LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}}
+</div>
+<script type="math/tex; mode=display">
+LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}}
+</script>
+</div>
+<p>where <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> stands for the lengths of vertical lines in the matrix, and <span><span class="MathJax_Preview">P(v)</span><script type="math/tex">P(v)</script></span> is the number of lines of length equal to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
+<p><code>lmin</code> is set to 2 by default, and this calculation rules out all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.trappingtime' href='#RecurrenceAnalysis.trappingtime'>#</a>
 <strong><code>RecurrenceAnalysis.trappingtime</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>trappingtime(x; lmin=2, theiler=0)
+<div class="codehilite"><pre><span></span>trappingtime(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the trapping time of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the trapping time of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p>The trapping time is the average of the vertical line structures and thus equal to <a href="./#RecurrenceAnalysis.vl_average"><code>vl_average</code></a>.</p>
 <p><a id='RecurrenceAnalysis.vl_average' href='#RecurrenceAnalysis.vl_average'>#</a>
 <strong><code>RecurrenceAnalysis.vl_average</code></strong> &mdash; <em>Function</em>.</p>
@@ -899,44 +950,42 @@
 </pre></div>
 
 
-<p>Calculate the average of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the average of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.vl_max' href='#RecurrenceAnalysis.vl_max'>#</a>
 <strong><code>RecurrenceAnalysis.vl_max</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>vl_max(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the longest vertical line contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the longest vertical line contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.vl_entropy' href='#RecurrenceAnalysis.vl_entropy'>#</a>
 <strong><code>RecurrenceAnalysis.vl_entropy</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>vl_entropy(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the entropy of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the Shannon entropy of the vertical lines contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <hr />
 <p><a id='Recurrence-Time-Measures-1'></a></p>
 <h3 id="recurrence-time-measures">Recurrence Time Measures</h3>
 <p><a id='RecurrenceAnalysis.meanrecurrencetime' href='#RecurrenceAnalysis.meanrecurrencetime'>#</a>
 <strong><code>RecurrenceAnalysis.meanrecurrencetime</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>meanrecurrencetime(x; lmin=2, theiler=0)
+<div class="codehilite"><pre><span></span>meanrecurrencetime(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the mean recurrence time of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the mean recurrence time of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p>Equivalent to <a href="../@ref"><code>rt_average</code></a>.</p>
 <p><a id='RecurrenceAnalysis.nmprt' href='#RecurrenceAnalysis.nmprt'>#</a>
 <strong><code>RecurrenceAnalysis.nmprt</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>nmprt(x; lmin=2, theiler=0)
+<div class="codehilite"><pre><span></span>nmprt(x[; lmin=2, theiler])
 </pre></div>
 
 
-<p>Calculate the number of the most probable recurrence time (NMPRT), ruling out the lines shorter than <code>lmin</code>.</p>
-<p>The line of identity (main diagonal) is excluded by default for matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, but included for matrices of type <code>CrossRecurrenceMatrix</code>. Use the keyword argument <code>theiler</code> to exclude the diagonals within a custom Theiler window (<code>theiler=0</code> to include all diagonals).</p>
+<p>Calculate the number of the most probable recurrence time (NMPRT), ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
+<p>This number indicates how many times the system has recurred using the recurrence time that appears most frequently, i.e it is the maximum value of the histogram of recurrence times [1].</p>
+<p><strong>References</strong></p>
+<p>[1] : E.J. Ngamga <em>et al.</em> "Recurrence analysis of strange nonchaotic dynamics", <em>Physical Review E</em>, 75(3), 036222(1-8), 2007, DOI:10.1103/physreve.75.036222</p>
 <hr />
 <p><a id='Keyword-table-1'></a></p>
 <h2 id="keyword-table">Keyword table</h2>
@@ -984,18 +1033,20 @@
 </pre></div>
 
 
-<p>Return a dictionary with the histograms of the recurrence structures contained in the recurrence matrix <code>x</code>.</p>
+<p>Return a dictionary with the histograms of the recurrence structures contained in the recurrence matrix <code>x</code>, with the keys <code>"diagonal"</code>, <code>"vertical"</code> or <code>"recurrencetimes"</code>, depending on what keyword arguments are given as <code>true</code>.</p>
 <p><strong>Description</strong></p>
-<p>Returns a dictionary with the keys <code>"diagonal"</code>, <code>"vertical"</code> or <code>"recurrencetimes"</code>, depending on what keyword arguments are given as <code>true</code>. Each item of the dictionary is a vector of integers, such that the <code>i</code>-th element of the vector is the number of lines of length <code>i</code> contained in <code>x</code>.</p>
+<p>Each item of the dictionary is a vector of integers, such that the <code>i</code>-th element of the vector is the number of lines of length <code>i</code> contained in <code>x</code>.</p>
 <ul>
 <li><code>"diagonal"</code> counts the diagonal lines, i.e. the recurrent trajectories.</li>
 <li><code>"vertical"</code> counts the vertical lines, i.e. the laminar states.</li>
-<li><code>"recurrencetimes"</code> counts the vertical distances between recurrent states,   i.e. the recurrence times. These are calculated as the distance between   the middle points of consecutive vertical lines.</li>
+<li><code>"recurrencetimes"</code> counts the vertical distances between recurrent states,   i.e. the recurrence times.</li>
 </ul>
-<p>All the points of the matrix are counted by default. Extra keyword arguments can be passed to rule out the lines shorter than a minimum length or around the main diagonal. See the arguments of the function <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for further details.</p>
+<p>All the points of the matrix are counted by default. The keyword argument <code>theiler</code> can be passed to rule out the lines around the main diagonal. See the arguments of the function <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for further details.</p>
 <p>"Empty" histograms are represented always as <code>[0]</code>.</p>
+<p><em>Notice</em>: There is not a unique operational definition of "recurrence times". In the analysis of recurrence plots, usually the  "second type" of recurrence times as defined by Gao and Cai [1] are considered, i.e. the distance between consecutive (but separated) recurrent structures in the vertical direction of the matrix. But that distance is not uniquely defined when the vertical recurrent structures are longer than one point. The recurrence times calculated here are the distance between the midpoints of consecutive lines, which is a balanced estimator of the Poincaré recurrence times [2].</p>
 <p><strong>References</strong></p>
-<p>N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</p>
+<p>[1] J. Gao &amp; H. Cai. "On the structures and quantification of recurrence plots". <a href="https://www.sciencedirect.com/science/article/pii/S0375960100003042?via%3Dihub"><em>Physics Letters A</em>, 270(1-2), 75–87 (2000)</a>.</p>
+<p>[2] N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</p>
                 
                   
                 
