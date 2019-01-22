@@ -796,7 +796,7 @@
 <li>"Vmax": maximum length of vertical structures (see <a href="./#RecurrenceAnalysis.vl_max"><code>vl_max</code></a>)</li>
 <li>"VENTR": entropy of vertical structures (see <a href="./#RecurrenceAnalysis.vl_entropy"><code>vl_entropy</code></a>)</li>
 <li>"MRT": mean recurrence time (see <a href="./#RecurrenceAnalysis.meanrecurrencetime"><code>meanrecurrencetime</code></a>)</li>
-<li>"RTE" recurrence time entropy (see <a href="../@ref"><code>rt_entropy</code></a>)</li>
+<li>"RTE" recurrence time entropy (see <a href="./#RecurrenceAnalysis.rt_entropy"><code>rt_entropy</code></a>)</li>
 <li>"NMPRT": number of the most probable recurrence time (see <a href="./#RecurrenceAnalysis.nmprt"><code>nmprt</code></a>)</li>
 </ul>
 <p>In the case of empty histograms (e.g. no existing vertical lines less than the keyword <code>lminvert</code>) the average and maximum values ("L", "Lmax", "TT", "Vmax", "MRT") are returned as <code>0.0</code> but their respective entropies ("ENTR", "VENTR", "RTE") are returned as <code>NaN</code>.</p>
@@ -975,7 +975,7 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}}
 
 
 <p>Calculate the mean recurrence time of the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
-<p>Equivalent to <a href="../@ref"><code>rt_average</code></a>.</p>
+<p>Equivalent to <a href="./#RecurrenceAnalysis.rt_average"><code>rt_average</code></a>.</p>
 <p><a id='RecurrenceAnalysis.nmprt' href='#RecurrenceAnalysis.nmprt'>#</a>
 <strong><code>RecurrenceAnalysis.nmprt</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span>nmprt(x[; lmin=2, theiler])
@@ -986,6 +986,20 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}}
 <p>This number indicates how many times the system has recurred using the recurrence time that appears most frequently, i.e it is the maximum value of the histogram of recurrence times [1].</p>
 <p><strong>References</strong></p>
 <p>[1] : E.J. Ngamga <em>et al.</em> "Recurrence analysis of strange nonchaotic dynamics", <em>Physical Review E</em>, 75(3), 036222(1-8), 2007, DOI:10.1103/physreve.75.036222</p>
+<p><a id='RecurrenceAnalysis.rt_entropy' href='#RecurrenceAnalysis.rt_entropy'>#</a>
+<strong><code>RecurrenceAnalysis.rt_entropy</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>rt_entropy(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the Shannon entropy of the recurrence times contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
+<p><a id='RecurrenceAnalysis.rt_average' href='#RecurrenceAnalysis.rt_average'>#</a>
+<strong><code>RecurrenceAnalysis.rt_average</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>rt_average(x[; lmin=2, theiler])
+</pre></div>
+
+
+<p>Calculate the average of the recurrence times contained in the recurrence matrix <code>x</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <hr />
 <p><a id='Keyword-table-1'></a></p>
 <h2 id="keyword-table">Keyword table</h2>
