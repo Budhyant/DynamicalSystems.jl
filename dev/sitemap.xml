@@ -21,6 +21,21 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>/embedding/dataset/</loc>
+     <lastmod>2019-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/embedding/reconstruction/</loc>
+     <lastmod>2019-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
+     <loc>/embedding/estimate/</loc>
+     <lastmod>2019-01-24</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>/chaos/overview/</loc>
      <lastmod>2019-01-24</lastmod>
      <changefreq>daily</changefreq>
@@ -52,21 +67,6 @@
     </url>
     <url>
      <loc>/chaos/chaos_detection/</loc>
-     <lastmod>2019-01-24</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/embedding/dataset/</loc>
-     <lastmod>2019-01-24</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/embedding/reconstruction/</loc>
-     <lastmod>2019-01-24</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    <url>
-     <loc>/embedding/estimate/</loc>
      <lastmod>2019-01-24</lastmod>
      <changefreq>daily</changefreq>
     </url>

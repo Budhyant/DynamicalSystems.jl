@@ -292,15 +292,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#chaostools" title="ChaosTools" class="md-nav__link">
-    ChaosTools
+  <a href="#delayembeddings" title="DelayEmbeddings" class="md-nav__link">
+    DelayEmbeddings
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#delayembeddings" title="DelayEmbeddings" class="md-nav__link">
-    DelayEmbeddings
+  <a href="#chaostools" title="ChaosTools" class="md-nav__link">
+    ChaosTools
   </a>
   
 </li>
@@ -440,10 +440,70 @@
       <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
     
     <label class="md-nav__link" for="nav-3">
-      ChaosTools
+      DelayEmbeddings
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        DelayEmbeddings
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embedding/dataset/" title="Numerical Data" class="md-nav__link">
+      Numerical Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embedding/reconstruction/" title="Delay Coordinates" class="md-nav__link">
+      Delay Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="embedding/estimate/" title="Estimating Delay Embedding Parameters" class="md-nav__link">
+      Estimating Delay Embedding Parameters
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      ChaosTools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
         ChaosTools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -529,66 +589,6 @@
   <li class="md-nav__item">
     <a href="chaos/chaos_detection/" title="Chaos Distinction" class="md-nav__link">
       Chaos Distinction
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
-    
-    <label class="md-nav__link" for="nav-4">
-      DelayEmbeddings
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        DelayEmbeddings
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="embedding/dataset/" title="Numerical Data" class="md-nav__link">
-      Numerical Data
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="embedding/reconstruction/" title="Delay Coordinates" class="md-nav__link">
-      Delay Coordinates
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="embedding/estimate/" title="Estimating Delay Embedding Parameters" class="md-nav__link">
-      Estimating Delay Embedding Parameters
     </a>
   </li>
 
@@ -735,15 +735,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#chaostools" title="ChaosTools" class="md-nav__link">
-    ChaosTools
+  <a href="#delayembeddings" title="DelayEmbeddings" class="md-nav__link">
+    DelayEmbeddings
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#delayembeddings" title="DelayEmbeddings" class="md-nav__link">
-    DelayEmbeddings
+  <a href="#chaostools" title="ChaosTools" class="md-nav__link">
+    ChaosTools
   </a>
   
 </li>
@@ -830,7 +830,7 @@
 <p>The current documentation was built with the following versions</p>
 <div class="codehilite"><pre><span></span> * DelayEmbeddings ........... 1.0.0
  * RecurrenceAnalysis ........ 0.12.0
- * DynamicalSystemsBase ...... 1.1.0
+ * DynamicalSystemsBase ...... 1.1.1
  * ChaosTools ................ 1.3.1
 </pre></div>
 
@@ -870,19 +870,6 @@
 <li>Robust implementations of all kinds of integrators, that evolve the system, many states of the system, or even deviation vectors. See the <a href="./advanced">advanced documentation</a> for this.</li>
 <li>Library of <a href="./ds/predefined">predefined well-known dynamical systems</a> that have been used extensively in scientific research.</li>
 </ul>
-<p><a id='<a href="chaos/overview">ChaosTools</a>-1'></a></p>
-<h3 id="chaostools"><a href="./chaos/overview"><code>ChaosTools</code></a></h3>
-<p>Is a package that has many algorithms for chaotic dynamical systems. All algorithms are independent of each other but they are also not expansive enough to be a standalone package.</p>
-<p>Please see the <a href="./chaos/overview">overview section</a> for a full list of features. Here is a quick summary:</p>
-<ul>
-<li>Poincare S.O.S. and orbit diagrams</li>
-<li>Lyapunov Exponents</li>
-<li>Entropies and Dimensions</li>
-<li>Lyapunov exponent of a timeseries (numerical data)</li>
-<li>Finding Fixed Points of Maps</li>
-<li>GALI (Generalized Alignment Index) for distinguishing chaotic and regular behavior</li>
-<li>Nonlinear timeseries analysis</li>
-</ul>
 <p><a id='<a href="embedding/reconstruction">DelayEmbeddings</a>-1'></a></p>
 <h3 id="delayembeddings"><a href="./embedding/reconstruction"><code>DelayEmbeddings</code></a></h3>
 <p>Is a package for performing delay coordinate embeddings and finding optimal parameters for doing so.</p>
@@ -897,6 +884,19 @@
 <li>Fast calculation of mutual information: <a href="embedding/estimate/#DelayEmbeddings.mutualinformation"><code>mutualinformation</code></a>.</li>
 </ul>
 </li>
+</ul>
+<p><a id='<a href="chaos/overview">ChaosTools</a>-1'></a></p>
+<h3 id="chaostools"><a href="./chaos/overview"><code>ChaosTools</code></a></h3>
+<p>Is a package that has many algorithms for chaotic dynamical systems. All algorithms are independent of each other but they are also not expansive enough to be a standalone package.</p>
+<p>Please see the <a href="./chaos/overview">overview section</a> for a full list of features. Here is a quick summary:</p>
+<ul>
+<li>Poincare S.O.S. and orbit diagrams</li>
+<li>Lyapunov Exponents</li>
+<li>Entropies and Dimensions</li>
+<li>Lyapunov exponent of a timeseries (numerical data)</li>
+<li>Finding Fixed Points of Maps</li>
+<li>GALI (Generalized Alignment Index) for distinguishing chaotic and regular behavior</li>
+<li>Nonlinear timeseries analysis</li>
 </ul>
 <p><a id='<a href="rqa/rplots">RecurrenceAnalysis</a>-1'></a></p>
 <h3 id="recurrenceanalysis"><a href="./rqa/rplots"><code>RecurrenceAnalysis</code></a></h3>

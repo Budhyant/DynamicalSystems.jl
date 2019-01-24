@@ -317,16 +317,119 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
-      ChaosTools
+      DelayEmbeddings
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
+        DelayEmbeddings
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../dataset/" title="Numerical Data" class="md-nav__link">
+      Numerical Data
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Delay Coordinates
+      </label>
+    
+    <a href="./" title="Delay Coordinates" class="md-nav__link md-nav__link--active">
+      Delay Coordinates
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reconstructembed" title="Reconstruct/Embed" class="md-nav__link">
+    Reconstruct/Embed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#embedding-functors" title="Embedding Functors" class="md-nav__link">
+    Embedding Functors
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../estimate/" title="Estimating Delay Embedding Parameters" class="md-nav__link">
+      Estimating Delay Embedding Parameters
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
+      ChaosTools
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
         ChaosTools
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -412,109 +515,6 @@
   <li class="md-nav__item">
     <a href="../../chaos/chaos_detection/" title="Chaos Distinction" class="md-nav__link">
       Chaos Distinction
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-    
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
-    
-    <label class="md-nav__link" for="nav-4">
-      DelayEmbeddings
-    </label>
-    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
-        DelayEmbeddings
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../dataset/" title="Numerical Data" class="md-nav__link">
-      Numerical Data
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Delay Coordinates
-      </label>
-    
-    <a href="./" title="Delay Coordinates" class="md-nav__link md-nav__link--active">
-      Delay Coordinates
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#reconstructembed" title="Reconstruct/Embed" class="md-nav__link">
-    Reconstruct/Embed
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#embedding-functors" title="Embedding Functors" class="md-nav__link">
-    Embedding Functors
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../estimate/" title="Estimating Delay Embedding Parameters" class="md-nav__link">
-      Estimating Delay Embedding Parameters
     </a>
   </li>
 
@@ -786,26 +786,26 @@
 
 
 <div class="codehilite"><pre><span></span>9-dimensional Dataset{Float64} with 996 points
- 0.347006   0.123148   0.964748   …  0.959525   0.684376   0.0641368
- 0.300328   0.853195   0.467556      0.94195    0.0298066  0.981727
- 0.348219   0.368516   0.174635      0.0475858  0.713017   0.475916
- 0.032988   0.947419   0.339034      0.0984698  0.0990628  0.261922
- 0.959525   0.684376   0.0641368     0.921893   0.471994   0.547521
- 0.94195    0.0298066  0.981727   …  0.365416   0.908167   0.692897
- 0.0475858  0.713017   0.475916      0.499635   0.27861    0.834815
- 0.0984698  0.0990628  0.261922      0.872976   0.94971    0.516385
- 0.921893   0.471994   0.547521      0.53504    0.341209   0.155171
- 0.365416   0.908167   0.692897      0.158274   0.476018   0.437535
+ 0.537809    0.0756609  0.260107  …  0.729134    0.788575   0.70027
+ 0.421497    0.573737   0.117796     0.802742    0.409453   0.395673
+ 0.451063    0.248991   0.913904     0.965212    0.385998   0.182798
+ 0.479477    0.180778   0.646773     0.275408    0.130084   0.599748
+ 0.729134    0.788575   0.70027      0.979828    0.837193   0.736034
+ 0.802742    0.409453   0.395673  …  0.269813    0.295972   0.794704
+ 0.965212    0.385998   0.182798     0.348385    0.804248   0.939354
+ 0.275408    0.130084   0.599748     0.107602    0.278545   0.100817
+ 0.979828    0.837193   0.736034     0.754636    0.989946   0.972613
+ 0.269813    0.295972   0.794704     0.179247    0.534967   0.557098
  ⋮                                ⋱
- 0.273837   0.491327   0.849664      0.741918   0.613656   0.998804
- 0.406303   0.288374   0.0385511     0.723043   0.151077   0.564653
- 0.519467   0.725271   0.354707      0.386314   0.213133   0.279693
- 0.440811   0.659446   0.459848      0.961662   0.0878152  0.372194
- 0.741918   0.613656   0.998804   …  0.762469   0.0820735  0.220795
- 0.723043   0.151077   0.564653      0.970883   0.696543   0.246114
- 0.386314   0.213133   0.279693      0.111135   0.428772   0.997981
- 0.961662   0.0878152  0.372194      0.152136   0.305516   0.525397
- 0.762469   0.0820735  0.220795      0.0189387  0.345613   0.586998
+ 0.941876    0.59109    0.611592     0.8098      0.596534   0.823948
+ 0.377663    0.482204   0.180263     0.654662    0.31573    0.981131
+ 0.00723978  0.752824   0.770858     0.995518    0.588492   0.397778
+ 0.862173    0.871865   0.656513     0.983791    0.0221851  0.295243
+ 0.8098      0.596534   0.823948  …  0.00388207  0.18412    0.267355
+ 0.654662    0.31573    0.981131     0.40142     0.543417   0.253132
+ 0.995518    0.588492   0.397778     0.565513    0.404644   0.871471
+ 0.983791    0.0221851  0.295243     0.572749    0.667697   0.0637573
+ 0.00388207  0.18412    0.267355     0.193249    0.843149   0.813025
 </pre></div>
 
 
