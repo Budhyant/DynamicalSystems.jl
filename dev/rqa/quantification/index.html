@@ -833,13 +833,13 @@
 <p>The recurrence rate is calculated as:</p>
 <div>
 <div class="MathJax_Preview">
-RR = \frac{1}{S} \sum_{i,j} R[i,j]
+RR = \frac{1}{S} \sum R
 </div>
 <script type="math/tex; mode=display">
-RR = \frac{1}{S} \sum_{i,j} R[i,j]
+RR = \frac{1}{S} \sum R
 </script>
 </div>
-<p>where <em>S</em> is the size of <code>R</code> or the region of <code>R</code> with potential recurrent points. There is not a unique definition of that denominator, which is defined as the full size of the matrix in many sources (e.g. [1]), whereas in others it is adjusted to remove the points of the LOI when they are excluded from the count [2,3].</p>
+<p>where <span><span class="MathJax_Preview">S</span><script type="math/tex">S</script></span> is the size of <code>R</code> or the region of <code>R</code> with potential recurrent points. There is not a unique definition of that denominator, which is defined as the full size of the matrix in many sources (e.g. [1]), whereas in others it is adjusted to remove the points of the LOI when they are excluded from the count [2,3].</p>
 <p>For matrices of type <code>RecurrenceMatrix</code> or <code>JointRecurrenceMatrix</code>, where the points around the central diagonal are usually excluded, the denominator is adjusted to the size of the matrix outside the Theiler window (by default equal to the LOI, and adjustable with the keyword argument <code>theiler</code>; see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for details). For matrices of type <code>CrossRecurrenceMatrix</code>, where normally all points are analyzed, the denominator is always the full size of the matrix, regardless of the Theiler window that might be defined (none by default).</p>
 <p><em>Hint</em>: to reproduce the calculations done following the formulas that use the full size of the matrix in the denominator, use <code>CrossRecurrenceMatrix(s,s,ε)</code> to define the recurrence matrix, instead of <code>RecurrenceMatrix(s,ε)</code>, setting <code>theiler=1</code> (or <code>theiler=n</code> in general) to explicitly exclude the LOI or other diagonals around it.</p>
 <p><strong>References</strong></p>
@@ -857,10 +857,12 @@ RR = \frac{1}{S} \sum_{i,j} R[i,j]
 <p>The determinism is calculated as:</p>
 <div>
 <div class="MathJax_Preview">
-DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}}
+DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}} =
+\frac{\sum_{l=lmin}{l P(l)}}{\sum R}
 </div>
 <script type="math/tex; mode=display">
-DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}}
+DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}} =
+\frac{\sum_{l=lmin}{l P(l)}}{\sum R}
 </script>
 </div>
 <p>where <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span> stands for the lengths of diagonal lines in the matrix, and <span><span class="MathJax_Preview">P(l)</span><script type="math/tex">P(l)</script></span> is the number of lines of length equal to <span><span class="MathJax_Preview">l</span><script type="math/tex">l</script></span>.</p>
@@ -905,15 +907,18 @@ DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}}
 <p>It is calculated as:</p>
 <div>
 <div class="MathJax_Preview">
-TREND = \frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\rangle\right)}{\sum_{d=\tau}^{\tilde{N}}\delta[d]^2}
+TREND = 10^3\frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\rangle\right)}{\sum_{d=\tau}^{\tilde{N}}\delta[d]^2}
 </div>
 <script type="math/tex; mode=display">
-TREND = \frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\rangle\right)}{\sum_{d=\tau}^{\tilde{N}}\delta[d]^2}
+TREND = 10^3\frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\rangle\right)}{\sum_{d=\tau}^{\tilde{N}}\delta[d]^2}
 </script>
 </div>
 <p>where <span><span class="MathJax_Preview">RR[d]</span><script type="math/tex">RR[d]</script></span> is the local recurrence rate of the diagonal <span><span class="MathJax_Preview">d</span><script type="math/tex">d</script></span>, <span><span class="MathJax_Preview">\delta[d]</span><script type="math/tex">\delta[d]</script></span> is a balanced measure of the distance between that diagonal and the LOI, <span><span class="MathJax_Preview">\tau</span><script type="math/tex">\tau</script></span> is the Theiler window (number of central diagonals that are excluded), and <span><span class="MathJax_Preview">\tilde{N}</span><script type="math/tex">\tilde{N}</script></span> is the number of the outmost diagonal that is included.</p>
+<p>This parameter is expressed in units of variation recurrence rate every 1000 data points, hence the factor <span><span class="MathJax_Preview">10^3</span><script type="math/tex">10^3</script></span> in the formula [1]. </p>
 <p>The 10 outermost diagonals (counting from the corners of the matrix) are excluded by default to avoid "border effects". Use the keyword argument <code>border</code> to define a different number of excluded lines, and <code>theiler</code> to define the size of the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for details).</p>
 <p><em>Note</em>: In rectangular cross-recurrence plots (i.e. when the time series that originate them are not of the same length), the limits of the formula for TREND are not clearly defined. For the sake of consistency, this function limits the calculations to the biggest square matrix that contains the LOI.</p>
+<p><strong>References</strong></p>
+<p>[1] C.L. Webber &amp; J.P. Zbilut, "Recurrence Quantification Analysis of Nonlinear Dynamical Systems", in: Riley MA &amp; Van Orden GC, <em>Tutorials in Contemporary Nonlinear Methods for the Behavioral Sciences</em>, 2005, 26-94. https://www.nsf.gov/pubs/2005/nsf05057/nmbs/nmbs.pdf</p>
 <hr />
 <p><a id='Extended-RQA-Measures-1'></a></p>
 <h3 id="extended-rqa-measures">Extended RQA Measures</h3>
@@ -928,10 +933,12 @@ TREND = \frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\rangle
 <p>The laminarity is calculated as:</p>
 <div>
 <div class="MathJax_Preview">
-LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}}
+LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
+\frac{\sum_{v=lmin}{v P(l)}}{\sum R}
 </div>
 <script type="math/tex; mode=display">
-LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}}
+LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
+\frac{\sum_{v=lmin}{v P(l)}}{\sum R}
 </script>
 </div>
 <p>where <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span> stands for the lengths of vertical lines in the matrix, and <span><span class="MathJax_Preview">P(v)</span><script type="math/tex">P(v)</script></span> is the number of lines of length equal to <span><span class="MathJax_Preview">v</span><script type="math/tex">v</script></span>.</p>
