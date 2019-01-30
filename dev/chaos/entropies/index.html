@@ -463,29 +463,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entropies" title="Entropies" class="md-nav__link">
-    Entropies
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#generalized-entropy" title="Generalized Entropy" class="md-nav__link">
     Generalized Entropy
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#permutation-entropy" title="Permutation Entropy" class="md-nav__link">
-    Permutation Entropy
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -494,26 +474,27 @@
     Attractor Dimension Estimation
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#generalized-dimensions" title="Generalized Dimensions" class="md-nav__link">
-    Generalized Dimensions
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example" title="Example" class="md-nav__link">
     Example
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#other-entropies-and-dimensions" title="Other Entropies and Dimensions" class="md-nav__link">
+    Other Entropies and Dimensions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#permutation-entropy" title="Permutation Entropy" class="md-nav__link">
+    Permutation Entropy
+  </a>
   
 </li>
         
@@ -698,29 +679,9 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#entropies" title="Entropies" class="md-nav__link">
-    Entropies
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#generalized-entropy" title="Generalized Entropy" class="md-nav__link">
     Generalized Entropy
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#permutation-entropy" title="Permutation Entropy" class="md-nav__link">
-    Permutation Entropy
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -729,26 +690,27 @@
     Attractor Dimension Estimation
   </a>
   
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#generalized-dimensions" title="Generalized Dimensions" class="md-nav__link">
-    Generalized Dimensions
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#example" title="Example" class="md-nav__link">
     Example
   </a>
   
 </li>
+      
+        <li class="md-nav__item">
+  <a href="#other-entropies-and-dimensions" title="Other Entropies and Dimensions" class="md-nav__link">
+    Other Entropies and Dimensions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
         
-      </ul>
-    </nav>
+          <li class="md-nav__item">
+  <a href="#permutation-entropy" title="Permutation Entropy" class="md-nav__link">
+    Permutation Entropy
+  </a>
   
 </li>
         
@@ -785,11 +747,11 @@
                 
                 <p><a id='Entropies-and-Dimensions-1'></a></p>
 <h1 id="entropies-and-dimensions">Entropies and Dimensions</h1>
-<p><a id='Entropies-1'></a></p>
-<h2 id="entropies">Entropies</h2>
-<p>In the study of dynamical systems there are many quantities that identify as "entropy". Notice that these quantities are not the more commonly known <a href="https://en.wikipedia.org/wiki/Entropy">thermodynamic ones</a>, used in Statistical Physics. Rather, they are more like the to the entropies of <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">information theory</a>, which represents information contained within a dataset, or information about the dimensional scaling of a dataset.</p>
 <p><a id='Generalized-Entropy-1'></a></p>
-<h3 id="generalized-entropy">Generalized Entropy</h3>
+<h2 id="generalized-entropy">Generalized Entropy</h2>
+<p>In the study of dynamical systems there are many quantities that identify as "entropy". Notice that these quantities are not the more commonly known <a href="https://en.wikipedia.org/wiki/Entropy">thermodynamic ones</a>, used in Statistical Physics. Rather, they are more like the to the entropies of <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">information theory</a>, which represents information contained within a dataset, or information about the dimensional scaling of a dataset.</p>
+<hr />
+<p>The main way of computing entropies in <strong>DynamicalSystems.jl</strong> is the "generalized entropy":</p>
 <p><a id='ChaosTools.genentropy' href='#ChaosTools.genentropy'>#</a>
 <strong><code>ChaosTools.genentropy</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="nt">genentropy</span><span class="o">(</span><span class="err">α</span><span class="o">,</span> <span class="err">ε</span><span class="o">,</span> <span class="nt">dataset</span><span class="p">::</span><span class="nd">AbstractDataset</span><span class="o">;</span> <span class="nt">base</span> <span class="o">=</span> <span class="nt">e</span><span class="o">)</span>
@@ -818,7 +780,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>[1] : A. Rényi, <em>Proceedings of the fourth Berkeley Symposium on Mathematics, Statistics and Probability</em>, pp 547 (1960)</p>
 <p>[2] : C. E. Shannon, Bell Systems Technical Journal <strong>27</strong>, pp 379 (1948)</p>
 <hr />
-<p>Basically, given a <a href="../system_definition/#numerical-data">dataset</a> you can partition it into boxes to calculate an entropy.</p>
+<p>Basically, given a <a href="../system_definition/#numerical-data">dataset</a> you can partition it into boxes to calculate an entropy. See below for a detailed example.</p>
 <div class="admonition tip">
 <p class="admonition-title">Worried about memory overflow? Don't be!</p>
 <p>Partitioning the dataset (i.e. doing a <em>histogram</em>) is in general a costly operation that depends exponentially on the number of dimensions of the data and algebraically to the box size <code>ε</code>.</p>
@@ -836,19 +798,155 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>This method has a linearithmic time complexity (<code>n log(n)</code> for <code>in</code>n = length(data)<code>) and a linear space complexity (</code>l<code>for</code>l = dimension(data)<code>). This allows computation of entropies of high-dimensional datasets and with small box sizes</code>ε` without memory overflow.</p>
 <p>Use e.g. <code>fit(Histogram, ...)</code> from <a href="http://juliastats.github.io/StatsBase.jl/stable/"><code>StatsBase</code></a> if you wish to keep information about the edges of the binning as well as the zero elements.</p>
 <hr />
-<p>For example, the Shannon entropy of a coin-flip process should be one bit, <a href="https://en.wikipedia.org/wiki/Shannon_(unit)">by definition</a>. Let's see...</p>
+<p><a id='Attractor-Dimension-Estimation-1'></a></p>
+<h2 id="attractor-dimension-estimation">Attractor Dimension Estimation</h2>
+<p>There are numerous methods that one can use to calculate a so-called "dimension" of a dataset, like for example the <a href="https://en.wikipedia.org/wiki/Fractal_dimension">Fractal dimension</a>. This real number can offer a lot of information about the object that the dataset represents.</p>
+<p>Based on the definition of the <a href="#ChaosTools.genentropy">generalized entropy</a>, one can calculate an appropriate dimension, called <em>generalized dimension</em>:</p>
+<p><a id='ChaosTools.generalized_dim' href='#ChaosTools.generalized_dim'>#</a>
+<strong><code>ChaosTools.generalized_dim</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>generalized_dim(α, dataset [, sizes]) -&gt; D_α
+</pre></div>
+
+
+<p>Return the <code>α</code> order generalized dimension of the <code>dataset</code>, by calculating the <a href="./#ChaosTools.genentropy"><code>genentropy</code></a> for each <code>ε ∈ sizes</code>.</p>
+<p><strong>Description</strong></p>
+<p>The returned dimension is approximated by the (inverse) power law exponent of the scaling of the <a href="./#ChaosTools.genentropy"><code>genentropy</code></a> versus the box size <code>ε</code>, where <code>ε ∈ sizes</code>.</p>
+<p>Calling this function performs a lot of automated steps:</p>
+<ol>
+<li>A vector of box sizes is decided by calling <code>sizes = estimate_boxsizes(dataset)</code>, if <code>sizes</code> is not given.</li>
+<li>For each element of <code>sizes</code> the appropriate entropy is calculated, through <code>d = genentropy.(α, sizes, dataset)</code>. Let <code>x = -log.(sizes)</code>.</li>
+<li>The curve <code>d(x)</code> is decomposed into linear regions, using <a href="./#ChaosTools.linear_regions"><code>linear_regions</code></a><code>(x, d)</code>.</li>
+<li>The biggest linear region is chosen, and a fit for the slope of that region is performed using the function <a href="./#ChaosTools.linear_region"><code>linear_region</code></a>. This slope is the return value of <code>generalized_dim</code>.</li>
+</ol>
+<p>By doing these steps one by one yourself, you can adjust the keyword arguments given to each of these function calls, refining the accuracy of the result.</p>
+<p>The following aliases are provided:</p>
+<ul>
+<li>α = 0 : <code>boxcounting_dim</code>, <code>capacity_dim</code></li>
+<li>α = 1 : <code>information_dim</code></li>
+</ul>
+<hr />
+<div class="admonition danger">
+<p class="admonition-title">Be wary when using <code>generalized_dim</code></p>
+<p>As stated clearly by the documentation string, calling <code>generalized_dim</code> performs a lot of automated steps by calling other functions (see below) with default arguments. It is actually more like a convenient bundle than an actual function and therefore you should be careful when considering the validity of the returned number.</p>
+</div>
+<p><a id='ChaosTools.estimate_boxsizes' href='#ChaosTools.estimate_boxsizes'>#</a>
+<strong><code>ChaosTools.estimate_boxsizes</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="nt">estimate_boxsizes</span><span class="o">(</span><span class="nt">dataset</span><span class="p">::</span><span class="nd">AbstractDataset</span><span class="o">;</span> <span class="nt">k</span><span class="p">::</span><span class="nd">Int</span> <span class="o">=</span> <span class="nt">12</span><span class="o">,</span> <span class="nt">z</span> <span class="o">=</span> <span class="nt">-1</span><span class="o">,</span> <span class="nt">w</span> <span class="o">=</span> <span class="nt">1</span><span class="o">)</span>
+</pre></div>
+
+
+<p>Return <code>k</code> exponentially spaced values: <code>10 .^ range(lower+w, upper+z, length = k)</code>.</p>
+<p><code>lower</code> is the magnitude of the minimum pair-wise distance between datapoints while <code>upper</code> is the magnitude of the maximum difference between greatest and smallest number among each timeseries.</p>
+<p>"Magnitude" here stands for order of magnitude, i.e. <code>round(log10(x))</code>.</p>
+<p><a id='ChaosTools.linear_regions' href='#ChaosTools.linear_regions'>#</a>
+<strong><code>ChaosTools.linear_regions</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>linear_regions(x, y; dxi::Int = 1, tol = 0.2) -&gt; (lrs, tangents)
+</pre></div>
+
+
+<p>Identify regions where the curve <code>y(x)</code> is linear, by scanning the <code>x</code>-axis every <code>dxi</code> indices (e.g. at <code>x[1] to x[5], x[5] to x[10], x[10] to x[15]</code> and so on if <code>dxi=5</code>).</p>
+<p>If the slope (calculated using <code>LsqFit</code>) of a region of width <code>dxi</code> is approximatelly equal to that of the previous region, within tolerance <code>tol</code>, then these two regions belong to the same linear region.</p>
+<p>Return the indices of <code>x</code> that correspond to linear regions, <code>lrs</code>, and the approximated <code>tangents</code> at each region. <code>lrs</code> is a vector of <code>Int</code>. Notice that <code>tangents</code> is <em>not</em> accurate: it is not recomputed at every step, but only when its error exceeds the tolerance <code>tol</code>! Use <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> to obtain a correct estimate for the slope of the largest linear region.</p>
+<p><a id='ChaosTools.linear_region' href='#ChaosTools.linear_region'>#</a>
+<strong><code>ChaosTools.linear_region</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>linear_region(x, y; dxi::Int = 1, tol = 0.2) -&gt; ([ind1, ind2], slope)
+</pre></div>
+
+
+<p>Call <a href="./#ChaosTools.linear_regions"><code>linear_regions</code></a>, identify the largest linear region and approximate the slope of the entire region using <code>linreg</code>. Return the indices where the region starts and stops (<code>x[ind1:ind2]</code>) as well as the approximated slope.</p>
+<hr />
+<p><a id='Example-1'></a></p>
+<h2 id="example">Example</h2>
+<p>For an example of using entropies to compute the dimension of an attractor let's use everyone's favorite system:</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span><span class="p">,</span> <span class="n">PyPlot</span>
+<span class="n">lor</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">()</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>3-dimensional continuous dynamical system
+ state:       [0.0, 10.0, 0.0]
+ e.o.m.:      loop
+ in-place?    false
+ jacobian:    loop_jac
+ parameters:  [10.0, 28.0, 2.66667]
+</pre></div>
+
+
+<p>Our goal is to compute entropies for many different partition sizes <code>ε</code>, so let's get down to it:</p>
+<div class="codehilite"><pre><span></span><span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">lor</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">;</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">)</span>
+
+<span class="n">ες</span> <span class="o">=</span> <span class="n">ℯ</span> <span class="o">.^</span> <span class="p">(</span><span class="o">-</span><span class="mf">3.5</span><span class="o">:</span><span class="mf">0.5</span><span class="o">:</span><span class="mf">3.5</span><span class="p">)</span> <span class="c"># semi-random guess</span>
+<span class="n">Hs</span> <span class="o">=</span> <span class="n">genentropy</span><span class="o">.</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ες</span><span class="p">,</span> <span class="kt">Ref</span><span class="p">(</span><span class="n">tr</span><span class="p">))</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>15-element Array{Float64,1}:
+ 9.208776980081675
+ 9.204341281695928
+ 9.188954952920387
+ 9.148996981103295
+ 9.024171338027454
+ 8.735947568870998
+ 8.184632779389668
+ 7.3927537080698205
+ 6.47301248734615
+ 5.505880423641922
+ 4.519382553477522
+ 3.5538408380224413
+ 2.6699958451814214
+ 1.931881415800172
+ 0.7492170227971814
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="err">@</span><span class="o">.</span> <span class="o">-</span><span class="n">log</span><span class="p">(</span><span class="n">ες</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">)</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">H_1</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">-</span><span class="se">\\</span><span class="s">log (</span><span class="se">\\</span><span class="s">epsilon)</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="" src="../genentropy1.png" /></p>
+<p>The slope of the linear scaling region of the above plot is the generalized dimension (of order α = 2) for the attractor of the Lorenz system.</p>
+<p>Given that we <em>see</em> the plot, we can estimate where the linear scaling region starts and ends. However, we can use the function <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> to get an estimate of the result as well. First let's visualize what it does:</p>
+<div class="codehilite"><pre><span></span><span class="n">lrs</span><span class="p">,</span> <span class="n">slopes</span> <span class="o">=</span> <span class="n">linear_regions</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">lrs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]],</span> <span class="n">Hs</span><span class="p">[</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s">&quot;o&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">H_1</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">-</span><span class="se">\\</span><span class="s">log (</span><span class="se">\\</span><span class="s">epsilon)</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="" src="../genentropy2.png" /></p>
+<p>The <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> function  computes the slope of the above pink region:</p>
+<div class="codehilite"><pre><span></span><span class="n">linear_region</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>1.836358611373905
+</pre></div>
+
+
+<p>This result is an approximation of the information dimension (because we used <code>α = 1</code>) of the Lorenz attractor.</p>
+<hr />
+<p>The above pipeline is bundled in <a href="./#ChaosTools.generalized_dim"><code>generalized_dim</code></a>. For example, the dimension of the strange attractor of the <a href="../system_definition/#DynamicalSystems.Systems.henon">Hénon map</a>, following the above approach but taking automated steps, is:</p>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span>
-<span class="n">y</span> <span class="o">=</span> <span class="kt">Float64</span><span class="o">.</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="kt">Bool</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">))</span> <span class="c"># just some coin tosses</span>
-<span class="n">sh</span> <span class="o">=</span> <span class="n">genentropy</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="c"># this is the shannon entropy</span>
-<span class="n">isapprox</span><span class="p">(</span><span class="n">sh</span><span class="p">,</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>  <span class="n">rtol</span> <span class="o">=</span> <span class="mf">1e-4</span><span class="p">)</span>
+<span class="n">hen</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">henon</span><span class="p">()</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">hen</span><span class="p">,</span> <span class="mi">200000</span><span class="p">)</span>
+<span class="n">D_hen</span> <span class="o">=</span> <span class="n">generalized_dim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ts</span><span class="p">)</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>true
+<div class="codehilite"><pre><span></span>1.215884931528749
 </pre></div>
 
 
-<p>Because all entropies are by default calculated on base-<span><span class="MathJax_Preview">e</span><script type="math/tex">e</script></span>, the unit of measurement is "nat" and one bit is <span><span class="MathJax_Preview">\log(2)\times</span><script type="math/tex">\log(2)\times</script></span>nat.</p>
+<p>As a side note, be sure that you have enough data points, otherwise the values you will get will never be correct, as is demonstrated by J.-P. Eckmann and D. Ruelle (see Physica D <strong>56</strong>, pp 185-187 (1992)).</p>
+<hr />
+<p><a id='Other-Entropies-and-Dimensions-1'></a></p>
+<h2 id="other-entropies-and-dimensions">Other Entropies and Dimensions</h2>
 <p><a id='Permutation-Entropy-1'></a></p>
 <h3 id="permutation-entropy">Permutation Entropy</h3>
 <p>The permutation entropy is introduced by C. Bandt and B. Pompe as a "A Natural Complexity Measure for Timeseries", which directly applies to arbitrary real-world data and is particularly useful in the presence of dynamical or observational noise.</p>
@@ -893,82 +991,6 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p class="admonition-title">Permutation Entropy performance</p>
 <p>Even though the current implementation is fine and runs reasonably fast for moderate orders, it can get slow for high orders. Issue <a href="https://github.com/JuliaDynamics/ChaosTools.jl/issues/22">ChaosTools.jl#22</a> keeps track of this, and contains information on how to improve performance.</p>
 </div>
-<p><a id='Attractor-Dimension-Estimation-1'></a></p>
-<h2 id="attractor-dimension-estimation">Attractor Dimension Estimation</h2>
-<p>There are numerous methods that one can use to calculate a so-called "dimension" of a dataset, like for example the <a href="https://en.wikipedia.org/wiki/Fractal_dimension">Fractal dimension</a>. This real number can offer a lot of information about the object that the dataset represents.</p>
-<p><a id='Generalized-Dimensions-1'></a></p>
-<h3 id="generalized-dimensions">Generalized Dimensions</h3>
-<p>Based on the definition of the <a href="#ChaosTools.genentropy">generalized entropy</a>, one can calculate an appropriate dimension, called <em>generalized dimension</em>:</p>
-<p><a id='ChaosTools.generalized_dim' href='#ChaosTools.generalized_dim'>#</a>
-<strong><code>ChaosTools.generalized_dim</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>generalized_dim(α, dataset [, sizes]) -&gt; D_α
-</pre></div>
-
-
-<p>Return the <code>α</code> order generalized dimension of the <code>dataset</code>, by calculating the <a href="./#ChaosTools.genentropy"><code>genentropy</code></a> for each <code>ε ∈ sizes</code>.</p>
-<p><strong>Description</strong></p>
-<p>The returned dimension is approximated by the (inverse) power law exponent of the scaling of the <a href="./#ChaosTools.genentropy"><code>genentropy</code></a> versus the box size <code>ε</code>, where <code>ε ∈ sizes</code>.</p>
-<p>Calling this function performs a lot of automated steps:</p>
-<ol>
-<li>A vector of box sizes is decided by calling <code>sizes = estimate_boxsizes(dataset)</code>, if <code>sizes</code> is not given.</li>
-<li>For each element of <code>sizes</code> the appropriate entropy is calculated, through <code>d = genentropy.(α, sizes, dataset)</code>. Let <code>x = -log.(sizes)</code>.</li>
-<li>The curve <code>d(x)</code> is decomposed into linear regions, using <a href="./#ChaosTools.linear_regions"><code>linear_regions</code></a><code>(x, d)</code>.</li>
-<li>The biggest linear region is chosen, and a fit for the slope of that region is performed using the function <a href="./#ChaosTools.linear_region"><code>linear_region</code></a>. This slope is the return value of <code>generalized_dim</code>.</li>
-</ol>
-<p>By doing these steps one by one yourself, you can adjust the keyword arguments given to each of these function calls, refining the accuracy of the result.</p>
-<p>The following aliases are provided:</p>
-<ul>
-<li>α = 0 : <code>boxcounting_dim</code>, <code>capacity_dim</code></li>
-<li>α = 1 : <code>information_dim</code></li>
-</ul>
-<hr />
-<div class="admonition danger">
-<p class="admonition-title">Be wary when using <code>generalized_dim</code></p>
-<p>As stated clearly by the documentation string, calling <code>generalized_dim</code> performs a lot of automated steps by calling other functions (see below) with default arguments. It is actually more like a convenient bundle than an actual function and therefore you should be careful when considering the validity of the returned number.</p>
-</div>
-<p><a id='ChaosTools.estimate_boxsizes' href='#ChaosTools.estimate_boxsizes'>#</a>
-<strong><code>ChaosTools.estimate_boxsizes</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">estimate_boxsizes</span><span class="o">(</span><span class="nt">dataset</span><span class="p">::</span><span class="nd">AbstractDataset</span><span class="o">;</span> <span class="nt">k</span><span class="p">::</span><span class="nd">Int</span> <span class="o">=</span> <span class="nt">12</span><span class="o">,</span> <span class="nt">z</span> <span class="o">=</span> <span class="nt">-1</span><span class="o">,</span> <span class="nt">w</span> <span class="o">=</span> <span class="nt">1</span><span class="o">)</span>
-</pre></div>
-
-
-<p>Return <code>k</code> exponentially spaced values from 10^<code>lower + w</code> to 10^<code>upper + z</code>.</p>
-<p><code>lower</code> is the magnitude of the minimum pair-wise distance between datapoints while <code>upper</code> is the magnitude of the maximum difference between greatest and smallest number among each timeseries.</p>
-<p>"Magnitude" here stands for order of magnitude, i.e. <code>round(log10(x))</code>.</p>
-<p><a id='ChaosTools.linear_regions' href='#ChaosTools.linear_regions'>#</a>
-<strong><code>ChaosTools.linear_regions</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>linear_regions(x, y; dxi::Int = 1, tol = 0.2) -&gt; (lrs, tangents)
-</pre></div>
-
-
-<p>Identify regions where the curve <code>y(x)</code> is linear, by scanning the <code>x</code>-axis every <code>dxi</code> indices (e.g. at <code>x[1] to x[5], x[5] to x[10], x[10] to x[15]</code> and so on if <code>dxi=5</code>).</p>
-<p>If the slope (calculated using <code>LsqFit</code>) of a region of width <code>dxi</code> is approximatelly equal to that of the previous region, within tolerance <code>tol</code>, then these two regions belong to the same linear region.</p>
-<p>Return the indices of <code>x</code> that correspond to linear regions, <code>lrs</code>, and the approximated <code>tangents</code> at each region. <code>lrs</code> is a vector of <code>Int</code>.</p>
-<p>A function <code>plot_linear_regions</code> visualizes the result of using this <code>linear_regions</code> (requires <code>PyPlot</code>).</p>
-<p><a id='ChaosTools.linear_region' href='#ChaosTools.linear_region'>#</a>
-<strong><code>ChaosTools.linear_region</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>linear_region(x, y; dxi::Int = 1, tol = 0.2) -&gt; ([ind1, ind2], slope)
-</pre></div>
-
-
-<p>Call <a href="./#ChaosTools.linear_regions"><code>linear_regions</code></a>, identify the largest linear region and approximate the slope of the entire region using <code>linreg</code>. Return the indices where the region starts and stops (<code>x[ind1:ind2]</code>) as well as the approximated slope.</p>
-<hr />
-<p><a id='Example-1'></a></p>
-<h4 id="example">Example</h4>
-<p>For example, the dimension of the strange attractor of the <a href="../system_definition/#DynamicalSystems.Systems.henon">Hénon map</a> is:</p>
-<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span>
-<span class="n">hen</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">henon</span><span class="p">()</span>
-<span class="n">ts</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">hen</span><span class="p">,</span> <span class="mi">1000000</span><span class="p">)</span>
-<span class="n">D_hen</span> <span class="o">=</span> <span class="n">information_dim</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span>1.2279316105815665
-</pre></div>
-
-
-<p>As a side note, be sure that you have enough data points, otherwise the values you will get will never be correct, as is demonstrated by J.-P. Eckmann and D. Ruelle (see Physica D <strong>56</strong>, pp 185-187 (1992)).</p>
-<hr />
 <p><a id='Kaplan-Yorke-Dimension-1'></a></p>
 <h3 id="kaplan-yorke-dimension">Kaplan-Yorke Dimension</h3>
 <p><a id='ChaosTools.kaplanyorke_dim' href='#ChaosTools.kaplanyorke_dim'>#</a>
@@ -991,7 +1013,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.2587016027425482
+<div class="codehilite"><pre><span></span>1.258708685674705
 </pre></div>
                 
                   
