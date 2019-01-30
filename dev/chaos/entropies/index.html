@@ -900,6 +900,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 
 
 <div class="codehilite"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="err">@</span><span class="o">.</span> <span class="o">-</span><span class="n">log</span><span class="p">(</span><span class="n">ες</span><span class="p">)</span>
+<span class="n">figure</span><span class="p">()</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">)</span>
 <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">H_1</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">-</span><span class="se">\\</span><span class="s">log (</span><span class="se">\\</span><span class="s">epsilon)</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">);</span>
@@ -911,6 +912,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>Given that we <em>see</em> the plot, we can estimate where the linear scaling region starts and ends. However, we can use the function <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> to get an estimate of the result as well. First let's visualize what it does:</p>
 <div class="codehilite"><pre><span></span><span class="n">lrs</span><span class="p">,</span> <span class="n">slopes</span> <span class="o">=</span> <span class="n">linear_regions</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
 
+<span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">lrs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
     <span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]],</span> <span class="n">Hs</span><span class="p">[</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">:</span><span class="n">lrs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]],</span> <span class="n">marker</span> <span class="o">=</span> <span class="s">&quot;o&quot;</span><span class="p">)</span>
 <span class="k">end</span>
@@ -1013,7 +1015,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.258708685674705
+<div class="codehilite"><pre><span></span>1.2587074813620336
 </pre></div>
                 
                   
