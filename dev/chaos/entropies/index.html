@@ -795,7 +795,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 
 <p>Partition a dataset into tabulated intervals (boxes) of size <code>ε</code> and return the sum-normalized histogram in an unordered 1D form, discarding all zero elements and bin edge information.</p>
 <p><strong>Performances Notes</strong></p>
-<p>This method has a linearithmic time complexity (<code>n log(n)</code> for <code>in</code>n = length(data)<code>) and a linear space complexity (</code>l<code>for</code>l = dimension(data)<code>). This allows computation of entropies of high-dimensional datasets and with small box sizes</code>ε` without memory overflow.</p>
+<p>This method has a linearithmic time complexity (<code>n log(n)</code> for <code>n = length(data)</code>) and a linear space complexity (<code>l</code> for <code>l = dimension(data)</code>). This allows computation of entropies of high-dimensional datasets and with small box sizes <code>ε</code> without memory overflow.</p>
 <p>Use e.g. <code>fit(Histogram, ...)</code> from <a href="http://juliastats.github.io/StatsBase.jl/stable/"><code>StatsBase</code></a> if you wish to keep information about the edges of the binning as well as the zero elements.</p>
 <hr />
 <p><a id='Attractor-Dimension-Estimation-1'></a></p>
@@ -881,21 +881,21 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 
 
 <div class="codehilite"><pre><span></span>15-element Array{Float64,1}:
- 9.208776980081675
- 9.204341281695928
- 9.188954952920387
- 9.148996981103295
- 9.024171338027454
- 8.735947568870998
- 8.184632779389668
- 7.3927537080698205
- 6.47301248734615
- 5.505880423641922
- 4.519382553477522
- 3.5538408380224413
- 2.6699958451814214
- 1.931881415800172
- 0.7492170227971814
+ 9.210440366976329
+ 9.209054211230788
+ 9.194360960328025
+ 9.127697082333036
+ 8.941885042314569
+ 8.603988424931556
+ 8.026256458296546
+ 7.257208578593961
+ 6.337428285464288
+ 5.386119904569469
+ 4.448146133332267
+ 3.5336349359279358
+ 2.6383495841530036
+ 1.8981063686670196
+ 0.6784490159596362
 </pre></div>
 
 
@@ -927,7 +927,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.836358611373905
+<div class="codehilite"><pre><span></span>1.7938261766537555
 </pre></div>
 
 
@@ -1015,7 +1015,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.2587097783599361
+<div class="codehilite"><pre><span></span>1.258706901161134
 </pre></div>
                 
                   
