@@ -727,29 +727,23 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-  0.43243753340553687
-  0.3721658889572811
- -3.29697571665413
+  0.4324642801593599
+  0.3720100025625099
+ -3.2968465770131825
 </pre></div>
 
 
 <p>Similarly, for a continuous system, e.g. the Lorenz system, you would do:</p>
-<div class="codehilite"><pre><span></span><span class="n">lor</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">(</span><span class="n">ρ</span> <span class="o">=</span> <span class="mf">32.0</span><span class="p">)</span> <span class="c">#this is not the original parameter!</span>
-<span class="n">λλ</span> <span class="o">=</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">lor</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
-</pre></div>
+<p>```@example lyap
+lor = Systems.lorenz(ρ = 32.0) #this is not the original parameter!
+λλ = lyapunovs(lor, 10000, dt = 0.1)</p>
+<div class="codehilite"><pre><span></span>`lyapunovs` is also very fast:
 
 
-<div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-   0.9930213364064411
-  -9.552261631085387e-5
- -14.659592480361955
-</pre></div>
-
-
-<p><code>lyapunovs</code> is also very fast:</p>
-<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
-<span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">towel</span><span class="p">()</span>
-<span class="nd">@btime</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="o">$</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
+```julia
+using BenchmarkTools
+ds = Systems.towel()
+@btime lyapunovs($ds, 2000);
 </pre></div>
 
 
@@ -811,13 +805,9 @@
 
 
 <p>The same is done for continuous systems:</p>
-<div class="codehilite"><pre><span></span><span class="n">lor</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">(</span><span class="n">ρ</span> <span class="o">=</span> <span class="mi">32</span><span class="p">)</span>
-<span class="n">λ</span> <span class="o">=</span> <span class="n">lyapunov</span><span class="p">(</span><span class="n">lor</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">)</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span>0.9932243682162711
-</pre></div>
+<p><code>@example lyap
+lor = Systems.lorenz(ρ = 32)
+λ = lyapunov(lor, 10000.0, dt = 10.0, Ttr = 100.0)</code></p>
                 
                   
                 
