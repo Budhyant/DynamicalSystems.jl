@@ -451,8 +451,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lyapunov-spectrum" title="Lyapunov Spectrum" class="md-nav__link">
-    Lyapunov Spectrum
+  <a href="#lyapunov-spectrum" title="Lyapunov spectrum" class="md-nav__link">
+    Lyapunov spectrum
   </a>
   
 </li>
@@ -645,8 +645,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lyapunov-spectrum" title="Lyapunov Spectrum" class="md-nav__link">
-    Lyapunov Spectrum
+  <a href="#lyapunov-spectrum" title="Lyapunov spectrum" class="md-nav__link">
+    Lyapunov spectrum
   </a>
   
 </li>
@@ -677,12 +677,12 @@
                   <a href="https://github.com/JuliaDynamics/DynamicalSystems.jl/edit/master/docs/chaos/lyapunovs.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Lyapunov-Exponents-1'></a></p>
-<h1 id="lyapunov-exponents">Lyapunov Exponents</h1>
-<p>Lyapunov exponents measure rates of separation of nearby trajectories in the flow of a dynamical system. The <a href="https://en.wikipedia.org/wiki/Lyapunov_exponent">Wikipedia</a> and the <a href="http://www.scholarpedia.org/article/Lyapunov_exponent">Scholarpedia</a> entries have a lot of valuable information about the history and usage of these quantities.</p>
+                <p><a id='Lyapunov-exponents-1'></a></p>
+<h1 id="lyapunov-exponents">Lyapunov exponents</h1>
+<p>Lyapunov exponents measure exponential rates of separation of nearby trajectories in the flow of a dynamical system. The <a href="https://en.wikipedia.org/wiki/Lyapunov_exponent">Wikipedia</a> and the <a href="http://www.scholarpedia.org/article/Lyapunov_exponent">Scholarpedia</a> entries have a lot of valuable information about the history and usage of these quantities.</p>
 <p>This page treats systems where the equations of motion are known. If instead you have numerical data, see the <a href="../nlts">nonlinear timeseries analysis page</a>.</p>
-<p><a id='Lyapunov-Spectrum-1'></a></p>
-<h2 id="lyapunov-spectrum">Lyapunov Spectrum</h2>
+<p><a id='Lyapunov-spectrum-1'></a></p>
+<h2 id="lyapunov-spectrum">Lyapunov spectrum</h2>
 <p>The function <code>lyapunovs</code> calculates the entire spectrum of the Lyapunov exponents of a system:</p>
 <p><a id='ChaosTools.lyapunovs' href='#ChaosTools.lyapunovs'>#</a>
 <strong><code>ChaosTools.lyapunovs</code></strong> &mdash; <em>Function</em>.</p>
@@ -718,7 +718,7 @@
 <p>[2] : K. Geist <em>et al.</em>, Progr. Theor. Phys. <strong>83</strong>, pp 875 (1990)</p>
 <p>[3] : G. Benettin <em>et al.</em>, Meccanica <strong>15</strong>, pp 9-20 &amp; 21-30 (1980)</p>
 <hr />
-<p>As you can see, the documentation string is detailed and self-contained. For example, the lyapunov spectrum of the <a href="http://www.scholarpedia.org/article/Hyperchaos">folded towel map</a> is calculated as:</p>
+<p>As you can see, the documentation string is detailed and self-contained. For example, the Lyapunov spectrum of the <a href="http://www.scholarpedia.org/article/Hyperchaos">folded towel map</a> is calculated as:</p>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span>
 
 <span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">towel</span><span class="p">()</span>
@@ -727,23 +727,29 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-  0.4324642801593599
-  0.3720100025625099
- -3.2968465770131825
+  0.4324028728840116
+  0.37220337111784113
+ -3.296978538293165
 </pre></div>
 
 
 <p>Similarly, for a continuous system, e.g. the Lorenz system, you would do:</p>
-<p>```@example lyap
-lor = Systems.lorenz(ρ = 32.0) #this is not the original parameter!
-λλ = lyapunovs(lor, 10000, dt = 0.1)</p>
-<div class="codehilite"><pre><span></span>`lyapunovs` is also very fast:
+<div class="codehilite"><pre><span></span><span class="n">lor</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">(</span><span class="n">ρ</span> <span class="o">=</span> <span class="mf">32.0</span><span class="p">)</span> <span class="c">#this is not the original parameter!</span>
+<span class="n">λλ</span> <span class="o">=</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">lor</span><span class="p">,</span> <span class="mi">10000</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
+</pre></div>
 
 
-```julia
-using BenchmarkTools
-ds = Systems.towel()
-@btime lyapunovs($ds, 2000);
+<div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
+   0.9842469673350771
+   0.0008996976003485078
+ -14.651808000232133
+</pre></div>
+
+
+<p><code>lyapunovs</code> is also very fast:</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">towel</span><span class="p">()</span>
+<span class="nd">@btime</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="o">$</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">);</span>
 </pre></div>
 
 

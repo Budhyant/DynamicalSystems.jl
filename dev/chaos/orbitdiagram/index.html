@@ -882,27 +882,24 @@ a_1u_1 + \dots + a_Du_D = \mathbf{a}\cdot\mathbf{u}=b
 <p>See also <a href="./#ChaosTools.poincaresos"><code>poincaresos</code></a>, <a href="./#ChaosTools.orbitdiagram"><code>orbitdiagram</code></a>.</p>
 <hr />
 <p>For example, we will calculate the orbit diagram of the Shinriki oscillator, a continuous system that undergoes a period doubling route to chaos, much like the logistic map!</p>
-<div class="codehilite"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">shinriki</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
-
-<span class="n">pvalues</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">19</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">22</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="mi">201</span><span class="p">)</span>
-<span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">plane</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
-<span class="n">tf</span> <span class="o">=</span> <span class="mf">200.0</span>
-<span class="n">p_index</span> <span class="o">=</span> <span class="mi">1</span>
-
-<span class="n">output</span> <span class="o">=</span> <span class="n">produce_orbitdiagram</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="n">plane</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">p_index</span><span class="p">,</span> <span class="n">pvalues</span><span class="p">;</span> <span class="n">tfinal</span> <span class="o">=</span> <span class="n">tf</span><span class="p">,</span>
-<span class="n">Ttr</span> <span class="o">=</span> <span class="mf">200.0</span><span class="p">,</span> <span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">printparams</span> <span class="o">=</span> <span class="kc">false</span><span class="p">)</span>
-
-<span class="n">figure</span><span class="p">()</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="kp">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">pvalues</span><span class="p">)</span>
-    <span class="n">plot</span><span class="p">(</span><span class="n">fill</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">j</span><span class="p">])),</span> <span class="n">output</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">lw</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">marker</span> <span class="o">=</span> <span class="s">&quot;o&quot;</span><span class="p">,</span> <span class="n">ms</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;black&quot;</span><span class="p">)</span>
-<span class="k">end</span>
-<span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">R_1</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">V_1</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="n">tight_layout</span><span class="p">()</span>
-</pre></div>
-
-
+<p>```@example orbit
+ds = Systems.shinriki([-2, 0, 0.2])</p>
+<p>pvalues = range(19, stop = 22, length = 201)
+i = 1
+plane = (2, 0.0)
+tf = 200.0
+p_index = 1</p>
+<p>output = produce_orbitdiagram(ds, plane, i, p_index, pvalues; tfinal = tf,
+Ttr = 200.0, direction = -1, printparams = false)</p>
+<p>figure()
+for (j, p) in enumerate(pvalues)
+    plot(fill(p, length(output[j])), output[j], lw = 0,
+    marker = "o", ms = 0.2, color = "black")
+end
+xlabel("$R_1$"); ylabel("$V_1$")
+tight_layout()
+savefig("shinriki.png"); nothing # hide
+```</p>
 <p><img alt="" src="../shinriki.png" /></p>
                 
                   
