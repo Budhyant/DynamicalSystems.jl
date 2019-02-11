@@ -40,7 +40,7 @@
     
     
       
-        <title>Time Evolution - DynamicalSystems.jl</title>
+        <title>Choosing a solver - DynamicalSystems.jl</title>
       
     
     
@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#time-evolution-of-systems" tabindex="1" class="md-skip">
+      <a href="#choosing-a-solver" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -130,7 +130,7 @@
                 DynamicalSystems.jl
               </span>
               <span class="md-header-nav__topic">
-                Time Evolution
+                Choosing a solver
               </span>
             
           
@@ -257,12 +257,10 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2">
     
     <label class="md-nav__link" for="nav-2">
       DynamicalSystemsBase
@@ -280,7 +278,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../general/" title="Dynamical System Definition" class="md-nav__link">
+    <a href="../../ds/general/" title="Dynamical System Definition" class="md-nav__link">
       Dynamical System Definition
     </a>
   </li>
@@ -290,49 +288,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        Time Evolution
-      </label>
-    
-    <a href="./" title="Time Evolution" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../ds/evolve/" title="Time Evolution" class="md-nav__link">
       Time Evolution
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#solution-precision-for-continuous-systems" title="Solution precision for continuous systems" class="md-nav__link">
-    Solution precision for continuous systems
-  </a>
-  
-</li>
-      
-      
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -342,7 +302,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../predefined/" title="Predefined Systems" class="md-nav__link">
+    <a href="../../ds/predefined/" title="Predefined Systems" class="md-nav__link">
       Predefined Systems
     </a>
   </li>
@@ -417,10 +377,12 @@
       
       
 
+  
 
-  <li class="md-nav__item md-nav__item--nested">
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
     
     <label class="md-nav__link" for="nav-4">
       ChaosTools
@@ -438,7 +400,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/overview/" title="Features Overview" class="md-nav__link">
+    <a href="../overview/" title="Features Overview" class="md-nav__link">
       Features Overview
     </a>
   </li>
@@ -450,7 +412,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/orbitdiagram/" title="Orbit Diagrams & PSOS" class="md-nav__link">
+    <a href="../orbitdiagram/" title="Orbit Diagrams & PSOS" class="md-nav__link">
       Orbit Diagrams & PSOS
     </a>
   </li>
@@ -462,7 +424,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/lyapunovs/" title="Lyapunov Exponents" class="md-nav__link">
+    <a href="../lyapunovs/" title="Lyapunov Exponents" class="md-nav__link">
       Lyapunov Exponents
     </a>
   </li>
@@ -474,7 +436,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/chaos_detection/" title="Chaos Distinction" class="md-nav__link">
+    <a href="../chaos_detection/" title="Chaos Distinction" class="md-nav__link">
       Chaos Distinction
     </a>
   </li>
@@ -486,7 +448,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/entropies/" title="Entropies and Dimensions" class="md-nav__link">
+    <a href="../entropies/" title="Entropies and Dimensions" class="md-nav__link">
       Entropies and Dimensions
     </a>
   </li>
@@ -498,7 +460,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/nlts/" title="Nonlinear Timeseries Analysis" class="md-nav__link">
+    <a href="../nlts/" title="Nonlinear Timeseries Analysis" class="md-nav__link">
       Nonlinear Timeseries Analysis
     </a>
   </li>
@@ -510,7 +472,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/periodicity/" title="Periodicity" class="md-nav__link">
+    <a href="../periodicity/" title="Periodicity" class="md-nav__link">
       Periodicity
     </a>
   </li>
@@ -520,11 +482,63 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../chaos/choosing/" title="Choosing a solver" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Choosing a solver
+      </label>
+    
+    <a href="./" title="Choosing a solver" class="md-nav__link md-nav__link--active">
       Choosing a solver
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#default-solver" title="Default Solver" class="md-nav__link">
+    Default Solver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed-of-a-solver" title="Speed of a solver" class="md-nav__link">
+    Speed of a solver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-pick" title="How do I pick?" class="md-nav__link">
+    How do I pick?
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
         
@@ -650,8 +664,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#solution-precision-for-continuous-systems" title="Solution precision for continuous systems" class="md-nav__link">
-    Solution precision for continuous systems
+  <a href="#default-solver" title="Default Solver" class="md-nav__link">
+    Default Solver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#speed-of-a-solver" title="Speed of a solver" class="md-nav__link">
+    Speed of a solver
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-pick" title="How do I pick?" class="md-nav__link">
+    How do I pick?
   </a>
   
 </li>
@@ -672,43 +700,58 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/JuliaDynamics/DynamicalSystems.jl/edit/master/docs/ds/evolve.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                  <a href="https://github.com/JuliaDynamics/DynamicalSystems.jl/edit/master/docs/chaos/choosing.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                <p><a id='Time-Evolution-of-Systems-1'></a></p>
-<h1 id="time-evolution-of-systems">Time Evolution of Systems</h1>
-<div class="admonition info">
-<p class="admonition-title">Trajectory and Timeseries</p>
-<p>The word "timeseries" can be confusing, because it can mean a univariate (also called scalar or one-dimensional) timeseries or a multivariate (also called multi-dimensional) timeseries. To resolve this confusion, in <strong>DynamicalSystems.jl</strong> we have the following convention: <strong>"timeseries"</strong> always refers to a one-dimensional vector of numbers, which exists with respect to some other one-dimensional vector of numbers that corresponds to a time-vector. On the other hand, the word <strong>"trajectory"</strong> is used to refer to a <em>multi-dimensional</em> timeseries, which is of course simply a group/set of one-dimensional timeseries.</p>
-<p>Note that the data representation of a "trajectory" in Julia may vary: from a 2D Matrix to independent Vectors. In our package, a trajectory is always represented using a <a href="../../embedding/dataset/#DelayEmbeddings.Dataset"><code>Dataset</code></a>, which is a <code>Vector</code> of <code>SVector</code>s, and each <code>SVector</code> represents a data-point (the values of the variables at a given time-point).</p>
-</div>
-<p><strong>DynamicalSystems.jl</strong> provides a convenient function for getting a trajectory of a system at equally spaced time points:</p>
-<p><a id='DynamicalSystemsBase.trajectory' href='#DynamicalSystemsBase.trajectory'>#</a>
-<strong><code>DynamicalSystemsBase.trajectory</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">trajectory</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">DynamicalSystem</span><span class="o">,</span> <span class="nt">T</span> <span class="cp">[</span><span class="p">,</span> <span class="nx">u</span><span class="cp">]</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="nt">dataset</span>
+                <p><a id='Choosing-a-solver-1'></a></p>
+<h1 id="choosing-a-solver">Choosing a solver</h1>
+<p><code>ContinuousDynamicalSystem</code>s are evolved using solvers from <a href="http://docs.juliadiffeq.org/latest/">DifferentialEquations.jl</a>. In this page we discuss the importance of which solver to choose.</p>
+<p><a id='Default-Solver-1'></a></p>
+<h2 id="default-solver">Default Solver</h2>
+<p>The default solver is:</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span>
+<span class="n">DynamicalSystemsBase</span><span class="o">.</span><span class="n">DEFAULT_SOLVER</span>
 </pre></div>
 
 
-<p>Return a dataset that will contain the trajectory of the system, after evolving it for total time <code>T</code>, optionally starting from state <code>u</code>. See <a href="../../embedding/dataset/#DelayEmbeddings.Dataset"><code>Dataset</code></a> for info on how to use this object.</p>
-<p>A <code>W×D</code> dataset is returned, with <code>W = length(t0:dt:T)</code> with <code>t0:dt:T</code> representing the time vector (<em>not</em> returned) and <code>D</code> the system dimension. For discrete systems both <code>T</code> and <code>dt</code> must be integers.</p>
-<p><strong>Keyword Arguments</strong></p>
-<ul>
-<li><code>dt</code> :  Time step of value output during the solving of the continuous system. For discrete systems it must be an integer. Defaults to <code>0.01</code> for continuous and <code>1</code> for discrete.</li>
-<li><code>Ttr</code> : Transient time to evolve the initial state before starting saving states.</li>
-<li><code>diffeq...</code> : Keyword arguments propagated into <code>init</code> of DifferentialEquations.jl. For example <code>abstol = 1e-9</code>.  Only valid for continuous systems. If you want to specify a solver, do so by using the name <code>alg</code>, e.g.: <code>alg = Tsit5(), maxiters = 1000</code>. This requires you to have been first <code>using OrdinaryDiffEq</code> to access the solvers. See <code>DynamicalSystemsBase.CDS_KWARGS</code> for default values. These keywords can also include <code>callback</code> for <a href="http://docs.juliadiffeq.org/latest/features/callback_functions.html">event handling</a>. Using a <code>SavingCallback</code> with <code>trajectory</code> will lead to unexpected behavior!</li>
-</ul>
-<hr />
-<p>Notice that if you want to do repeated evolutions of different states of a continuous system, you should use the <a href="../../advanced/#DynamicalSystemsBase.integrator"><code>integrator</code></a> interface instead.</p>
-<p><a id='Solution-precision-for-continuous-systems-1'></a></p>
-<h2 id="solution-precision-for-continuous-systems">Solution precision for continuous systems</h2>
-<p>A numerical solution of an ODE is not the "true" solution, uniquely defined by a (well-defined) ODE and an initial condition. Especially for chaotic systems, where deviations are amplified exponentially, one is left worried if the numerical solutions truly are part of the system and can truly give insight in understanding the system.</p>
-<p>DifferentialEquations.jl offers a tool, called <a href="http://docs.juliadiffeq.org/latest/analysis/uncertainty_quantification.html">Uncertainty Quantification</a>, which allows users to asses up to what time-scales the numerical solution is close to the "true" solution. For example, using the default solving parameters of <strong>DynamicalSystems.jl</strong>, the Lorenz system is accurate up to time <code>t = 50.0</code>.</p>
-<p>However, fortunately for us, there is not too much worry about the numerical solution diverging from the true solution. That is because of the <a href="http://mathworld.wolfram.com/ShadowingTheorem.html">shadowing theorem</a> (or <a href="http://www.scholarpedia.org/article/Shadowing_lemma_for_flows">shadowing lemma</a>):</p>
-<div class="admonition quote">
-<p class="admonition-title">Shadowing Theorem</p>
-<p>Although a numerically computed chaotic trajectory diverges exponentially from the true trajectory with the same initial coordinates, there exists an errorless trajectory with a slightly different initial condition that stays near ("shadows") the numerically computed one.</p>
-</div>
-<p>This simply means that one can always numerically study chaos not only qualitatively but also quantitatively. For more information, see the book <em>Chaos in Dynamical Systems</em> by E. Ott, or the <a href="http://www.scholarpedia.org/article/Shadowing_lemma_for_flows">scholarpedia</a> entry.</p>
+<div class="codehilite"><pre><span></span>SimpleDiffEq.SimpleATsit5()
+</pre></div>
+
+
+<p>which is a Runge-Kutta-like solver. The number in the solver's name is the "order" of the solver.</p>
+<p><a id='Speed-of-a-solver-1'></a></p>
+<h2 id="speed-of-a-solver">Speed of a solver</h2>
+<p>How fast is a problem solved is not trivial to say. The following two things are general truths:</p>
+<ol>
+<li>Higher order solvers call the equations of motion function more times per step.</li>
+<li>Higher order solvers can cover larger timespans per step.</li>
+</ol>
+<p>This means that there is a delicate balance between how expensive is your function and how large of a step a solver can take while it is still efficient. In general you want to strike a point of taking large steps but also not calling the function exceedingly often.</p>
+<p><a id='How-do-I-pick?-1'></a></p>
+<h2 id="how-do-i-pick">How do I pick?</h2>
+<p>The answer to this question is easy: <strong>benchmarks!</strong></p>
+<p>Here is a simple case: let's compute the Lyapunov spectrum of the Lorenz system using <a href="../lyapunovs/#ChaosTools.lyapunovs"><code>lyapunovs</code></a>:</p>
+<div class="codehilite"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">()</span>
+<span class="n">tols</span> <span class="o">=</span> <span class="p">(</span><span class="n">abstol</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="n">reltol</span> <span class="o">=</span> <span class="mf">1e-6</span><span class="p">)</span>
+<span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
+   0.9085045447145808
+   0.00018749715814435954
+ -14.575335340967694
+</pre></div>
+
+
+<p>The above uses the default solver. Let's now benchmark using two different solvers, <code>SimpleATsit5</code> and <code>Vern9</code>. Since the <code>SimpleATsit5</code> case is of lower order, naively one might think it is faster because it makes less function calls. This argument is not necessarily true though.</p>
+<p>It is important to understand that when calling <code>lyapunovs(ds, 2000)</code> you want the system (and the tangent space) to be evolved so that it reaches a total time of <code>2000*dt</code>, which by default is <code>2000.0</code> units of time. Even though <code>SimpleATsit5</code> requires less function calls per step, <code>Vern9</code> can cover larger timespans per step.</p>
+<p>Here are the numbers:</p>
+<p><code>@example solver
+using BenchmarkTools, OrdinaryDiffEq, SimpleDiffEq
+@btime lyapunovs(ds, 2000; alg = SimpleATsit5(), Ttr = 100.0, tols...);
+@btime lyapunovs(ds, 2000; alg = Vern9(),        Ttr = 100.0, tols...);</code></p>
+<p>As you can see <code>Vern9</code> is "faster" in doing the <em>entire</em> computation! Of course this does not have to be universally true. It is true for the Lorenz system, but for your specific system you should do dedicated benchmarks!</p>
                 
                   
                 
@@ -729,7 +772,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../general/" title="Dynamical System Definition" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../periodicity/" title="Periodicity" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -738,19 +781,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Dynamical System Definition
+                Periodicity
               </span>
             </div>
           </a>
         
         
-          <a href="../predefined/" title="Predefined Systems" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../rqa/rplots/" title="Recurrence Plots" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Predefined Systems
+                Recurrence Plots
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

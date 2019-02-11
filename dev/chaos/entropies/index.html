@@ -434,6 +434,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../chaos_detection/" title="Chaos Distinction" class="md-nav__link">
+      Chaos Distinction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -551,8 +563,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../chaos_detection/" title="Chaos Distinction" class="md-nav__link">
-      Chaos Distinction
+    <a href="../choosing/" title="Choosing a solver" class="md-nav__link">
+      Choosing a solver
     </a>
   </li>
 
@@ -881,21 +893,21 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 
 
 <div class="codehilite"><pre><span></span>15-element Array{Float64,1}:
- 9.201568970204859
- 9.194776807051698
- 9.174068056924993
- 9.114920686429912
- 8.964731875299526
- 8.650113467265221
- 8.093868670084635
- 7.330140008116478
- 6.441140175411587
- 5.518967859084861
- 4.524039412881839
- 3.5425935523363923
- 2.687037872905453
- 1.9473803565041026
- 0.8386369885883095
+ 9.203093741524961
+ 9.192836189007936
+ 9.175263277513562
+ 9.11505930200447
+ 8.96800482792302
+ 8.650506643435117
+ 8.093472893003044
+ 7.329635456822501
+ 6.440181060621013
+ 5.520699459712151
+ 4.5223766061173905
+ 3.5423893065177388
+ 2.688046235608927
+ 1.9474099557575748
+ 0.8398578086498265
 </pre></div>
 
 
@@ -910,7 +922,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p><img alt="" src="../genentropy1.png" /></p>
 <p>The slope of the linear scaling region of the above plot is the generalized dimension (of order α = 2) for the attractor of the Lorenz system.</p>
 <p>Given that we <em>see</em> the plot, we can estimate where the linear scaling region starts and ends. However, we can use the function <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> to get an estimate of the result as well. First let's visualize what it does:</p>
-<div class="codehilite"><pre><span></span><span class="n">lrs</span><span class="p">,</span> <span class="n">slopes</span> <span class="o">=</span> <span class="n">linear_regions</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">lrs</span><span class="p">,</span> <span class="n">slopes</span> <span class="o">=</span> <span class="n">linear_regions</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.25</span><span class="p">)</span>
 
 <span class="n">figure</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">i</span> <span class="kp">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">lrs</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
@@ -922,12 +934,12 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 
 
 <p><img alt="" src="../genentropy2.png" /></p>
-<p>The <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> function  computes the slope of the above pink region:</p>
+<p>The <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> function  computes the slope of the largest region:</p>
 <div class="codehilite"><pre><span></span><span class="n">linear_region</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">Hs</span><span class="p">)[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.7227404531408428
+<div class="codehilite"><pre><span></span>1.721554939214834
 </pre></div>
 
 
@@ -1015,7 +1027,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.2587055605804207
+<div class="codehilite"><pre><span></span>1.2587056142882957
 </pre></div>
                 
                   
@@ -1037,7 +1049,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../lyapunovs/" title="Lyapunov Exponents" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../chaos_detection/" title="Chaos Distinction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1046,7 +1058,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Lyapunov Exponents
+                Chaos Distinction
               </span>
             </div>
           </a>

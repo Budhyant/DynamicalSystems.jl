@@ -415,6 +415,19 @@
     Embedding Dimension
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -494,6 +507,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../chaos/chaos_detection/" title="Chaos Distinction" class="md-nav__link">
+      Chaos Distinction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../chaos/entropies/" title="Entropies and Dimensions" class="md-nav__link">
       Entropies and Dimensions
     </a>
@@ -530,8 +555,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../chaos/chaos_detection/" title="Chaos Distinction" class="md-nav__link">
-      Chaos Distinction
+    <a href="../../chaos/choosing/" title="Choosing a solver" class="md-nav__link">
+      Choosing a solver
     </a>
   </li>
 
@@ -682,6 +707,19 @@
     Embedding Dimension
   </a>
   
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
       
@@ -773,56 +811,102 @@
 <p>[1] : Liangyue Cao, <a href="https://www.sciencedirect.com/science/article/pii/S0167278997001188?via%3Dihub">Physica D, pp. 43-50 (1997)</a></p>
 <p>[2] : M. Kennel <em>et al.</em>, <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.45.3403">Phys. Review A <strong>45</strong>(6), 3403-3411</a> (1992).</p>
 <p>[3] : Anna Krakovská <em>et al.</em>, <a href="https://doi.org/10.1155/2015/932750">J. Complex Sys. 932750 (2015)</a></p>
-<p><a id='DelayEmbeddings.fnn' href='#DelayEmbeddings.fnn'>#</a>
-<strong><code>DelayEmbeddings.fnn</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">fnn</span><span class="o">(</span><span class="nt">s</span><span class="p">::</span><span class="nd">AbstractVector</span><span class="o">,</span> <span class="err">τ</span><span class="p">:</span><span class="nd">Int</span><span class="o">,</span> <span class="err">γ</span><span class="nt">s</span> <span class="o">=</span> <span class="nt">1</span><span class="p">:</span><span class="nd">5</span><span class="o">;</span> <span class="nt">rtol</span><span class="o">=</span><span class="nt">10</span><span class="p">.</span><span class="nc">0</span><span class="o">,</span> <span class="nt">atol</span><span class="o">=</span><span class="nt">2</span><span class="p">.</span><span class="nc">0</span><span class="o">)</span>
+<p><a id='Example-1'></a></p>
+<h3 id="example">Example</h3>
+<p>```@example estimateD
+using DynamicalSystems, PyPlot</p>
+<p>ds = Systems.roessler()
+tr = trajectory(ds, 1000.0; dt = 0.05)</p>
+<p>τ = estimate_delay(tr[:, 1], "mi_min") # first minimum of mutual information</p>
+<p>figure(figsize = (10, 6)); subplot(1,2,1)
+for method in ["afnn", "fnn", "f1nn"]
+    Ds = estimate_dimension(tr[:, 1], τ, 1:6, method)
+    plot(1:6, Ds ./ maximum(Ds), label = method, marker = "o")
+end
+legend(); xlabel("$\gamma$ (temporal neighbors)")
+tight_layout()</p>
+<p>subplot(1,2,2, projection = "3d")
+rec = embed(tr[:, 1], 4, τ)
+plot3D(rec[1:2000, 1],rec[1:2000, 2],rec[1:2000, 3])
+savefig("estimateD.png"); nothing # hide</p>
+<div class="codehilite"><pre><span></span>![](estimateD.png)
+
+
+<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;Functions-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
+
+### Functions
+
+<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;DelayEmbeddings.fnn&#39;</span> <span class="na">href=</span><span class="s">&#39;#DelayEmbeddings.fnn&#39;</span><span class="nt">&gt;</span>#<span class="nt">&lt;/a&gt;</span>
+**`DelayEmbeddings.fnn`** <span class="ni">&amp;mdash;</span> *Function*.
 </pre></div>
 
 
-<p>Calculate the number of "false nearest neighbors" (FNN) of the datasets created from <code>s</code> with a sequence of <code>τ</code>-delayed temporal neighbors.</p>
-<p><strong>Description</strong></p>
-<p>Given a dataset made by embedding <code>s</code> with <code>γ</code> temporal neighbors and delay <code>τ</code>, the "false nearest neighbors" (FNN) are the pairs of points that are nearest to each other at dimension <code>γ</code>, but are separated at dimension <code>γ+1</code>. Kennel's criteria for detecting FNN are based on a threshold for the relative increment of the distance between the nearest neighbors (<code>rtol</code>, eq. 4 in [1]), and another threshold for the ratio between the increased distance and the "size of the attractor" (<code>atol</code>, eq. 5 in [1]). These thresholds are given as keyword arguments.</p>
-<p>The returned value is a vector with the number of FNN for each <code>γ ∈ γs</code>. The optimal value for <code>γ</code> is found at the point where the number of FNN approaches zero.</p>
-<p>Please be aware that in <strong>DynamicalSystems.jl</strong> <code>γ</code> stands for the amount of temporal neighbors and not the embedding dimension (<code>D = γ + 1</code>, see also <a href="../reconstruction/#DelayEmbeddings.embed"><code>embed</code></a>).</p>
-<p>See also: <a href="./#DelayEmbeddings.estimate_dimension"><code>estimate_dimension</code></a>, <a href="./#DelayEmbeddings.afnn"><code>afnn</code></a>, <a href="./#DelayEmbeddings.f1nn"><code>f1nn</code></a>.</p>
-<p><strong>References</strong></p>
-<p>[1] : M. Kennel <em>et al.</em>, "Determining embedding dimension for phase-space reconstruction using a geometrical construction", <em>Phys. Review A 45</em>(6), 3403-3411 (1992).</p>
-<p><a id='DelayEmbeddings.afnn' href='#DelayEmbeddings.afnn'>#</a>
-<strong><code>DelayEmbeddings.afnn</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>afnn(s::AbstractVector, τ:Int, γs = 1:5, metric=Euclidean())
+<p>fnn(s::AbstractVector, τ:Int, γs = 1:5; rtol=10.0, atol=2.0)</p>
+<div class="codehilite"><pre><span></span>Calculate the number of &quot;false nearest neighbors&quot; (FNN) of the datasets created from `s` with a sequence of `τ`-delayed temporal neighbors.
+
+**Description**
+
+Given a dataset made by embedding `s` with `γ` temporal neighbors and delay `τ`, the &quot;false nearest neighbors&quot; (FNN) are the pairs of points that are nearest to each other at dimension `γ`, but are separated at dimension `γ+1`. Kennel&#39;s criteria for detecting FNN are based on a threshold for the relative increment of the distance between the nearest neighbors (`rtol`, eq. 4 in [1]), and another threshold for the ratio between the increased distance and the &quot;size of the attractor&quot; (`atol`, eq. 5 in [1]). These thresholds are given as keyword arguments.
+
+The returned value is a vector with the number of FNN for each `γ ∈ γs`. The optimal value for `γ` is found at the point where the number of FNN approaches zero.
+
+See also: [`estimate_dimension`](estimate.md#DelayEmbeddings.estimate_dimension), [`afnn`](estimate.md#DelayEmbeddings.afnn), [`f1nn`](estimate.md#DelayEmbeddings.f1nn).
+
+**References**
+
+[1] : M. Kennel *et al.*, &quot;Determining embedding dimension for phase-space reconstruction using a geometrical construction&quot;, *Phys. Review A 45*(6), 3403-3411 (1992).
+
+&lt;a id=&#39;DelayEmbeddings.afnn&#39; href=&#39;#DelayEmbeddings.afnn&#39;&gt;#&lt;/a&gt;
+**`DelayEmbeddings.afnn`** &amp;mdash; *Function*.
 </pre></div>
 
 
-<p>Compute the parameter E₁ of Cao's "averaged false nearest neighbors" method for determining the minimum embedding dimension of the time series <code>s</code>, with a sequence of <code>τ</code>-delayed temporal neighbors [1].</p>
-<p><strong>Description</strong></p>
-<p>Given the scalar timeseries <code>s</code> and the embedding delay <code>τ</code> compute the values of <code>E₁</code> for each <code>γ ∈ γs</code>, according to Cao's Method (eq. 3 of [1]).</p>
-<p>This quantity is a ratio of the averaged distances between the nearest neighbors of the reconstructed time series, which quantifies the increment of those distances when the number of temporal neighbors changes from <code>γ</code> to <code>γ+1</code>.</p>
-<p>Please be aware that in <strong>DynamicalSystems.jl</strong> <code>γ</code> stands for the amount of temporal neighbors and not the embedding dimension (<code>D = γ + 1</code>, see also <a href="../reconstruction/#DelayEmbeddings.embed"><code>embed</code></a>).</p>
-<p>Return the vector of all computed <code>E₁</code>s. To estimate a good value for <code>γ</code> from this, find <code>γ</code> for which the value <code>E₁</code> saturates at some value around 1.</p>
-<p><em>Note: This method does not work for datasets with perfectly periodic signals.</em></p>
-<p>See also: <a href="./#DelayEmbeddings.estimate_dimension"><code>estimate_dimension</code></a>, <a href="./#DelayEmbeddings.fnn"><code>fnn</code></a>, <a href="./#DelayEmbeddings.f1nn"><code>f1nn</code></a>.</p>
-<p><strong>References</strong></p>
-<p>[1] : Liangyue Cao, <a href="https://www.sciencedirect.com/science/article/pii/S0167278997001188?via%3Dihub">Physica D, pp. 43-50 (1997)</a></p>
-<p><a id='DelayEmbeddings.f1nn' href='#DelayEmbeddings.f1nn'>#</a>
-<strong><code>DelayEmbeddings.f1nn</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>f1nn(s::AbstractVector, τ:Int, γs = 1:5, metric = Euclidean())
+<p>afnn(s::AbstractVector, τ:Int, γs = 1:5, metric=Euclidean())</p>
+<div class="codehilite"><pre><span></span>Compute the parameter E₁ of Cao&#39;s &quot;averaged false nearest neighbors&quot; method for determining the minimum embedding dimension of the time series `s`, with a sequence of `τ`-delayed temporal neighbors [1].
+
+**Description**
+
+Given the scalar timeseries `s` and the embedding delay `τ` compute the values of `E₁` for each `γ ∈ γs`, according to Cao&#39;s Method (eq. 3 of [1]).
+
+This quantity is a ratio of the averaged distances between the nearest neighbors of the reconstructed time series, which quantifies the increment of those distances when the number of temporal neighbors changes from `γ` to `γ+1`.
+
+Return the vector of all computed `E₁`s. To estimate a good value for `γ` from this, find `γ` for which the value `E₁` saturates at some value around 1.
+
+*Note: This method does not work for datasets with perfectly periodic signals.*
+
+See also: [`estimate_dimension`](estimate.md#DelayEmbeddings.estimate_dimension), [`fnn`](estimate.md#DelayEmbeddings.fnn), [`f1nn`](estimate.md#DelayEmbeddings.f1nn).
+
+**References**
+
+[1] : Liangyue Cao, [Physica D, pp. 43-50 (1997)](https://www.sciencedirect.com/science/article/pii/S0167278997001188?via%3Dihub)
+
+&lt;a id=&#39;DelayEmbeddings.f1nn&#39; href=&#39;#DelayEmbeddings.f1nn&#39;&gt;#&lt;/a&gt;
+**`DelayEmbeddings.f1nn`** &amp;mdash; *Function*.
 </pre></div>
 
 
-<p>Calculate the ratio of "false first nearest neighbors" (FFNN) of the datasets created from <code>s</code> with a sequence of <code>τ</code>-delayed temporal neighbors.</p>
-<p><strong>Description</strong></p>
-<p>Given a dataset made by embedding <code>s</code> with <code>γ</code> temporal neighbors and delay <code>τ</code>, the "first nearest neighbors" (FFNN) are the pairs of points that are nearest to each other at dimension <code>γ</code> that cease to be nearest neighbors at dimension <code>γ+1</code> [1].</p>
-<p>The returned value is a vector with the ratio between the number of FFNN and the number of points in the dataset for each <code>γ ∈ γs</code>. The optimal value for <code>γ</code> is found at the point where this ratio approaches zero.</p>
-<p>Please be aware that in <strong>DynamicalSystems.jl</strong> <code>γ</code> stands for the amount of temporal neighbors and not the embedding dimension (<code>D = γ + 1</code>, see also <a href="../reconstruction/#DelayEmbeddings.embed"><code>embed</code></a>).</p>
-<p>See also: <a href="./#DelayEmbeddings.estimate_dimension"><code>estimate_dimension</code></a>, <a href="./#DelayEmbeddings.afnn"><code>afnn</code></a>, <a href="./#DelayEmbeddings.fnn"><code>fnn</code></a>.</p>
-<p><strong>References</strong></p>
-<p>[1] : Anna Krakovská <em>et al.</em>, "Use of false nearest neighbours for selecting variables and embedding parameters for state space reconstruction", <em>J Complex Sys</em> 932750 (2015), DOI: 10.1155/2015/932750</p>
-<p><a id='DelayEmbeddings.stochastic_indicator' href='#DelayEmbeddings.stochastic_indicator'>#</a>
-<strong><code>DelayEmbeddings.stochastic_indicator</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>stochastic_indicator(s::AbstractVector, τ:Int, γs = 1:4) -&gt; E₂s
+<p>f1nn(s::AbstractVector, τ:Int, γs = 1:5, metric = Euclidean())</p>
+<div class="codehilite"><pre><span></span>Calculate the ratio of &quot;false first nearest neighbors&quot; (FFNN) of the datasets created from `s` with a sequence of `τ`-delayed temporal neighbors.
+
+**Description**
+
+Given a dataset made by embedding `s` with `γ` temporal neighbors and delay `τ`, the &quot;first nearest neighbors&quot; (FFNN) are the pairs of points that are nearest to each other at dimension `γ` that cease to be nearest neighbors at dimension `γ+1` [1].
+
+The returned value is a vector with the ratio between the number of FFNN and the number of points in the dataset for each `γ ∈ γs`. The optimal value for `γ` is found at the point where this ratio approaches zero.
+
+See also: [`estimate_dimension`](estimate.md#DelayEmbeddings.estimate_dimension), [`afnn`](estimate.md#DelayEmbeddings.afnn), [`fnn`](estimate.md#DelayEmbeddings.fnn).
+
+**References**
+
+[1] : Anna Krakovská *et al.*, &quot;Use of false nearest neighbours for selecting variables and embedding parameters for state space reconstruction&quot;, *J Complex Sys* 932750 (2015), DOI: 10.1155/2015/932750
+
+&lt;a id=&#39;DelayEmbeddings.stochastic_indicator&#39; href=&#39;#DelayEmbeddings.stochastic_indicator&#39;&gt;#&lt;/a&gt;
+**`DelayEmbeddings.stochastic_indicator`** &amp;mdash; *Function*.
 </pre></div>
 
 
+<p>stochastic_indicator(s::AbstractVector, τ:Int, γs = 1:4) -&gt; E₂s
+```</p>
 <p>Compute an estimator for apparent randomness in a reconstruction with <code>γs</code> temporal neighbors.</p>
 <p><strong>Description</strong></p>
 <p>Given the scalar timeseries <code>s</code> and the embedding delay <code>τ</code> compute the values of <code>E₂</code> for each <code>γ ∈ γs</code>, according to Cao's Method (eq. 5 of [1]).</p>

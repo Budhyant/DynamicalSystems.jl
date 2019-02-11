@@ -434,42 +434,6 @@
           
           
 
-
-  <li class="md-nav__item">
-    <a href="../entropies/" title="Entropies and Dimensions" class="md-nav__link">
-      Entropies and Dimensions
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../nlts/" title="Nonlinear Timeseries Analysis" class="md-nav__link">
-      Nonlinear Timeseries Analysis
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-  <li class="md-nav__item">
-    <a href="../periodicity/" title="Periodicity" class="md-nav__link">
-      Periodicity
-    </a>
-  </li>
-
-        
-          
-          
-          
-
   
 
 
@@ -520,6 +484,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-gali" title="Using GALI" class="md-nav__link">
+    Using GALI
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#regular-orbits-in-the-henon-heiles-system" title="Regular orbits in the Henon-Heiles system" class="md-nav__link">
     Regular orbits in the Henon-Heiles system
@@ -540,6 +517,54 @@
   
 </nav>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../entropies/" title="Entropies and Dimensions" class="md-nav__link">
+      Entropies and Dimensions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nlts/" title="Nonlinear Timeseries Analysis" class="md-nav__link">
+      Nonlinear Timeseries Analysis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../periodicity/" title="Periodicity" class="md-nav__link">
+      Periodicity
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../choosing/" title="Choosing a solver" class="md-nav__link">
+      Choosing a solver
+    </a>
   </li>
 
         
@@ -686,6 +711,19 @@
   
 </li>
         
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-gali" title="Using GALI" class="md-nav__link">
+    Using GALI
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
           <li class="md-nav__item">
   <a href="#regular-orbits-in-the-henon-heiles-system" title="Regular orbits in the Henon-Heiles system" class="md-nav__link">
     Regular orbits in the Henon-Heiles system
@@ -721,6 +759,10 @@
 <h1 id="chaos-detection">Chaos Detection</h1>
 <p>Being able to detect and distinguish chaotic from regular behavior is crucial in the study of dynamical systems. Most of the time a positive maximum <a href="../lyapunovs/#ChaosTools.lyapunov"><code>lyapunov</code></a> exponent and a bounded system indicate chaos.</p>
 <p>However, the convergence of the Lyapunov exponent is often very slow and the computation costly. There are many alternatives that are both more efficient and more accurate in characterizing chaotic and regular motion, some of which are included in <strong>DynamicalSystems.jl</strong>.</p>
+<div class="admonition info">
+<p class="admonition-title">Performance depends on the solver</p>
+<p>Notice that the performance of functions that use <code>ContinuousDynamicalSystem</code>s depend crucially on the chosen solver. Please see the documentation page on <a href="../choosing/#Choosing-a-solver-1">Choosing a solver</a> for an in-depth discussion.</p>
+</div>
 <p><a id='Generalized-Alignment-Index-1'></a></p>
 <h2 id="generalized-alignment-index">Generalized Alignment Index</h2>
 <p>"GALI" for sort, is a method that relies on the fact that initially orthogonal deviation vectors tend to align towards the direction of the maximum Lyapunov exponent for chaotic motion. It is one of the most recent and cheapest methods for distinguishing chaos, introduced first in 2007 by Skokos, Bountis &amp; Antonopoulos.</p>
@@ -879,141 +921,123 @@
 
 
 <p>First, we see the behavior with a stable periodic orbit</p>
-<p>```@example gali
-figure(figsize = (8,4))
-subplot(1,2,1)
-dt = 1.0</p>
-<p>diffeq = (abstol=1e-9, reltol=1e-9, alg = Tsit5(), maxiters = typemax(Int))
-tr = trajectory(ds, 10000.0; dt=dt, diffeq...)
-plot(tr[:,1], tr[:,3], alpha = 0.5,
-label="sp",marker="o",markersize=2, linewidth=0)
-legend()</p>
-<p>subplot(1,2,2)
-for k in [2,3,4]
-    g, t = gali(ds, 10000.0, k; dt = dt, diffeq...)
-    loglog(t, g, label="GALI_<span><span class="MathJax_Preview">(k)")
-    if k &lt; 4
-        loglog(t, 100 ./ t.^(k-1), label="slope -</span><script type="math/tex">(k)")
-    if k < 4
-        loglog(t, 100 ./ t.^(k-1), label="slope -</script></span>(k-1)")
-    else
-        loglog(t, 10000 ./ t.^(2k-4), label="slope -$(2k-4)")
-    end
-end
-ylim(1e-12, 2)
-legend();
-savefig("gali_cont_stable.png"); nothing # hide</p>
-<div class="codehilite"><pre><span></span>![gali_cont_stable](gali_cont_stable.png)
+<div class="codehilite"><pre><span></span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="n">diffeq</span> <span class="o">=</span> <span class="p">(</span><span class="n">abstol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">reltol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">Tsit5</span><span class="p">(),</span> <span class="n">maxiters</span> <span class="o">=</span> <span class="n">typemax</span><span class="p">(</span><span class="kt">Int</span><span class="p">))</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">;</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tr</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">tr</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+<span class="n">label</span><span class="o">=</span><span class="s">&quot;sp&quot;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="kp">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">gali</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span><span class="p">,</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">loglog</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;GALI_</span><span class="si">$</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="mi">4</span>
+        <span class="n">loglog</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">100</span> <span class="o">./</span> <span class="n">t</span><span class="o">.^</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;slope -</span><span class="si">$</span><span class="p">(</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="n">loglog</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">10000</span> <span class="o">./</span> <span class="n">t</span><span class="o">.^</span><span class="p">(</span><span class="mi">2</span><span class="n">k</span><span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;slope -</span><span class="si">$</span><span class="p">(</span><span class="mi">2</span><span class="n">k</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">ylim</span><span class="p">(</span><span class="mf">1e-12</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">();</span>
+</pre></div>
 
 
-Next, let&#39;s see what happens with a quasi-periodic orbit. Don&#39;t forget to change the `u0` arguments!
+<p><img alt="gali_cont_stable" src="../gali_cont_stable.png" /></p>
+<p>Next, let's see what happens with a quasi-periodic orbit. Don't forget to change the <code>u0</code> arguments!</p>
+<div class="codehilite"><pre><span></span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">,</span> <span class="n">qp</span><span class="p">;</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tr</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">tr</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+<span class="n">label</span><span class="o">=</span><span class="s">&quot;qp&quot;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
 
-
-```@example gali
-figure(figsize = (8,4))
-subplot(1,2,1)
-tr = trajectory(ds, 10000.0, qp; dt=dt, diffeq...)
-plot(tr[:,1], tr[:,3], alpha = 0.5,
-label=&quot;qp&quot;,marker=&quot;o&quot;,markersize=2, linewidth=0)
-legend()
-
-subplot(1,2,2)
-for k in [2,3,4]
-    g, t = gali(ds, 10000.0, k; u0 = qp, dt = dt, diffeq...)
-    loglog(t, g, label=&quot;GALI_$(k)&quot;)
-    if k == 2
-        loglog(t, 1 ./ t.^(2k-4), label=&quot;slope -$(2k-4)&quot;)
-    else
-        loglog(t, 100 ./ t.^(2k-4), label=&quot;slope -$(2k-4)&quot;)
-    end
-end
-ylim(1e-12, 2)
-legend()
-tight_layout()
-savefig(&quot;gali_cont_quasi.png&quot;); nothing # hide
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="kp">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">gali</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span> <span class="n">u0</span> <span class="o">=</span> <span class="n">qp</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span><span class="p">,</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">loglog</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;GALI_</span><span class="si">$</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="mi">2</span>
+        <span class="n">loglog</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span> <span class="o">./</span> <span class="n">t</span><span class="o">.^</span><span class="p">(</span><span class="mi">2</span><span class="n">k</span><span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;slope -</span><span class="si">$</span><span class="p">(</span><span class="mi">2</span><span class="n">k</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">else</span>
+        <span class="n">loglog</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">100</span> <span class="o">./</span> <span class="n">t</span><span class="o">.^</span><span class="p">(</span><span class="mi">2</span><span class="n">k</span><span class="o">-</span><span class="mi">4</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;slope -</span><span class="si">$</span><span class="p">(</span><span class="mi">2</span><span class="n">k</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+<span class="n">ylim</span><span class="p">(</span><span class="mf">1e-12</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+<span class="n">tight_layout</span><span class="p">()</span>
 </pre></div>
 
 
 <p><img alt="gali_cont_quasi" src="../gali_cont_quasi.png" /></p>
 <p>Finally, here is GALI of a continuous system with a chaotic orbit</p>
-<p>```@example gali
-figure(figsize = (8,4))
-tr = trajectory(ds, 10000.0, ch; dt=dt, diffeq...)
-subplot(1,2,1)
-plot(tr[:,1], tr[:,3], alpha = 0.5,
-label="ch",marker="o",markersize=2, linewidth=0)
-legend()</p>
-<p>subplot(1,2,2)
-ls = lyapunovs(ds, 5000.0; dt=dt, u0 = ch, diffeq...)
-for k in [2,3,4]
-    ex = sum(ls[1] - ls[j] for j in 2:k)
-    g, t = gali(ds, 1000, k; u0 = ch, dt = dt, diffeq...)
-    semilogy(t, exp.(-ex.*t), label="exp. k=<span><span class="MathJax_Preview">k")
-    semilogy(t, g, label="GALI_</span><script type="math/tex">k")
-    semilogy(t, g, label="GALI_</script></span>(k)")
-end
-legend()
-ylim(1e-16, 1)
-tight_layout()
-savefig("gali_cont_chaos.png"); nothing # hide</p>
-<div class="codehilite"><pre><span></span><span class="o">!</span><span class="p">[</span><span class="nx">gali_cont_chaos</span><span class="p">](</span><span class="nx">gali_cont_chaos</span><span class="p">.</span><span class="nx">png</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">10000.0</span><span class="p">,</span> <span class="n">ch</span><span class="p">;</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span>
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">tr</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">tr</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span>
+<span class="n">label</span><span class="o">=</span><span class="s">&quot;ch&quot;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s">&quot;o&quot;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">legend</span><span class="p">()</span>
+
+<span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ls</span> <span class="o">=</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">5000.0</span><span class="p">;</span> <span class="n">dt</span><span class="o">=</span><span class="n">dt</span><span class="p">,</span> <span class="n">u0</span> <span class="o">=</span> <span class="n">ch</span><span class="p">,</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="kp">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+    <span class="n">ex</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">ls</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">ls</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="kp">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">g</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">gali</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">k</span><span class="p">;</span> <span class="n">u0</span> <span class="o">=</span> <span class="n">ch</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span><span class="p">,</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">exp</span><span class="o">.</span><span class="p">(</span><span class="o">-</span><span class="n">ex</span><span class="o">.*</span><span class="n">t</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;exp. k=</span><span class="si">$k</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">semilogy</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;GALI_</span><span class="si">$</span><span class="p">(</span><span class="n">k</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">legend</span><span class="p">()</span>
+<span class="n">ylim</span><span class="p">(</span><span class="mf">1e-16</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
 
 
-<span class="nx">As</span> <span class="nx">you</span> <span class="nx">can</span> <span class="nx">see</span><span class="p">,</span> <span class="nx">the</span> <span class="nx">results</span> <span class="nx">of</span> <span class="nx">both</span> <span class="nx">discrete</span> <span class="nx">and</span> <span class="nx">continuous</span> <span class="nx">systems</span> <span class="nx">match</span> <span class="nx">very</span> <span class="nx">well</span> <span class="nx">the</span> <span class="nx">theory</span> <span class="nx">described</span> <span class="k">in</span> <span class="p">[</span><span class="sb">`gali`</span><span class="p">](</span><span class="nx">chaos_detection</span><span class="p">.</span><span class="nx">md</span><span class="err">#</span><span class="nx">ChaosTools</span><span class="p">.</span><span class="nx">gali</span><span class="p">).</span>
+<p><img alt="gali_cont_chaos" src="../gali_cont_chaos.png" /></p>
+<p>As you can see, the results of both discrete and continuous systems match very well the theory described in <a href="./#ChaosTools.gali"><code>gali</code></a>.</p>
+<p><a id='Using-GALI-1'></a></p>
+<h2 id="using-gali">Using GALI</h2>
+<p>No-one in their right mind would try to fit power-laws in order to distinguish between chaotic and regular behavior, like the above examples. These were just demonstrations and proofs that the method works as expected in all cases.</p>
+<p>The most common usage of <span><span class="MathJax_Preview">\text{GALI}_k</span><script type="math/tex">\text{GALI}_k</script></span> is to define a (sufficiently) small amount of time and a (sufficiently) small threshold and see whether <span><span class="MathJax_Preview">\text{GALI}_k</span><script type="math/tex">\text{GALI}_k</script></span> stays below it, for a (sufficiently) big <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.</p>
+<p>The following is an example of <a href="../advanced">advanced usage</a>:</p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span>
+<span class="k">using</span> <span class="n">PyPlot</span><span class="p">,</span> <span class="n">StaticArrays</span>
 
+<span class="k">function</span> <span class="n">main</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
 
-<span class="o">&lt;</span><span class="nx">a</span> <span class="nx">id</span><span class="o">=</span><span class="s1">&#39;Using-GALI-1&#39;</span><span class="o">&gt;&lt;</span><span class="err">/a&gt;</span>
+    <span class="c"># Measure of chaoticity: final time of gali_2</span>
+    <span class="n">dens</span> <span class="o">=</span> <span class="mi">201</span>
+    <span class="n">chaoticity</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span> <span class="n">dens</span><span class="p">,</span> <span class="n">dens</span><span class="p">)</span>
 
-<span class="err">##</span> <span class="nx">Using</span> <span class="nx">GALI</span>
+    <span class="n">θs</span> <span class="o">=</span> <span class="n">ps</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="mi">2</span><span class="nb">π</span><span class="p">,</span> <span class="n">length</span> <span class="o">=</span> <span class="n">dens</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">standardmap</span><span class="p">(</span><span class="n">k</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>
 
+    <span class="n">tinteg</span> <span class="o">=</span> <span class="n">tangent_integrator</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 
-<span class="nx">No</span><span class="o">-</span><span class="nx">one</span> <span class="k">in</span> <span class="nx">their</span> <span class="nx">right</span> <span class="nx">mind</span> <span class="nx">would</span> <span class="k">try</span> <span class="nx">to</span> <span class="nx">fit</span> <span class="nx">power</span><span class="o">-</span><span class="nx">laws</span> <span class="k">in</span> <span class="nx">order</span> <span class="nx">to</span> <span class="nx">distinguish</span> <span class="nx">between</span> <span class="nx">chaotic</span> <span class="nx">and</span> <span class="nx">regular</span> <span class="nx">behavior</span><span class="p">,</span> <span class="nx">like</span> <span class="nx">the</span> <span class="nx">above</span> <span class="nx">examples</span><span class="p">.</span> <span class="nx">These</span> <span class="nx">were</span> <span class="nx">just</span> <span class="nx">demonstrations</span> <span class="nx">and</span> <span class="nx">proofs</span> <span class="nx">that</span> <span class="nx">the</span> <span class="nx">method</span> <span class="nx">works</span> <span class="kr">as</span> <span class="nx">expected</span> <span class="k">in</span> <span class="nx">all</span> <span class="nx">cases</span><span class="p">.</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">θ</span><span class="p">)</span> <span class="o">∈</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">θs</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">dens</span><span class="p">])</span>
+        <span class="n">println</span><span class="p">(</span><span class="s">&quot;i = </span><span class="si">$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">∈</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">dens</span><span class="p">])</span>
 
+            <span class="c"># new initial state is the system initial state</span>
+            <span class="n">u0</span> <span class="o">=</span> <span class="n">SVector</span><span class="p">{</span><span class="mi">2</span><span class="p">}(</span><span class="n">θ</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+            <span class="n">reinit!</span><span class="p">(</span><span class="n">tinteg</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">orthonormal</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 
-<span class="nx">The</span> <span class="nx">most</span> <span class="nx">common</span> <span class="nx">usage</span> <span class="nx">of</span> <span class="nx">$</span><span class="err">\</span><span class="nx">text</span><span class="p">{</span><span class="nx">GALI</span><span class="p">}</span><span class="nx">_k$</span> <span class="nx">is</span> <span class="nx">to</span> <span class="nx">define</span> <span class="nx">a</span> <span class="p">(</span><span class="nx">sufficiently</span><span class="p">)</span> <span class="nx">small</span> <span class="nx">amount</span> <span class="nx">of</span> <span class="nx">time</span> <span class="nx">and</span> <span class="nx">a</span> <span class="p">(</span><span class="nx">sufficiently</span><span class="p">)</span> <span class="nx">small</span> <span class="nx">threshold</span> <span class="nx">and</span> <span class="nx">see</span> <span class="nx">whether</span> <span class="nx">$</span><span class="err">\</span><span class="nx">text</span><span class="p">{</span><span class="nx">GALI</span><span class="p">}</span><span class="nx">_k$</span> <span class="nx">stays</span> <span class="nx">below</span> <span class="nx">it</span><span class="p">,</span> <span class="k">for</span> <span class="nx">a</span> <span class="p">(</span><span class="nx">sufficiently</span><span class="p">)</span> <span class="nx">big</span> <span class="nx">$k$</span><span class="p">.</span>
+            <span class="c"># Low-level call signature of gali:</span>
+            <span class="c">#  gali(tinteg, tmax, dt, threshold)</span>
+            <span class="n">chaoticity</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">gali</span><span class="p">(</span><span class="n">tinteg</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">)[</span><span class="mi">2</span><span class="p">][</span><span class="k">end</span><span class="p">]</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">figure</span><span class="p">()</span>
+    <span class="n">pcolormesh</span><span class="p">(</span><span class="n">θs</span> <span class="o">.-</span> <span class="p">(</span><span class="n">θs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">θs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">ps</span> <span class="o">.-</span> <span class="p">(</span><span class="n">ps</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">ps</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">chaoticity</span><span class="o">&#39;</span><span class="p">)</span>
+    <span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$\\</span><span class="s">theta</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">p</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
+    <span class="k">return</span>
+<span class="k">end</span>
 
-
-<span class="nx">The</span> <span class="nx">following</span> <span class="nx">is</span> <span class="nx">an</span> <span class="nx">example</span> <span class="nx">of</span> <span class="p">[</span><span class="nx">advanced</span> <span class="nx">usage</span><span class="p">](</span><span class="nx">advanced</span><span class="p">)</span><span class="o">:</span>
-
-
-<span class="sb">```julia</span>
-<span class="sb">using DynamicalSystems</span>
-<span class="sb">using PyPlot, StaticArrays</span>
-
-<span class="sb">function main(k)</span>
-
-<span class="sb">    # Measure of chaoticity: final time of gali_2</span>
-<span class="sb">    dens = 201</span>
-<span class="sb">    chaoticity = zeros(Int, dens, dens)</span>
-
-<span class="sb">    θs = ps = range(0, stop = 2π, length = dens+1)</span>
-<span class="sb">    ds = Systems.standardmap(k = k)</span>
-
-<span class="sb">    tinteg = tangent_integrator(ds, 2)</span>
-
-<span class="sb">    for (i, θ) ∈ enumerate(θs[1:dens])</span>
-<span class="sb">        println(&quot;i = $(i)&quot;)</span>
-<span class="sb">        for (j, p) ∈ enumerate(ps[1:dens])</span>
-
-<span class="sb">            # new initial state is the system initial state</span>
-<span class="sb">            u0 = SVector{2}(θ, p)</span>
-<span class="sb">            reinit!(tinteg, u0, orthonormal(2,2))</span>
-
-<span class="sb">            # Low-level call signature of gali:</span>
-<span class="sb">            #  gali(tinteg, tmax, dt, threshold)</span>
-<span class="sb">            chaoticity[i, j] = gali(tinteg, 500, 1, 1e-12)[2][end]</span>
-<span class="sb">        end</span>
-<span class="sb">    end</span>
-<span class="sb">    figure()</span>
-<span class="sb">    pcolormesh(θs .- (θs[2] - θs[1])/2, ps .- (ps[2] - ps[1])/2,</span>
-<span class="sb">    chaoticity&#39;)</span>
-<span class="sb">    colorbar()</span>
-<span class="sb">    xlabel(&quot;</span><span class="err">\</span><span class="sb">$\\theta</span><span class="err">\</span><span class="sb">$&quot;)</span>
-<span class="sb">    ylabel(&quot;</span><span class="err">\</span><span class="sb">$p</span><span class="err">\</span><span class="sb">$&quot;)</span>
-<span class="sb">    return</span>
-<span class="sb">end</span>
-
-<span class="sb">main(0.9);</span>
+<span class="n">main</span><span class="p">(</span><span class="mf">0.9</span><span class="p">);</span>
 </pre></div>
 
 
@@ -1045,7 +1069,7 @@ savefig("gali_cont_chaos.png"); nothing # hide</p>
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../periodicity/" title="Periodicity" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../lyapunovs/" title="Lyapunov Exponents" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1054,19 +1078,19 @@ savefig("gali_cont_chaos.png"); nothing # hide</p>
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Periodicity
+                Lyapunov Exponents
               </span>
             </div>
           </a>
         
         
-          <a href="../../rqa/rplots/" title="Recurrence Plots" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../entropies/" title="Entropies and Dimensions" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Recurrence Plots
+                Entropies and Dimensions
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

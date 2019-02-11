@@ -434,6 +434,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../chaos/chaos_detection/" title="Chaos Distinction" class="md-nav__link">
+      Chaos Distinction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../chaos/entropies/" title="Entropies and Dimensions" class="md-nav__link">
       Entropies and Dimensions
     </a>
@@ -470,8 +482,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../chaos/chaos_detection/" title="Chaos Distinction" class="md-nav__link">
-      Chaos Distinction
+    <a href="../chaos/choosing/" title="Choosing a solver" class="md-nav__link">
+      Choosing a solver
     </a>
   </li>
 
@@ -598,6 +610,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#new-default-solver-in-v12-ordinarydiffeq-dependency-dropped" title="New default solver in v1.2; OrdinaryDiffEq dependency dropped!" class="md-nav__link">
+    New default solver in v1.2; OrdinaryDiffEq dependency dropped!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recurrenceanalysis-joins-dynamicalsystemsjl-in-v11" title="RecurrenceAnalysis joins DynamicalSystems.jl in v1.1!" class="md-nav__link">
     RecurrenceAnalysis joins DynamicalSystems.jl in v1.1!
   </a>
@@ -698,6 +717,13 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#new-default-solver-in-v12-ordinarydiffeq-dependency-dropped" title="New default solver in v1.2; OrdinaryDiffEq dependency dropped!" class="md-nav__link">
+    New default solver in v1.2; OrdinaryDiffEq dependency dropped!
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#recurrenceanalysis-joins-dynamicalsystemsjl-in-v11" title="RecurrenceAnalysis joins DynamicalSystems.jl in v1.1!" class="md-nav__link">
     RecurrenceAnalysis joins DynamicalSystems.jl in v1.1!
   </a>
@@ -787,6 +813,15 @@
                 
                 <p><a id='News-1'></a></p>
 <h1 id="news">News</h1>
+<p><a id='New-default-solver-in-v1.2;-OrdinaryDiffEq-dependency-dropped!-1'></a></p>
+<h2 id="new-default-solver-in-v12-ordinarydiffeq-dependency-dropped">New default solver in v1.2; <code>OrdinaryDiffEq</code> dependency dropped!</h2>
+<p>In the newest version of <strong>DynamicalSystems.jl</strong>, which includes <code>DynamicalSystemsBase v1.2</code>, the default solver for all continuous systems has been changed to <strong><code>SimpleATsit5</code></strong> from the package <a href="https://github.com/JuliaDiffEq/SimpleDiffEq.jl">SimpleDiffEq.jl</a>. The previous default solver was <code>Vern9</code> from <code>OrdinaryDiffEq</code> This has reduced the "first run time" massively for functions that use a <code>ContinuousDynamicalSystem</code>!</p>
+<p>In addition the <code>OrdinaryDiffEq</code> dependency was dropped. This is a big benefit for precompilation times! This does <em>not</em> mean that you can't use all the solvers from <code>OrdinaryDiffEq</code>! You can still use any solver you want, provided that you do <code>using OrdinaryDiffEq</code> to access the solvers!</p>
+<div class="admonition warning">
+<p class="admonition-title">Numeric values will change slightly</p>
+<p>Although there was no API change the default solver did change. This means that if you were using the default solver for some code, the numeric values you will now obtain will slightly change as a result. This does not mean that any functionality broke, but be aware that if you were depending on the <em>exact value</em> of e.g. <code>lyapunovs</code>, you will now have a different value instead.</p>
+<p>Provided that you have already been using long enough integration times, the convergence of your results has not been affected though.</p>
+</div>
 <p><a id='RecurrenceAnalysis-joins-**DynamicalSystems.jl**-in-v1.1!-1'></a></p>
 <h2 id="recurrenceanalysis-joins-dynamicalsystemsjl-in-v11"><code>RecurrenceAnalysis</code> joins <strong>DynamicalSystems.jl</strong> in v1.1!</h2>
 <p>The excellent Julia package <code>RecurrenceAnalysis</code> (authored by Helios de Rosario, <code>@heliosdrm</code>) is now part of <strong>DynamicalSystems.jl</strong> and reexported by it. Besides adding all the amazing functionality of <code>RecurrenceAnalysis</code> to <strong>DynamicalSystems.jl</strong>, other benefits also sprung up:</p>
@@ -803,7 +838,7 @@
 <ul>
 <li><code>TimeseriesPrediction</code> is <em>not</em> installed with <code>DynamicalSystems</code> for version 1.0, because it is undergoing major changes. It is not even ready for Julia 1.0 actually.</li>
 <li><code>DynamicalSystem</code> has been totally reworked for better clarity: it does not store a "problem" anymore, only the absolutely necessary ingredients to create one. The API did not change though!</li>
-<li><code>Reconstruction</code> has been renamed to <code>reconstruct</code>, and now always returns a <code>Dataset</code>. In addition, now the parameter <code>D</code> stands for the number of temporal neighbors. <strong>This is a breaking change!</strong>. The change allows more intuition across the different versions of <code>reconstruct</code>.</li>
+<li><code>Reconstruction</code> has been renamed to <code>reconstruct</code>, and now always returns a <code>Dataset</code>. In addition, now the parameter <code>D</code> (now renamed to <code>γ</code>) stands for the number of temporal neighbors. <strong>This is a breaking change!</strong>. The change allows more intuition across the different versions of <code>reconstruct</code>.</li>
 <li>The various offered integrators became more robust, and now allow passing callbacks etc. for the DifferentialEquations.jl event handling.</li>
 <li>Brand new algorithm for computing Poincare surfaces of section. It is not also more clear and understandable from the old one, but also much faster as well!!!</li>
 <li>Mutual information computation method. Also new method for optimal delay time using the Mutual information!</li>
