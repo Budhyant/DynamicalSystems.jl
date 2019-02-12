@@ -738,19 +738,26 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-   0.9085045447145808
-   0.00018749715814435954
- -14.575335340967694
+   0.9027673599573857
+   0.00040781430126748583
+ -14.569818468254235
 </pre></div>
 
 
 <p>The above uses the default solver. Let's now benchmark using two different solvers, <code>SimpleATsit5</code> and <code>Vern9</code>. Since the <code>SimpleATsit5</code> case is of lower order, naively one might think it is faster because it makes less function calls. This argument is not necessarily true though.</p>
 <p>It is important to understand that when calling <code>lyapunovs(ds, 2000)</code> you want the system (and the tangent space) to be evolved so that it reaches a total time of <code>2000*dt</code>, which by default is <code>2000.0</code> units of time. Even though <code>SimpleATsit5</code> requires less function calls per step, <code>Vern9</code> can cover larger timespans per step.</p>
 <p>Here are the numbers:</p>
-<p><code>@example solver
-using BenchmarkTools, OrdinaryDiffEq, SimpleDiffEq
-@btime lyapunovs(ds, 2000; alg = SimpleATsit5(), Ttr = 100.0, tols...);
-@btime lyapunovs(ds, 2000; alg = Vern9(),        Ttr = 100.0, tols...);</code></p>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">OrdinaryDiffEq</span><span class="p">,</span> <span class="n">SimpleDiffEq</span>
+<span class="nd">@btime</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">SimpleATsit5</span><span class="p">(),</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
+<span class="nd">@btime</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">Vern9</span><span class="p">(),</span>        <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>  74.015 ms (180 allocations: 11.78 KiB)
+  50.092 ms (79023 allocations: 4.84 MiB)
+</pre></div>
+
+
 <p>As you can see <code>Vern9</code> is "faster" in doing the <em>entire</em> computation! Of course this does not have to be universally true. It is true for the Lorenz system, but for your specific system you should do dedicated benchmarks!</p>
                 
                   
