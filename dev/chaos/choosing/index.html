@@ -735,7 +735,7 @@
 <p>which is a Runge-Kutta-like solver. The number in the solver's name is the "order" of the solver.</p>
 <p><a id='Speed-of-a-solver-1'></a></p>
 <h2 id="speed-of-a-solver">Speed of a solver</h2>
-<p>How fast is a problem solved is not trivial to say. The following are general rules of thumb:</p>
+<p>Estimating a given solver's performance for a particular problem is not trivial. The following are general rules of thumb:</p>
 <ol>
 <li>Higher order solvers call the equations of motion function more times per step.</li>
 <li>Higher order solvers can cover larger timespans per step.</li>
@@ -753,9 +753,9 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-   0.9022207164728921
-   0.0008160483894425662
- -14.56968018862208
+   0.9066641152627641
+   0.00011245073477462498
+ -14.573419753525016
 </pre></div>
 
 
@@ -768,8 +768,8 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>  71.167 ms (180 allocations: 11.78 KiB)
-  43.489 ms (79001 allocations: 4.83 MiB)
+<div class="codehilite"><pre><span></span>  70.393 ms (180 allocations: 11.78 KiB)
+  43.015 ms (79013 allocations: 4.84 MiB)
 </pre></div>
 
 
