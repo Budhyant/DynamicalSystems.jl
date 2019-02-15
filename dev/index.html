@@ -312,6 +312,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interactivechaos" title="[InteractiveChaos]" class="md-nav__link">
+    [InteractiveChaos]
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -675,6 +682,54 @@
       
 
 
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      InteractiveChaos
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        InteractiveChaos
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="interact/od/" title="Orbit Diagram" class="md-nav__link">
+      Orbit Diagram
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="interact/psos/" title="Poincaré Surface of Section" class="md-nav__link">
+      Poincaré Surface of Section
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
   <li class="md-nav__item">
     <a href="advanced/" title="Advanced Documentation" class="md-nav__link">
       Advanced Documentation
@@ -767,6 +822,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#interactivechaos" title="[InteractiveChaos]" class="md-nav__link">
+    [InteractiveChaos]
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -848,6 +910,7 @@
  * RecurrenceAnalysis ........ 1.0.1
  * DynamicalSystemsBase ...... 1.2.3
  * ChaosTools ................ 1.5.0
+ * InteractiveChaos .......... 0.0.1
 </pre></div>
 
 
@@ -928,6 +991,19 @@
 </ul>
 </li>
 </ul>
+<p><a id='[InteractiveChaos]-1'></a></p>
+<h3 id="interactivechaos">[<code>InteractiveChaos</code>]</h3>
+<p><code>InteractiveChaos</code> is a package that provides applications for interactively exploring dynamical systems. It is an <em>extension</em> of <strong>DynamicalSystems.jl</strong> and builds upon existing code by hooking up to the <code>DynamicalSystem</code> structure.</p>
+<p><code>InteractiveChaos</code> <strong>is not installed with DynamicalSystems.jl</strong>. To install it do <code>]add InteractiveChaos Makie</code>. <code>Makie</code> is necessary for providing a plotting backend, since <code>InteractiveChaos</code> does not install one by default.</p>
+<p>The functionality of <code>InteractiveChaos</code> is contained within individual functions, all of which launch a dedicated interactive application. Here is their list:</p>
+<ul>
+<li><a href="interact/od/#InteractiveChaos.interactive_orbitdiagram"><code>interactive_orbitdiagram</code></a></li>
+<li><a href="./@ref"><code>interactive_poincaresos</code></a></li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Videos &amp; Animations</p>
+<p>Besides the documentation strings, each interactive function is accompanied with an animation (<code>.gif</code> or <code>.mp4</code> file) displayed after the docstring, as well as a video tutorial demonstrating its use. See the individual pages for the video links (by clicking the documentation string links)!</p>
+</div>
 <p><a id='Our-Goals-1'></a></p>
 <h2 id="our-goals">Our Goals</h2>
 <p>The ultimate goal for <strong>DynamicalSystems.jl</strong> is to be a useful <strong>software library</strong> for students and scientists working on chaos, nonlinear dynamics and in general dynamical systems. The word "library" is intended in the literal sense: a place where people go to learn things.</p>
