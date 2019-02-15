@@ -755,10 +755,33 @@
 <h1 id="interactive-poincare-surface-of-section">Interactive Poincaré Surface of Section</h1>
 <p><a id='Docstrings-1'></a></p>
 <h2 id="docstrings">Docstrings</h2>
-<div class="codehilite"><pre><span></span>interactive_poincaresos
+<p><a id='InteractiveChaos.interactive_poincaresos' href='#InteractiveChaos.interactive_poincaresos'>#</a>
+<strong><code>InteractiveChaos.interactive_poincaresos</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span>interactive_poincaresos(cds, plane, idxs, complete; kwargs...)
 </pre></div>
 
 
+<p>Open an interactive application for exploring a Poincaré surface of section (PSOS) of the continuous dynamical system <code>cds</code>. Return an observable containing the latest initial state created by <code>complete</code>, as well as its color.</p>
+<p>The <code>plane</code> can only be the <code>Tuple</code> type accepted by <a href="../../chaos/orbitdiagram/#ChaosTools.poincaresos"><code>poincaresos</code></a>, i.e. <code>(i, r)</code> for the <code>i</code>th variable crossing the value <code>r</code>. <code>idxs</code> gives the two indices of the variables to be displayed, since the PSOS plot is always a 2D scatterplot. I.e. <code>idxs = (1, 2)</code> will plot the 1st versus 2nd variable of the PSOS. It follows that <code>plane[1] ∉ idxs</code> must be true.</p>
+<p><code>complete</code> is a three-argument <strong>function</strong> that completes the new initial state during interactive use, see below.</p>
+<p><strong>Keyword Arguments</strong></p>
+<ul>
+<li><code>direction, rootkw</code> : Same use as in <a href="../../chaos/orbitdiagram/#ChaosTools.poincaresos"><code>poincaresos</code></a>.</li>
+<li><code>tfinal</code> : A 2-element tuple for the range of values for the total integration time (chosen interactively).</li>
+<li><code>Ttr</code> : A 2-element tuple for the range of values for the transient integration time (chosen interactively).</li>
+<li><code>color</code> : A <em>function</em> of the system's initial condition, that returns a color to plot the new points with. A random color is chosen by default.</li>
+<li><code>diffeq...</code> : Any extra keyword arguments are passed into <code>init</code> of DiffEq.</li>
+</ul>
+<p><strong>Interaction</strong></p>
+<p>The application is a standard AbstractPlotting scatterplot, which shows the PSOS of the system, initially using the system's <code>u0</code>. Two sliders control the final evolution time and the size of the marker points.</p>
+<p>Upon clicking within the bounds of the scatter plot your click is transformed into a new initial condition, which is further evolved and its PSOS is computed and then plotted into the scatter plot.</p>
+<p>Your click is transformed into a full <code>D</code>-dimensional initial condition through the function <code>complete</code>. The first two arguments of the function are the positions of the click on the PSOS. The third argument is the value of the variable the PSOS is defined on. To be more exact, this is how the function is called:</p>
+<div class="codehilite"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">mouseclick</span><span class="p">;</span> <span class="n">z</span> <span class="o">=</span> <span class="n">plane</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">newstate</span> <span class="o">=</span> <span class="n">complete</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The <code>complete</code> function can throw an error for ill-condition <code>x, y, z</code>. This will be properly handled instead of breaking the application. This <code>newstate</code> is also given to the function <code>color</code> that gets a new color for the new points.</p>
 <p><a id='Function-Video-1'></a></p>
 <h2 id="function-video">Function Video</h2>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">InteractiveChaos</span><span class="p">,</span> <span class="n">Makie</span>
