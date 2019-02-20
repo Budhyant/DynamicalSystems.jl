@@ -650,6 +650,18 @@
   </li>
 
         
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../highlight/" title="Trajectory Highlighter" class="md-nav__link">
+      Trajectory Highlighter
+    </a>
+  </li>
+
+        
       </ul>
     </nav>
   </li>
@@ -769,6 +781,7 @@
 <li><code>direction, rootkw</code> : Same use as in <a href="../../chaos/orbitdiagram/#ChaosTools.poincaresos"><code>poincaresos</code></a>.</li>
 <li><code>tfinal</code> : A 2-element tuple for the range of values for the total integration time (chosen interactively).</li>
 <li><code>Ttr</code> : A 2-element tuple for the range of values for the transient integration time (chosen interactively).</li>
+<li><code>markersizes = (-4, -1)</code> : A 2-element tuple for the range of the marker sizes (which scale exponentially: the actual size is <code>10.0^markersize</code>).</li>
 <li><code>color</code> : A <em>function</em> of the system's initial condition, that returns a color to plot the new points with. A random color is chosen by default.</li>
 <li><code>diffeq...</code> : Any extra keyword arguments are passed into <code>init</code> of DiffEq.</li>
 </ul>
@@ -781,7 +794,7 @@
 </pre></div>
 
 
-<p>The <code>complete</code> function can throw an error for ill-condition <code>x, y, z</code>. This will be properly handled instead of breaking the application. This <code>newstate</code> is also given to the function <code>color</code> that gets a new color for the new points.</p>
+<p>The <code>complete</code> function can throw an error for ill-conditioned <code>x, y, z</code>. This will be properly handled instead of breaking the application. This <code>newstate</code> is also given to the function <code>color</code> that gets a new color for the new points.</p>
 <p><a id='Function-Video-1'></a></p>
 <h2 id="function-video">Function Video</h2>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">InteractiveChaos</span><span class="p">,</span> <span class="n">Makie</span>
@@ -850,13 +863,13 @@
           </a>
         
         
-          <a href="../../advanced/" title="Advanced Documentation" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../highlight/" title="Trajectory Highlighter" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Advanced Documentation
+                Trajectory Highlighter
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
