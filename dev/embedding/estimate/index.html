@@ -822,7 +822,7 @@
 <h2 id="delay-time">Delay Time</h2>
 <p><a id='DelayEmbeddings.estimate_delay' href='#DelayEmbeddings.estimate_delay'>#</a>
 <strong><code>DelayEmbeddings.estimate_delay</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">estimate_delay</span><span class="o">(</span><span class="nt">s</span><span class="o">,</span> <span class="nt">method</span><span class="p">::</span><span class="nd">String</span> <span class="cp">[</span><span class="p">,</span> <span class="err">τ</span><span class="n">s</span><span class="o"> =</span> <span class="mi">1</span><span class="p">:</span><span class="mi">2</span><span class="p">:</span><span class="mi">100</span><span class="cp">]</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="err">τ</span>
+<div class="codehilite"><pre><span></span><span class="n">estimate_delay</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">method</span><span class="o">::</span><span class="n">String</span> <span class="p">[,</span> <span class="n">τs</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="mi">100</span><span class="p">];</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">τ</span>
 </pre></div>
 
 
@@ -838,7 +838,7 @@
 <p>The method <code>mi_min</code> is significantly more accurate than the others and also returns good results for most timeseries. It is however the slowest method (but still quite fast!).</p>
 <p><a id='DelayEmbeddings.exponential_decay_fit' href='#DelayEmbeddings.exponential_decay_fit'>#</a>
 <strong><code>DelayEmbeddings.exponential_decay_fit</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>exponential_decay_fit(x, y, weight = :equal) -&gt; τ
+<div class="codehilite"><pre><span></span><span class="n">exponential_decay_fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">weight</span> <span class="o">=</span> <span class="o">:</span><span class="n">equal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">τ</span>
 </pre></div>
 
 
@@ -848,7 +848,7 @@
 <h3 id="mutual-information">Mutual Information</h3>
 <p><a id='DelayEmbeddings.mutualinformation' href='#DelayEmbeddings.mutualinformation'>#</a>
 <strong><code>DelayEmbeddings.mutualinformation</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>mutualinformation(s, τs[; nbins, binwidth])
+<div class="codehilite"><pre><span></span><span class="n">mutualinformation</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">τs</span><span class="p">[;</span> <span class="n">nbins</span><span class="p">,</span> <span class="n">binwidth</span><span class="p">])</span>
 </pre></div>
 
 
@@ -866,7 +866,7 @@
 <h2 id="embedding-dimension">Embedding Dimension</h2>
 <p><a id='DelayEmbeddings.estimate_dimension' href='#DelayEmbeddings.estimate_dimension'>#</a>
 <strong><code>DelayEmbeddings.estimate_dimension</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">estimate_dimension</span><span class="o">(</span><span class="nt">s</span><span class="p">::</span><span class="nd">AbstractVector</span><span class="o">,</span> <span class="err">τ</span><span class="p">::</span><span class="nd">Int</span><span class="o">,</span> <span class="err">γ</span><span class="nt">s</span> <span class="o">=</span> <span class="nt">1</span><span class="p">:</span><span class="nd">5</span><span class="o">,</span> <span class="nt">method</span> <span class="o">=</span> <span class="s2">&quot;afnn&quot;</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
+<div class="codehilite"><pre><span></span><span class="n">estimate_dimension</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">τ</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">γs</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;afnn&quot;</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -909,7 +909,7 @@
 <h3 id="functions">Functions</h3>
 <p><a id='DelayEmbeddings.fnn' href='#DelayEmbeddings.fnn'>#</a>
 <strong><code>DelayEmbeddings.fnn</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">fnn</span><span class="o">(</span><span class="nt">s</span><span class="p">::</span><span class="nd">AbstractVector</span><span class="o">,</span> <span class="err">τ</span><span class="p">:</span><span class="nd">Int</span><span class="o">,</span> <span class="err">γ</span><span class="nt">s</span> <span class="o">=</span> <span class="nt">1</span><span class="p">:</span><span class="nd">5</span><span class="o">;</span> <span class="nt">rtol</span><span class="o">=</span><span class="nt">10</span><span class="p">.</span><span class="nc">0</span><span class="o">,</span> <span class="nt">atol</span><span class="o">=</span><span class="nt">2</span><span class="p">.</span><span class="nc">0</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span><span class="n">fnn</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">τ</span><span class="o">:</span><span class="kt">Int</span><span class="p">,</span> <span class="n">γs</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">;</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">2.0</span><span class="p">)</span>
 </pre></div>
 
 
@@ -922,7 +922,7 @@
 <p>[1] : M. Kennel <em>et al.</em>, "Determining embedding dimension for phase-space reconstruction using a geometrical construction", <em>Phys. Review A 45</em>(6), 3403-3411 (1992).</p>
 <p><a id='DelayEmbeddings.afnn' href='#DelayEmbeddings.afnn'>#</a>
 <strong><code>DelayEmbeddings.afnn</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>afnn(s::AbstractVector, τ:Int, γs = 1:5, metric=Euclidean())
+<div class="codehilite"><pre><span></span><span class="n">afnn</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">τ</span><span class="o">:</span><span class="kt">Int</span><span class="p">,</span> <span class="n">γs</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="n">Euclidean</span><span class="p">())</span>
 </pre></div>
 
 
@@ -937,7 +937,7 @@
 <p>[1] : Liangyue Cao, <a href="https://www.sciencedirect.com/science/article/pii/S0167278997001188?via%3Dihub">Physica D, pp. 43-50 (1997)</a></p>
 <p><a id='DelayEmbeddings.f1nn' href='#DelayEmbeddings.f1nn'>#</a>
 <strong><code>DelayEmbeddings.f1nn</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>f1nn(s::AbstractVector, τ:Int, γs = 1:5, metric = Euclidean())
+<div class="codehilite"><pre><span></span><span class="n">f1nn</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">τ</span><span class="o">:</span><span class="kt">Int</span><span class="p">,</span> <span class="n">γs</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="n">Euclidean</span><span class="p">())</span>
 </pre></div>
 
 
@@ -950,7 +950,7 @@
 <p>[1] : Anna Krakovská <em>et al.</em>, "Use of false nearest neighbours for selecting variables and embedding parameters for state space reconstruction", <em>J Complex Sys</em> 932750 (2015), DOI: 10.1155/2015/932750</p>
 <p><a id='DelayEmbeddings.stochastic_indicator' href='#DelayEmbeddings.stochastic_indicator'>#</a>
 <strong><code>DelayEmbeddings.stochastic_indicator</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>stochastic_indicator(s::AbstractVector, τ:Int, γs = 1:4) -&gt; E₂s
+<div class="codehilite"><pre><span></span><span class="n">stochastic_indicator</span><span class="p">(</span><span class="n">s</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">τ</span><span class="o">:</span><span class="kt">Int</span><span class="p">,</span> <span class="n">γs</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">E₂s</span>
 </pre></div>
 
 

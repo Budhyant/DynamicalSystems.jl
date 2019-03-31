@@ -848,7 +848,7 @@
 <p>In case you need all of the RQA-related functions (see below) and you don't want to write 10 lines of code to compute them all (since they are so many) we provide an all-in-one function that computes all of them and returns a NamedTuple of the results!</p>
 <p><a id='RecurrenceAnalysis.rqa' href='#RecurrenceAnalysis.rqa'>#</a>
 <strong><code>RecurrenceAnalysis.rqa</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>rqa(R; kwargs...)
+<div class="codehilite"><pre><span></span><span class="n">rqa</span><span class="p">(</span><span class="n">R</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -896,7 +896,7 @@
 <h3 id="classical-rqa-measures">Classical RQA Measures</h3>
 <p><a id='RecurrenceAnalysis.recurrencerate' href='#RecurrenceAnalysis.recurrencerate'>#</a>
 <strong><code>RecurrenceAnalysis.recurrencerate</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>recurrencerate(R[; theiler])
+<div class="codehilite"><pre><span></span><span class="n">recurrencerate</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -920,7 +920,7 @@ RR = \frac{1}{S} \sum R
 <p>[3] : N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</p>
 <p><a id='RecurrenceAnalysis.determinism' href='#RecurrenceAnalysis.determinism'>#</a>
 <strong><code>RecurrenceAnalysis.determinism</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>determinism(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">determinism</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -941,35 +941,35 @@ DET = \frac{\sum_{l=lmin}{l P(l)}}{\sum_{l=1}{l P(l)}} =
 <p><code>lmin</code> is set to 2 by default, and this calculation rules out all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.dl_average' href='#RecurrenceAnalysis.dl_average'>#</a>
 <strong><code>RecurrenceAnalysis.dl_average</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>dl_average(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">dl_average</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Calculate the average of the diagonal lines contained in the recurrence matrix <code>R</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.dl_max' href='#RecurrenceAnalysis.dl_max'>#</a>
 <strong><code>RecurrenceAnalysis.dl_max</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>dl_max(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">dl_max</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Calculate the longest diagonal line contained in the recurrence matrix <code>R</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.dl_entropy' href='#RecurrenceAnalysis.dl_entropy'>#</a>
 <strong><code>RecurrenceAnalysis.dl_entropy</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>dl_entropy(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">dl_entropy</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Calculate the Shannon entropy of the diagonal lines contained in the recurrence matrix <code>R</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.divergence' href='#RecurrenceAnalysis.divergence'>#</a>
 <strong><code>RecurrenceAnalysis.divergence</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>divergence(R[; theiler])
+<div class="codehilite"><pre><span></span><span class="n">divergence</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Calculate the divergence of the recurrence matrix <code>R</code> (actually the inverse of <a href="./#RecurrenceAnalysis.dl_max"><code>dl_max</code></a>).</p>
 <p><a id='RecurrenceAnalysis.trend' href='#RecurrenceAnalysis.trend'>#</a>
 <strong><code>RecurrenceAnalysis.trend</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>trend(R[; border=10, theiler])
+<div class="codehilite"><pre><span></span><span class="n">trend</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">border</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -996,7 +996,7 @@ TREND = 10^3\frac{\sum_{d=\tau}^{\tilde{N}}\delta[d]\left(RR[d]-\langle RR[d]\ra
 <h3 id="extended-rqa-measures">Extended RQA Measures</h3>
 <p><a id='RecurrenceAnalysis.laminarity' href='#RecurrenceAnalysis.laminarity'>#</a>
 <strong><code>RecurrenceAnalysis.laminarity</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>laminarity(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">laminarity</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -1017,7 +1017,7 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
 <p><code>lmin</code> is set to 2 by default, and this calculation rules out all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.trappingtime' href='#RecurrenceAnalysis.trappingtime'>#</a>
 <strong><code>RecurrenceAnalysis.trappingtime</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>trappingtime(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">trappingtime</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -1025,21 +1025,21 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
 <p>The trapping time is the average of the vertical line structures and thus equal to <a href="./#RecurrenceAnalysis.vl_average"><code>vl_average</code></a>.</p>
 <p><a id='RecurrenceAnalysis.vl_average' href='#RecurrenceAnalysis.vl_average'>#</a>
 <strong><code>RecurrenceAnalysis.vl_average</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>vl_average(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">vl_average</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Calculate the average of the vertical lines contained in the recurrence matrix <code>R</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.vl_max' href='#RecurrenceAnalysis.vl_max'>#</a>
 <strong><code>RecurrenceAnalysis.vl_max</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>vl_max(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">vl_max</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Calculate the longest vertical line contained in the recurrence matrix <code>R</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.vl_entropy' href='#RecurrenceAnalysis.vl_entropy'>#</a>
 <strong><code>RecurrenceAnalysis.vl_entropy</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>vl_entropy(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">vl_entropy</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -1049,7 +1049,7 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
 <h3 id="recurrence-time-measures">Recurrence Time Measures</h3>
 <p><a id='RecurrenceAnalysis.meanrecurrencetime' href='#RecurrenceAnalysis.meanrecurrencetime'>#</a>
 <strong><code>RecurrenceAnalysis.meanrecurrencetime</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>meanrecurrencetime(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">meanrecurrencetime</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -1057,7 +1057,7 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
 <p>Equivalent to <a href="./#RecurrenceAnalysis.rt_average"><code>rt_average</code></a>.</p>
 <p><a id='RecurrenceAnalysis.nmprt' href='#RecurrenceAnalysis.nmprt'>#</a>
 <strong><code>RecurrenceAnalysis.nmprt</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>nmprt(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">nmprt</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -1067,14 +1067,14 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
 <p>[1] : E.J. Ngamga <em>et al.</em> "Recurrence analysis of strange nonchaotic dynamics", <em>Physical Review E</em>, 75(3), 036222(1-8), 2007, DOI:10.1103/physreve.75.036222</p>
 <p><a id='RecurrenceAnalysis.rt_entropy' href='#RecurrenceAnalysis.rt_entropy'>#</a>
 <strong><code>RecurrenceAnalysis.rt_entropy</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>rt_entropy(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">rt_entropy</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
 <p>Calculate the Shannon entropy of the recurrence times contained in the recurrence matrix <code>R</code>, ruling out the lines shorter than <code>lmin</code> (2 by default) and all the points inside the Theiler window (see <a href="./#RecurrenceAnalysis.rqa"><code>rqa</code></a> for the default values and usage of the keyword argument <code>theiler</code>).</p>
 <p><a id='RecurrenceAnalysis.rt_average' href='#RecurrenceAnalysis.rt_average'>#</a>
 <strong><code>RecurrenceAnalysis.rt_average</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>rt_average(R[; lmin=2, theiler])
+<div class="codehilite"><pre><span></span><span class="n">rt_average</span><span class="p">(</span><span class="n">R</span><span class="p">[;</span> <span class="n">lmin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">theiler</span><span class="p">])</span>
 </pre></div>
 
 
@@ -1118,11 +1118,11 @@ LAM = \frac{\sum_{v=lmin}{v P(l)}}{\sum_{v=1}{v P(v)}} =
 <p>The functions that we list in this page internally compute histograms of some recurrence structures, like e.g. the vertical lengths. You can access these values directly with the following function:</p>
 <p><a id='RecurrenceAnalysis.recurrencestructures' href='#RecurrenceAnalysis.recurrencestructures'>#</a>
 <strong><code>RecurrenceAnalysis.recurrencestructures</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">recurrencestructures</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">AbstractRecurrenceMatrix</span><span class="o">;</span>
-                         <span class="nt">diagonal</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
-                         <span class="nt">vertical</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
-                         <span class="nt">recurrencetimes</span><span class="o">=</span><span class="nt">true</span><span class="o">,</span>
-                         <span class="nt">kwargs</span><span class="o">...)</span>
+<div class="codehilite"><pre><span></span><span class="n">recurrencestructures</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="n">AbstractRecurrenceMatrix</span><span class="p">;</span>
+                         <span class="n">diagonal</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span>
+                         <span class="n">vertical</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span>
+                         <span class="n">recurrencetimes</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span>
+                         <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 

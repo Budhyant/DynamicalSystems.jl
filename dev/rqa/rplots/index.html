@@ -815,7 +815,7 @@ R[i, j] = \begin{cases}
 <p>If <span><span class="MathJax_Preview">x\equiv y</span><script type="math/tex">x\equiv y</script></span> then <span><span class="MathJax_Preview">R</span><script type="math/tex">R</script></span> is called recurrence matrix, otherwise it is called cross-recurrence matrix. There is also the joint-recurrence variant, see below. With <code>RecurrenceAnalysis</code> you can use the following functions to access these matrices</p>
 <p><a id='RecurrenceAnalysis.RecurrenceMatrix' href='#RecurrenceAnalysis.RecurrenceMatrix'>#</a>
 <strong><code>RecurrenceAnalysis.RecurrenceMatrix</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span>RecurrenceMatrix(x, ε; kwargs...)
+<div class="codehilite"><pre><span></span><span class="n">RecurrenceMatrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ε</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -834,7 +834,7 @@ R[i, j] = \begin{cases}
 <p>[2] : N. Marwan &amp; C.L. Webber, "Mathematical and computational foundations of recurrence quantifications", in: Webber, C.L. &amp; N. Marwan (eds.), <em>Recurrence Quantification Analysis. Theory and Best Practices</em>, Springer, pp. 3-43 (2015).</p>
 <p><a id='RecurrenceAnalysis.CrossRecurrenceMatrix' href='#RecurrenceAnalysis.CrossRecurrenceMatrix'>#</a>
 <strong><code>RecurrenceAnalysis.CrossRecurrenceMatrix</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span>CrossRecurrenceMatrix(x, y, ε; kwargs...)
+<div class="codehilite"><pre><span></span><span class="n">CrossRecurrenceMatrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ε</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -843,7 +843,7 @@ R[i, j] = \begin{cases}
 <p>See <a href="./#RecurrenceAnalysis.RecurrenceMatrix"><code>RecurrenceMatrix</code></a> for details, references and keywords. See also: <a href="./#RecurrenceAnalysis.JointRecurrenceMatrix"><code>JointRecurrenceMatrix</code></a>.</p>
 <p><a id='RecurrenceAnalysis.JointRecurrenceMatrix' href='#RecurrenceAnalysis.JointRecurrenceMatrix'>#</a>
 <strong><code>RecurrenceAnalysis.JointRecurrenceMatrix</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span>JointRecurrenceMatrix(x, y, ε; kwargs...)
+<div class="codehilite"><pre><span></span><span class="n">JointRecurrenceMatrix</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">ε</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -865,7 +865,7 @@ R[i, j] = \begin{cases}
 
 
 <div class="codehilite"><pre><span></span>      RecurrenceMatrix of size (2001, 2001) with 383597 entries
-    +------------------------------------------------------------+
+    +------------------------------------------------------------+ 
     |         ..:&#39;.::&#39;       .::&#39;.:&#39;..:&#39;       ..:&#39;.::    ..  .:&#39;|
     |   ..  .::&#39;.:&#39;&#39;   .:&#39; .:&#39;..&#39;&#39;.::&#39;   .   .::&#39;.:&#39;    .:&#39;..:&#39;  |
     | .:&#39;:.:&#39;:::&#39; .  .:&#39;.::&#39;.::&#39;.:&#39;    .:&#39;.::&#39;.::&#39;..  ::&#39;.::&#39;.:&#39; |
@@ -891,7 +891,7 @@ R[i, j] = \begin{cases}
     |:::&#39;.::&#39;.:&#39;&#39;    :::.::&#39;..  ::&#39;    ::&#39;.::&#39;.:&#39;     :::.:&#39;&#39;    |
     |::::::::&#39;       .::&#39;.::&#39;          .::::::&#39;       .::&#39;.::    |
     |::::::&#39;..       ::.::&#39;            :::::&#39;.        ::.:&#39;      |
-    +------------------------------------------------------------+
+    +------------------------------------------------------------+ 
 </pre></div>
 
 
@@ -915,7 +915,7 @@ R[i, j] = \begin{cases}
 <p>The above simple plotting functionality is possible through the package <a href="https://github.com/Evizero/UnicodePlots.jl"><code>UnicodePlots</code></a>. The following function creates the plot:</p>
 <p><a id='RecurrenceAnalysis.recurrenceplot' href='#RecurrenceAnalysis.recurrenceplot'>#</a>
 <strong><code>RecurrenceAnalysis.recurrenceplot</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>recurrenceplot([io,] R; minh = 25, maxh = 0.5, ascii, kwargs...) -&gt; u
+<div class="codehilite"><pre><span></span><span class="n">recurrenceplot</span><span class="p">([</span><span class="n">io</span><span class="p">,]</span> <span class="n">R</span><span class="p">;</span> <span class="n">minh</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">maxh</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">ascii</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">u</span>
 </pre></div>
 
 
@@ -930,7 +930,7 @@ R[i, j] = \begin{cases}
 
 
 <div class="codehilite"><pre><span></span>      RecurrenceMatrix of size (2001, 2001) with 383597 entries
-    ┌────────────────────────────────────────────────────────────┐
+    ┌────────────────────────────────────────────────────────────┐ 
     │⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠞⠃⢀⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠁⣠⡶⠋⢀⣤⠞⠁⠀⠀⠀⠀⠀⠀⠀⢀⣤⠞⠁⣀⡴⠟⠀⠀⠀⠀⢀⣤⠀⠀⣀⡴⠛│
     │⠀⠀⠀⢀⡀⠀⠀⣀⣴⠟⠁⣠⡶⠋⠁⠀⠀⠀⣀⡴⠋⠀⣠⡾⠋⢀⣠⠘⠉⣀⡴⠟⠁⠀⠀⠀⢀⠀⠀⠀⣠⡶⠟⠁⣠⡾⠋⠀⠀⠀⠀⣠⡶⠋⢀⣠⡾⠋⠀⠀│
     │⠀⣠⡶⠛⢁⣠⡾⠋⢁⣴⠾⠋⠀⡀⠀⠀⢠⡾⠋⢀⣴⠟⠋⣀⡴⠟⠁⢠⡾⠋⠀⠀⠀⠀⢠⡾⠋⢀⣴⡾⠋⢀⣴⠞⠉⢀⡀⠀⠀⣴⡾⠋⣀⣴⠟⠉⣀⡴⠋⠀│
@@ -956,7 +956,7 @@ R[i, j] = \begin{cases}
     │⣁⣴⡿⠋⣠⣴⠟⠋⣠⡴⠛⠁⠀⠀⠀⠀⣼⠟⢉⣠⡾⠟⠁⣠⠄⠀⠀⢰⠟⠁⠀⠀⠀⠀⢰⡿⠋⣠⣶⠟⠁⣠⡶⠋⠀⠀⠀⠀⠀⣾⠟⢁⣠⡾⠋⠁⠀⠀⠀⠀│
     │⡿⢋⣴⣾⠟⢁⣴⡾⠋⠀⠀⠀⠀⠀⠀⠀⢠⣴⡿⠋⣀⣴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠟⣁⣴⡿⠋⠀⠀⠀⠀⠀⠀⠀⣠⣴⡿⠋⣀⣴⠆⠀⠀⠀⠀│
     │⣾⣿⢟⣡⣾⡿⠋⣀⡀⠀⠀⠀⠀⠀⠀⠀⠻⢋⣤⣾⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⢋⣥⣾⠟⠉⣀⠀⠀⠀⠀⠀⠀⠀⠀⠟⢋⣤⡾⠋⠀⠀⠀⠀⠀⠀│
-    └────────────────────────────────────────────────────────────┘
+    └────────────────────────────────────────────────────────────┘ 
 </pre></div>
 
 
@@ -968,14 +968,14 @@ R[i, j] = \begin{cases}
 <p>There are two more ways to plot a recurrence matrix using <code>RecurrenceAnalysis</code>:</p>
 <p><a id='RecurrenceAnalysis.coordinates' href='#RecurrenceAnalysis.coordinates'>#</a>
 <strong><code>RecurrenceAnalysis.coordinates</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>coordinates(R) -&gt; xs, ys
+<div class="codehilite"><pre><span></span><span class="n">coordinates</span><span class="p">(</span><span class="n">R</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span>
 </pre></div>
 
 
 <p>Return the coordinates of the recurrence points of <code>R</code> (in indices).</p>
 <p><a id='RecurrenceAnalysis.grayscale' href='#RecurrenceAnalysis.grayscale'>#</a>
 <strong><code>RecurrenceAnalysis.grayscale</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>grayscale(R [, bwcode]; width::Int, height::Int, exactsize=false)
+<div class="codehilite"><pre><span></span><span class="n">grayscale</span><span class="p">(</span><span class="n">R</span> <span class="p">[,</span> <span class="n">bwcode</span><span class="p">];</span> <span class="n">width</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">height</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">exactsize</span><span class="o">=</span><span class="kc">false</span><span class="p">)</span>
 </pre></div>
 
 
@@ -998,6 +998,12 @@ R[i, j] = \begin{cases}
 <span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">Rg</span> <span class="o">=</span> <span class="n">grayscale</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 <span class="n">imshow</span><span class="p">(</span><span class="n">Rg</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s">&quot;binary_r&quot;</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">R</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">R</span><span class="p">)[</span><span class="mi">2</span><span class="p">]))</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span>┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
+│   caller = top-level scope at none:0
+└ @ Core none:0
 </pre></div>
 
 
@@ -1053,6 +1059,12 @@ R[i, j] = \begin{cases}
 </pre></div>
 
 
+<div class="codehilite"><pre><span></span>┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
+│   caller = top-level scope at none:18
+└ @ Core ./none:18
+</pre></div>
+
+
 <p><img alt="" src="../rplotexamples.png" /></p>
 <p>On the left we see long (infinite) diagonals repeated over and over for different times. This is the case for periodic systems as they visit exactly the same area on the phase space again and again. The distance between the offset diagonals also coincides with the periodicity of the system, which is around <code>t ≈ 4</code>.</p>
 <p>On the right we see a structure typical of chaotic motion on a strange attractor such as the one of the Lorenz system: the orbit visits neighborhoods of previous points but then quickly diverges again. This results in many small diagonal lines.</p>
@@ -1061,7 +1073,7 @@ R[i, j] = \begin{cases}
 <p>The distance function used in <a href="./#RecurrenceAnalysis.RecurrenceMatrix"><code>RecurrenceMatrix</code></a> and co. can be specified either as a string or as any <code>Metric</code> instance from <a href="https://github.com/JuliaStats/Distances.jl"><code>Distances</code></a>. In addition, the following function returns a matrix with the cross-distances across all points in one or two trajectories:</p>
 <p><a id='RecurrenceAnalysis.distancematrix' href='#RecurrenceAnalysis.distancematrix'>#</a>
 <strong><code>RecurrenceAnalysis.distancematrix</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>distancematrix(x [, y = x], metric = &quot;euclidean&quot;)
+<div class="codehilite"><pre><span></span><span class="n">distancematrix</span><span class="p">(</span><span class="n">x</span> <span class="p">[,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="p">],</span> <span class="n">metric</span> <span class="o">=</span> <span class="s">&quot;euclidean&quot;</span><span class="p">)</span>
 </pre></div>
 
 

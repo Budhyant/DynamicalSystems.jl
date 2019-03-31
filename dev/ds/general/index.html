@@ -857,7 +857,7 @@
 <h2 id="creating-a-dynamical-system">Creating a Dynamical System</h2>
 <p><a id='DynamicalSystemsBase.DynamicalSystem' href='#DynamicalSystemsBase.DynamicalSystem'>#</a>
 <strong><code>DynamicalSystemsBase.DynamicalSystem</code></strong> &mdash; <em>Type</em>.</p>
-<div class="codehilite"><pre><span></span>DynamicalSystem
+<div class="codehilite"><pre><span></span><span class="n">DynamicalSystem</span>
 </pre></div>
 
 
@@ -927,22 +927,22 @@ ODEProblem(continuous_dynamical_system, tspan, args...)
 <p>The following functions are defined for convenience for any dynamical system:</p>
 <p><a id='DynamicalSystemsBase.dimension' href='#DynamicalSystemsBase.dimension'>#</a>
 <strong><code>DynamicalSystemsBase.dimension</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>dimension(thing) -&gt; D
+<div class="codehilite"><pre><span></span><span class="n">dimension</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">D</span>
 </pre></div>
 
 
 <p>Return the dimension of the <code>thing</code>, in the sense of state-space dimensionality.</p>
 <p><a id='DynamicalSystemsBase.jacobian' href='#DynamicalSystemsBase.jacobian'>#</a>
 <strong><code>DynamicalSystemsBase.jacobian</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>jacobian(ds::DynamicalSystem, u = ds.u0, t = ds.t0)
+<div class="codehilite"><pre><span></span><span class="n">jacobian</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">u0</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">t0</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Return the jacobian of the system at <code>u</code>, at <code>t</code>.</p>
 <p><a id='DynamicalSystemsBase.set_parameter!' href='#DynamicalSystemsBase.set_parameter!'>#</a>
 <strong><code>DynamicalSystemsBase.set_parameter!</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>set_parameter!(ds::DynamicalSystem, index, value)
-set_parameter!(ds::DynamicalSystem, values)
+<div class="codehilite"><pre><span></span><span class="n">set_parameter!</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="n">set_parameter!</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
 </pre></div>
 
 

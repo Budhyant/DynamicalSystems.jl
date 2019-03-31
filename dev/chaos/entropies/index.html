@@ -826,7 +826,7 @@
 <p>The main way of computing entropies in <strong>DynamicalSystems.jl</strong> is the "generalized entropy":</p>
 <p><a id='ChaosTools.genentropy' href='#ChaosTools.genentropy'>#</a>
 <strong><code>ChaosTools.genentropy</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">genentropy</span><span class="o">(</span><span class="err">α</span><span class="o">,</span> <span class="err">ε</span><span class="o">,</span> <span class="nt">dataset</span><span class="p">::</span><span class="nd">AbstractDataset</span><span class="o">;</span> <span class="nt">base</span> <span class="o">=</span> <span class="nt">e</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span><span class="n">genentropy</span><span class="p">(</span><span class="n">α</span><span class="p">,</span> <span class="n">ε</span><span class="p">,</span> <span class="n">dataset</span><span class="o">::</span><span class="n">AbstractDataset</span><span class="p">;</span> <span class="n">base</span> <span class="o">=</span> <span class="nb">e</span><span class="p">)</span>
 </pre></div>
 
 
@@ -876,7 +876,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>Based on the definition of the <a href="#ChaosTools.genentropy">generalized entropy</a>, one can calculate an appropriate dimension, called <em>generalized dimension</em>:</p>
 <p><a id='ChaosTools.generalized_dim' href='#ChaosTools.generalized_dim'>#</a>
 <strong><code>ChaosTools.generalized_dim</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>generalized_dim(α, dataset [, sizes]) -&gt; D_α
+<div class="codehilite"><pre><span></span><span class="n">generalized_dim</span><span class="p">(</span><span class="n">α</span><span class="p">,</span> <span class="n">dataset</span> <span class="p">[,</span> <span class="n">sizes</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">D_α</span>
 </pre></div>
 
 
@@ -903,7 +903,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </div>
 <p><a id='ChaosTools.estimate_boxsizes' href='#ChaosTools.estimate_boxsizes'>#</a>
 <strong><code>ChaosTools.estimate_boxsizes</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">estimate_boxsizes</span><span class="o">(</span><span class="nt">dataset</span><span class="p">::</span><span class="nd">AbstractDataset</span><span class="o">;</span> <span class="nt">k</span><span class="p">::</span><span class="nd">Int</span> <span class="o">=</span> <span class="nt">12</span><span class="o">,</span> <span class="nt">z</span> <span class="o">=</span> <span class="nt">-1</span><span class="o">,</span> <span class="nt">w</span> <span class="o">=</span> <span class="nt">1</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span><span class="n">estimate_boxsizes</span><span class="p">(</span><span class="n">dataset</span><span class="o">::</span><span class="n">AbstractDataset</span><span class="p">;</span> <span class="n">k</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">12</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 
@@ -912,7 +912,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>"Magnitude" here stands for order of magnitude, i.e. <code>round(log10(x))</code>.</p>
 <p><a id='ChaosTools.linear_regions' href='#ChaosTools.linear_regions'>#</a>
 <strong><code>ChaosTools.linear_regions</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>linear_regions(x, y; dxi::Int = 1, tol = 0.2) -&gt; (lrs, tangents)
+<div class="codehilite"><pre><span></span><span class="n">linear_regions</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">dxi</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">lrs</span><span class="p">,</span> <span class="n">tangents</span><span class="p">)</span>
 </pre></div>
 
 
@@ -921,7 +921,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>Return the indices of <code>x</code> that correspond to linear regions, <code>lrs</code>, and the approximated <code>tangents</code> at each region. <code>lrs</code> is a vector of <code>Int</code>. Notice that <code>tangents</code> is <em>not</em> accurate: it is not recomputed at every step, but only when its error exceeds the tolerance <code>tol</code>! Use <a href="./#ChaosTools.linear_region"><code>linear_region</code></a> to obtain a correct estimate for the slope of the largest linear region.</p>
 <p><a id='ChaosTools.linear_region' href='#ChaosTools.linear_region'>#</a>
 <strong><code>ChaosTools.linear_region</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>linear_region(x, y; dxi::Int = 1, tol = 0.2) -&gt; ([ind1, ind2], slope)
+<div class="codehilite"><pre><span></span><span class="n">linear_region</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">dxi</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">tol</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">([</span><span class="n">ind1</span><span class="p">,</span> <span class="n">ind2</span><span class="p">],</span> <span class="n">slope</span><span class="p">)</span>
 </pre></div>
 
 
@@ -953,19 +953,19 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 
 
 <div class="codehilite"><pre><span></span>15-element Array{Float64,1}:
- 9.203093741524961
- 9.192836189007936
- 9.175263277513562
- 9.11505930200447
- 8.96800482792302
- 8.650506643435117
- 8.093472893003044
- 7.329635456822501
- 6.440181060621013
- 5.520699459712151
+ 9.203093741524961 
+ 9.192836189007936 
+ 9.175263277513562 
+ 9.11505930200447  
+ 8.96800482792302  
+ 8.650506643435117 
+ 8.093472893003044 
+ 7.329635456822501 
+ 6.440181060621013 
+ 5.520699459712151 
  4.5223766061173905
  3.5423893065177388
- 2.688046235608927
+ 2.688046235608927 
  1.9474099557575748
  0.8398578086498265
 </pre></div>
@@ -1026,7 +1026,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>The permutation entropy is introduced by C. Bandt and B. Pompe as a "A Natural Complexity Measure for Timeseries", which directly applies to arbitrary real-world data and is particularly useful in the presence of dynamical or observational noise.</p>
 <p><a id='ChaosTools.permentropy' href='#ChaosTools.permentropy'>#</a>
 <strong><code>ChaosTools.permentropy</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">permentropy</span><span class="o">(</span><span class="nt">x</span><span class="p">::</span><span class="nd">AbstractVector</span><span class="o">,</span> <span class="nt">order</span> <span class="cp">[</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="cp">]</span><span class="o">;</span> <span class="nt">base</span> <span class="o">=</span> <span class="nt">e</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span><span class="n">permentropy</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">,</span> <span class="n">order</span> <span class="p">[,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">1</span><span class="p">];</span> <span class="n">base</span> <span class="o">=</span> <span class="nb">e</span><span class="p">)</span>
 </pre></div>
 
 
@@ -1060,6 +1060,18 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
+<div class="codehilite"><pre><span></span>┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
+│   caller = top-level scope at none:0
+└ @ Core none:0
+┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
+│   caller = top-level scope at none:0
+└ @ Core none:0
+┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
+│   caller = top-level scope at none:0
+└ @ Core none:0
+</pre></div>
+
+
 <p><img alt="" src="../permentropy.png" /></p>
 <div class="admonition info">
 <p class="admonition-title">Permutation Entropy performance</p>
@@ -1069,7 +1081,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <h3 id="kaplan-yorke-dimension">Kaplan-Yorke Dimension</h3>
 <p><a id='ChaosTools.kaplanyorke_dim' href='#ChaosTools.kaplanyorke_dim'>#</a>
 <strong><code>ChaosTools.kaplanyorke_dim</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>kaplanyorke_dim(lyapunovs::AbstractVector)
+<div class="codehilite"><pre><span></span><span class="n">kaplanyorke_dim</span><span class="p">(</span><span class="n">lyapunovs</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span>
 </pre></div>
 
 
@@ -1087,7 +1099,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.2587085990590254
+<div class="codehilite"><pre><span></span>1.2587064930567442
 </pre></div>
                 
                   

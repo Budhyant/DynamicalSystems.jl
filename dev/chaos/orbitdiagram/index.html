@@ -790,7 +790,7 @@
 <p>An orbit diagram (also called bifurcation diagram) is a way to visualize the asymptotic behavior of a map, when a parameter of the system is changed</p>
 <p><a id='ChaosTools.orbitdiagram' href='#ChaosTools.orbitdiagram'>#</a>
 <strong><code>ChaosTools.orbitdiagram</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">orbitdiagram</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">DiscreteDynamicalSystem</span><span class="o">,</span> <span class="nt">i</span><span class="o">,</span> <span class="nt">p_index</span><span class="o">,</span> <span class="nt">pvalues</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
+<div class="codehilite"><pre><span></span><span class="n">orbitdiagram</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DiscreteDynamicalSystem</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">p_index</span><span class="p">,</span> <span class="n">pvalues</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -843,7 +843,7 @@
 <p>Also called <a href="https://en.wikipedia.org/wiki/Poincar%C3%A9_map">Poincaré map</a> is a technique to reduce a continuous system into a discrete map with 1 less dimension. We are doing this using the function:</p>
 <p><a id='ChaosTools.poincaresos' href='#ChaosTools.poincaresos'>#</a>
 <strong><code>ChaosTools.poincaresos</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">poincaresos</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">ContinuousDynamicalSystem</span><span class="o">,</span> <span class="nt">plane</span><span class="o">,</span> <span class="nt">tfinal</span> <span class="o">=</span> <span class="nt">1000</span><span class="p">.</span><span class="nc">0</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
+<div class="codehilite"><pre><span></span><span class="n">poincaresos</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">ContinuousDynamicalSystem</span><span class="p">,</span> <span class="n">plane</span><span class="p">,</span> <span class="n">tfinal</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -961,8 +961,8 @@ a_1u_1 + \dots + a_Du_D = \mathbf{a}\cdot\mathbf{u}=b
 <p>We have bundled this process in the following function:</p>
 <p><a id='ChaosTools.produce_orbitdiagram' href='#ChaosTools.produce_orbitdiagram'>#</a>
 <strong><code>ChaosTools.produce_orbitdiagram</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>produce_orbitdiagram(ds::ContinuousDynamicalSystem, plane, i::Int,
-                     p_index, pvalues; kwargs...)
+<div class="codehilite"><pre><span></span><span class="n">produce_orbitdiagram</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">ContinuousDynamicalSystem</span><span class="p">,</span> <span class="n">plane</span><span class="p">,</span> <span class="n">i</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span>
+                     <span class="n">p_index</span><span class="p">,</span> <span class="n">pvalues</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 

@@ -728,8 +728,8 @@ p_{i}' &= p_i + k_i\sin(\theta_i) - \Gamma \left[
 <p>[1] : H. Kantz &amp; P. Grassberger, J. Phys. A <strong>21</strong>, pp 127–133 (1988)</p>
 <p><a id='DynamicalSystemsBase.Systems.double_pendulum' href='#DynamicalSystemsBase.Systems.double_pendulum'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.double_pendulum</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>double_pendulum(u0 = [π/2, 0, 0, rand()];
-                G=10.0, L1 = 1.0, L2 = 1.0, M1 = 1.0, M2 = 1.0)
+<div class="codehilite"><pre><span></span><span class="n">double_pendulum</span><span class="p">(</span><span class="n">u0</span> <span class="o">=</span> <span class="p">[</span><span class="nb">π</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rand</span><span class="p">()];</span>
+                <span class="n">G</span><span class="o">=</span><span class="mf">10.0</span><span class="p">,</span> <span class="n">L1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">L2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">M1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">M2</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
 </pre></div>
 
 
@@ -740,7 +740,7 @@ p_{i}' &= p_i + k_i\sin(\theta_i) - \Gamma \left[
 <p>The parameter container has the parameters in the same order as stated in this function's documentation string.</p>
 <p><a id='DynamicalSystemsBase.Systems.duffing' href='#DynamicalSystemsBase.Systems.duffing'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.duffing</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>duffing(u0 = [rand(), rand(), 0]; ω = 2.2, f = 27.0, d = 0.2, β = 1)
+<div class="codehilite"><pre><span></span><span class="n">duffing</span><span class="p">(</span><span class="n">u0</span> <span class="o">=</span> <span class="p">[</span><span class="n">rand</span><span class="p">(),</span> <span class="n">rand</span><span class="p">(),</span> <span class="mi">0</span><span class="p">];</span> <span class="n">ω</span> <span class="o">=</span> <span class="mf">2.2</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">27.0</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">β</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 
@@ -806,7 +806,7 @@ y_{n+1} & = bx_n
 <p>[1] : M. Hénon, Commun.Math. Phys. <strong>50</strong>, pp 69 (1976)</p>
 <p><a id='DynamicalSystemsBase.Systems.henonheiles' href='#DynamicalSystemsBase.Systems.henonheiles'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.henonheiles</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>henonheiles(u0=[0, -0.25, 0.42081,0])
+<div class="codehilite"><pre><span></span><span class="n">henonheiles</span><span class="p">(</span><span class="n">u0</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.42081</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 
 
@@ -901,7 +901,7 @@ x_{n+1} = rx_n(1-x_n)
 <p>[1] : E. N. Lorenz, J. atmos. Sci. <strong>20</strong>, pp 130 (1963)</p>
 <p><a id='DynamicalSystemsBase.Systems.lorenz96' href='#DynamicalSystemsBase.Systems.lorenz96'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.lorenz96</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">lorenz96</span><span class="o">(</span><span class="nt">N</span><span class="p">::</span><span class="nd">Int</span><span class="o">,</span> <span class="nt">u0</span> <span class="o">=</span> <span class="nt">rand</span><span class="o">(</span><span class="nt">M</span><span class="o">);</span> <span class="nt">F</span><span class="o">=</span><span class="nt">0</span><span class="p">.</span><span class="nc">01</span><span class="o">)</span>
+<div class="codehilite"><pre><span></span><span class="n">lorenz96</span><span class="p">(</span><span class="n">N</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">u0</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">M</span><span class="p">);</span> <span class="n">F</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
 </pre></div>
 
 
@@ -939,7 +939,7 @@ x_{n+1} = rx_n(1-x_n)
 <p>Three dimensional conservative continuous system, taken from the book "Elegant Chaos" by J. C. Sprott.</p>
 <p><a id='DynamicalSystemsBase.Systems.qbh' href='#DynamicalSystemsBase.Systems.qbh'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.qbh</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>qbh([u0]; A=1.0, B=0.55, D=0.4)
+<div class="codehilite"><pre><span></span><span class="n">qbh</span><span class="p">([</span><span class="n">u0</span><span class="p">];</span> <span class="n">A</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
 </pre></div>
 
 
@@ -1027,7 +1027,7 @@ H(p_0, p_2, q_0, q_2) = \frac{A}{2}\left(p_0^2+p_2^2\right)+\frac{A}{2}\left(q_0
 <p>[1] : O. E. Rössler, Phys. Lett. <strong>57A</strong>, pp 397 (1976)</p>
 <p><a id='DynamicalSystemsBase.Systems.shinriki' href='#DynamicalSystemsBase.Systems.shinriki'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.shinriki</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>shinriki(u0 = [-2, 0, 0.2]; R1 = 22.0)
+<div class="codehilite"><pre><span></span><span class="n">shinriki</span><span class="p">(</span><span class="n">u0</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">];</span> <span class="n">R1</span> <span class="o">=</span> <span class="mf">22.0</span><span class="p">)</span>
 </pre></div>
 
 

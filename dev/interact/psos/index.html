@@ -769,20 +769,22 @@
 <h2 id="docstrings">Docstrings</h2>
 <p><a id='InteractiveChaos.interactive_poincaresos' href='#InteractiveChaos.interactive_poincaresos'>#</a>
 <strong><code>InteractiveChaos.interactive_poincaresos</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>interactive_poincaresos(cds, plane, idxs, complete; kwargs...)
+<div class="codehilite"><pre><span></span><span class="n">interactive_poincaresos</span><span class="p">(</span><span class="n">cds</span><span class="p">,</span> <span class="n">plane</span><span class="p">,</span> <span class="n">idxs</span><span class="p">,</span> <span class="n">complete</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Open an interactive application for exploring a Poincaré surface of section (PSOS) of the continuous dynamical system <code>cds</code>. Return an observable containing the latest initial state created by <code>complete</code>, as well as its color.</p>
 <p>The <code>plane</code> can only be the <code>Tuple</code> type accepted by <a href="../../chaos/orbitdiagram/#ChaosTools.poincaresos"><code>poincaresos</code></a>, i.e. <code>(i, r)</code> for the <code>i</code>th variable crossing the value <code>r</code>. <code>idxs</code> gives the two indices of the variables to be displayed, since the PSOS plot is always a 2D scatterplot. I.e. <code>idxs = (1, 2)</code> will plot the 1st versus 2nd variable of the PSOS. It follows that <code>plane[1] ∉ idxs</code> must be true.</p>
 <p><code>complete</code> is a three-argument <strong>function</strong> that completes the new initial state during interactive use, see below.</p>
+<p>The function returns: an observable containing the latest initial <code>state</code> and the <code>scene</code> that is plotted. The scatter plot is <code>scene.children[2]</code>.</p>
 <p><strong>Keyword Arguments</strong></p>
 <ul>
 <li><code>direction, rootkw</code> : Same use as in <a href="../../chaos/orbitdiagram/#ChaosTools.poincaresos"><code>poincaresos</code></a>.</li>
 <li><code>tfinal</code> : A 2-element tuple for the range of values for the total integration time (chosen interactively).</li>
 <li><code>Ttr</code> : A 2-element tuple for the range of values for the transient integration time (chosen interactively).</li>
 <li><code>markersizes = (-4, -1)</code> : A 2-element tuple for the range of the marker sizes (which scale exponentially: the actual size is <code>10.0^markersize</code>).</li>
-<li><code>color</code> : A <em>function</em> of the system's initial condition, that returns a color to plot the new points with. A random color is chosen by default.</li>
+<li><code>color</code> : A <em>function</em> of the system's initial condition, that returns a color to plot the new points with. A random color is chosen by default. Notice that for type stability reasons this function must return an instance of <code>RGBf0(red, green, blue)</code>.</li>
+<li><code>labels = ("u₁" , "u₂")</code> : Axis labels.</li>
 <li><code>diffeq...</code> : Any extra keyword arguments are passed into <code>init</code> of DiffEq.</li>
 </ul>
 <p><strong>Interaction</strong></p>
@@ -827,7 +829,7 @@
 
 <p><a id='Video-Tutorial-1'></a></p>
 <h2 id="video-tutorial">Video Tutorial</h2>
-<p>Coming soon.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=SozXxa7blJs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 
                   
                 

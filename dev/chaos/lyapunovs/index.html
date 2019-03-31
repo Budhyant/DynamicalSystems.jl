@@ -762,7 +762,7 @@
 <p>The function <code>lyapunovs</code> calculates the entire spectrum of the Lyapunov exponents of a system:</p>
 <p><a id='ChaosTools.lyapunovs' href='#ChaosTools.lyapunovs'>#</a>
 <strong><code>ChaosTools.lyapunovs</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">lyapunovs</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">DynamicalSystem</span><span class="o">,</span> <span class="nt">N</span> <span class="cp">[</span><span class="p">,</span> <span class="nx">k</span><span class="nl">::Int</span> <span class="o">|</span> <span class="nx">Q0</span><span class="cp">]</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="err">λ</span><span class="nt">s</span>
+<div class="codehilite"><pre><span></span><span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">N</span> <span class="p">[,</span> <span class="n">k</span><span class="o">::</span><span class="kt">Int</span> <span class="o">|</span> <span class="n">Q0</span><span class="p">];</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">λs</span>
 </pre></div>
 
 
@@ -803,9 +803,9 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-  0.43230877590469663
-  0.3720178101945554
- -3.2966988803905646
+  0.43246327735438383
+  0.37214153632702973
+ -3.296977107972726  
 </pre></div>
 
 
@@ -816,9 +816,9 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-   0.9867147845019449
-   0.00198287107656513
- -14.655358992616012
+   0.9884897734689997   
+  -0.0006899355214918432
+ -14.654461171420383    
 </pre></div>
 
 
@@ -838,7 +838,7 @@
 <p>It is possible to get only the maximum Lyapunov exponent simply by giving <code>1</code> as the third argument of <a href="./#ChaosTools.lyapunovs"><code>lyapunovs</code></a>. However, there is a second algorithm that allows you to do the same thing, which is offered by the function <code>lyapunov</code>:</p>
 <p><a id='ChaosTools.lyapunov' href='#ChaosTools.lyapunov'>#</a>
 <strong><code>ChaosTools.lyapunov</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">lyapunov</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">DynamicalSystem</span><span class="o">,</span> <span class="err">Τ</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="err">λ</span>
+<div class="codehilite"><pre><span></span><span class="n">lyapunov</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">Τ</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">λ</span>
 </pre></div>
 
 

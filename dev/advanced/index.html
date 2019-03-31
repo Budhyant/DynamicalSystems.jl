@@ -836,7 +836,7 @@
 <h2 id="integrators">Integrators</h2>
 <p><a id='DynamicalSystemsBase.integrator' href='#DynamicalSystemsBase.integrator'>#</a>
 <strong><code>DynamicalSystemsBase.integrator</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">integrator</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">DynamicalSystem</span> <span class="cp">[</span><span class="p">,</span> <span class="nx">u0</span><span class="cp">]</span><span class="o">;</span> <span class="nt">diffeq</span><span class="o">...)</span> <span class="nt">-</span><span class="o">&gt;</span> <span class="nt">integ</span>
+<div class="codehilite"><pre><span></span><span class="n">integrator</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span> <span class="p">[,</span> <span class="n">u0</span><span class="p">];</span> <span class="n">diffeq</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">integ</span>
 </pre></div>
 
 
@@ -847,7 +847,7 @@
 </ul>
 <p><a id='DynamicalSystemsBase.parallel_integrator' href='#DynamicalSystemsBase.parallel_integrator'>#</a>
 <strong><code>DynamicalSystemsBase.parallel_integrator</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">parallel_integrator</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">DynamicalSystem</span><span class="o">,</span> <span class="nt">states</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
+<div class="codehilite"><pre><span></span><span class="n">parallel_integrator</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">states</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -860,7 +860,7 @@
 <p>It is <em>heavily</em> advised to use the functions <a href="./#DynamicalSystemsBase.get_state"><code>get_state</code></a> and <a href="./#DynamicalSystemsBase.set_state!"><code>set_state!</code></a> to manipulate the integrator. Provide <code>i</code> as a second argument to change the <code>i</code>-th state.</p>
 <p><a id='DynamicalSystemsBase.tangent_integrator' href='#DynamicalSystemsBase.tangent_integrator'>#</a>
 <strong><code>DynamicalSystemsBase.tangent_integrator</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="nt">tangent_integrator</span><span class="o">(</span><span class="nt">ds</span><span class="p">::</span><span class="nd">DynamicalSystem</span><span class="o">,</span> <span class="nt">Q0</span> <span class="o">|</span> <span class="nt">k</span><span class="p">::</span><span class="nd">Int</span><span class="o">;</span> <span class="nt">kwargs</span><span class="o">...)</span>
+<div class="codehilite"><pre><span></span><span class="n">tangent_integrator</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">Q0</span> <span class="o">|</span> <span class="n">k</span><span class="o">::</span><span class="kt">Int</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
 </pre></div>
 
 
@@ -896,7 +896,7 @@
 <p>There are four functions associated with the integrators that we export:</p>
 <p><a id='DynamicalSystemsBase.get_state' href='#DynamicalSystemsBase.get_state'>#</a>
 <strong><code>DynamicalSystemsBase.get_state</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>get_state(ds::DynamicalSystem)
+<div class="codehilite"><pre><span></span><span class="n">get_state</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">)</span>
 </pre></div>
 
 
@@ -909,7 +909,7 @@
 <p>If the integrator is a <a href="./#DynamicalSystemsBase.parallel_integrator"><code>parallel_integrator</code></a>, passing <code>i</code> will return the <code>i</code>-th state. The function also correctly returns the true state of the system for tangent integrators.</p>
 <p><a id='DynamicalSystemsBase.set_state!' href='#DynamicalSystemsBase.set_state!'>#</a>
 <strong><code>DynamicalSystemsBase.set_state!</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>set_state!(integ, u [, i::Int = 1])
+<div class="codehilite"><pre><span></span><span class="n">set_state!</span><span class="p">(</span><span class="n">integ</span><span class="p">,</span> <span class="n">u</span> <span class="p">[,</span> <span class="n">i</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">])</span>
 </pre></div>
 
 
@@ -918,14 +918,14 @@
 <p>Automatically does <code>u_modified!(integ, true)</code>.</p>
 <p><a id='DynamicalSystemsBase.get_deviations' href='#DynamicalSystemsBase.get_deviations'>#</a>
 <strong><code>DynamicalSystemsBase.get_deviations</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>get_deviations(tang_integ)
+<div class="codehilite"><pre><span></span><span class="n">get_deviations</span><span class="p">(</span><span class="n">tang_integ</span><span class="p">)</span>
 </pre></div>
 
 
 <p>Return the deviation vectors of the <a href="./#DynamicalSystemsBase.tangent_integrator"><code>tangent_integrator</code></a> in a form of a matrix with columns the vectors.</p>
 <p><a id='DynamicalSystemsBase.set_deviations!' href='#DynamicalSystemsBase.set_deviations!'>#</a>
 <strong><code>DynamicalSystemsBase.set_deviations!</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span>set_deviations!(tang_integ, Q)
+<div class="codehilite"><pre><span></span><span class="n">set_deviations!</span><span class="p">(</span><span class="n">tang_integ</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
 </pre></div>
 
 
