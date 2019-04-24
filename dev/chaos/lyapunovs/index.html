@@ -457,13 +457,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#maximum-lyapunov-exponent" title="Maximum Lyapunov Exponent" class="md-nav__link">
-    Maximum Lyapunov Exponent
-  </a>
-  
-</li>
-      
       
       
       
@@ -723,13 +716,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#maximum-lyapunov-exponent" title="Maximum Lyapunov Exponent" class="md-nav__link">
-    Maximum Lyapunov Exponent
-  </a>
-  
-</li>
-      
       
       
       
@@ -803,9 +789,9 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-  0.43246327735438383
-  0.37214153632702973
- -3.296977107972726  
+  0.4324672919929054
+  0.3721410670815188
+ -3.296980653365736 
 </pre></div>
 
 
@@ -816,9 +802,9 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-   0.9884897734689997   
-  -0.0006899355214918432
- -14.654461171420383    
+   0.9847745692222112   
+   0.0004563301060149659
+ -14.651892241090028    
 </pre></div>
 
 
@@ -833,12 +819,35 @@
 </pre></div>
 
 
-<p><a id='Maximum-Lyapunov-Exponent-1'></a></p>
-<h2 id="maximum-lyapunov-exponent">Maximum Lyapunov Exponent</h2>
-<p>It is possible to get only the maximum Lyapunov exponent simply by giving <code>1</code> as the third argument of <a href="./#ChaosTools.lyapunovs"><code>lyapunovs</code></a>. However, there is a second algorithm that allows you to do the same thing, which is offered by the function <code>lyapunov</code>:</p>
-<p><a id='ChaosTools.lyapunov' href='#ChaosTools.lyapunov'>#</a>
-<strong><code>ChaosTools.lyapunov</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">lyapunov</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">Τ</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">λ</span>
+<p>Here is an example of plotting the exponents of the Roessler system for various parameters:</p>
+<p>```@example lyap
+ds = Systems.roessler()</p>
+<p>cs = 4:0.01:6; λs = zeros(length(cs), 3)
+for (i, c) in enumerate(cs)
+    set_parameter!(ds, 3, c)
+    λs[i, :] .= lyapunovs(ds, 10000; Ttr = 500.0)
+end</p>
+<p>figure()
+plot(cs, λs)
+tight_layout() # hide
+savefig("rosl_l.png"); nothing # hide</p>
+<div class="codehilite"><pre><span></span>![](osl_l.png)
+
+
+<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;Maximum-Lyapunov-Exponent-1&#39;</span><span class="nt">&gt;&lt;/a&gt;</span>
+
+## Maximum Lyapunov Exponent
+
+
+It is possible to get only the maximum Lyapunov exponent simply by giving `1` as the third argument of [`lyapunovs`](lyapunovs.md#ChaosTools.lyapunovs). However, there is a second algorithm that allows you to do the same thing, which is offered by the function `lyapunov`:
+
+<span class="nt">&lt;a</span> <span class="na">id=</span><span class="s">&#39;ChaosTools.lyapunov&#39;</span> <span class="na">href=</span><span class="s">&#39;#ChaosTools.lyapunov&#39;</span><span class="nt">&gt;</span>#<span class="nt">&lt;/a&gt;</span>
+**`ChaosTools.lyapunov`** <span class="ni">&amp;mdash;</span> *Function*.
+
+
+
+```julia
+lyapunov(ds::DynamicalSystem, Τ; kwargs...) -&gt; λ
 </pre></div>
 
 

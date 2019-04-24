@@ -813,25 +813,27 @@
 
 
 <div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-   0.9031120654576544  
-   7.111060594006356e-5
- -14.569826419936527   
+   0.9009532014990345   
+  -0.0004680867990839325
+ -14.567128327263722    
 </pre></div>
 
 
 <p>The above uses the default solver. Let's now benchmark using two different solvers, <code>SimpleATsit5</code> and <code>Vern9</code>. Since the <code>SimpleATsit5</code> case is of lower order, naively one might think it is faster because it makes less function calls. This argument is not necessarily true though.</p>
 <p>It is important to understand that when calling <code>lyapunovs(ds, 2000)</code> you want the system (and the tangent space) to be evolved so that it reaches a total time of <code>2000*dt</code>, which by default is <code>2000.0</code> units of time. Even though <code>SimpleATsit5</code> requires less function calls per step, <code>Vern9</code> can cover larger timespans per step.</p>
 <p>Here are the numbers:</p>
-<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">OrdinaryDiffEq</span><span class="p">,</span> <span class="n">SimpleDiffEq</span>
-<span class="nd">@btime</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">SimpleATsit5</span><span class="p">(),</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
-<span class="nd">@btime</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">Vern9</span><span class="p">(),</span>        <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">BenchmarkTools</span><span class="p">,</span> <span class="n">OrdinaryDiffEq</span><span class="p">,</span> <span class="n">SimpleDiffEq</span><span class="p">,</span> <span class="n">Statistics</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">SimpleATsit5</span><span class="p">(),</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">Vern9</span><span class="p">(),</span>        <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Timing for SimpleATsit5:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">b1</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Timing for Vern9:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">b2</span><span class="p">))</span>
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>3-element Array{Float64,1}:
-   0.9107186683023729   
-   0.0003710790979077533
- -14.577756083750794    
+<div class="codehilite"><pre><span></span>Timing for SimpleATsit5:
+Timing for Vern9:
 </pre></div>
 
 

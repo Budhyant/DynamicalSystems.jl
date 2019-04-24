@@ -1050,25 +1050,13 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <span class="n">f</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">a1</span> <span class="o">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">211</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="n">ls</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">));</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$\\</span><span class="s">lambda</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="n">a1</span><span class="p">[</span><span class="o">:</span><span class="n">axes</span><span class="p">][</span><span class="o">:</span><span class="n">get_xaxis</span><span class="p">]()[</span><span class="o">:</span><span class="n">set_ticklabels</span><span class="p">]([])</span>
+<span class="n">a1</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xaxis</span><span class="p">()</span><span class="o">.</span><span class="n">set_ticklabels</span><span class="p">([])</span>
 <span class="n">xlim</span><span class="p">(</span><span class="n">rs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rs</span><span class="p">[</span><span class="k">end</span><span class="p">]);</span>
 
 <span class="n">a2</span> <span class="o">=</span> <span class="n">subplot</span><span class="p">(</span><span class="mi">212</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">rs</span><span class="p">,</span> <span class="n">hs</span><span class="p">;</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;C1&quot;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">h_6</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="n">xlim</span><span class="p">(</span><span class="n">rs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rs</span><span class="p">[</span><span class="k">end</span><span class="p">]);</span> <span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">r</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="n">tight_layout</span><span class="p">()</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span>┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
-│   caller = top-level scope at none:0
-└ @ Core none:0
-┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
-│   caller = top-level scope at none:0
-└ @ Core none:0
-┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
-│   caller = top-level scope at none:0
-└ @ Core none:0
 </pre></div>
 
 
@@ -1099,7 +1087,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>1.2587064930567442
+<div class="codehilite"><pre><span></span>1.2587093401150078
 </pre></div>
                 
                   

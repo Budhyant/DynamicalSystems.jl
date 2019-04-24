@@ -993,17 +993,11 @@ R[i, j] = \begin{cases}
 <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 <span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;k&quot;</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">xlim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">R</span><span class="p">)[</span><span class="mi">1</span><span class="p">]);</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">R</span><span class="p">)[</span><span class="mi">2</span><span class="p">]);</span>
-<span class="n">ax</span><span class="p">[</span><span class="o">:</span><span class="n">set_aspect</span><span class="p">](</span><span class="s">&quot;equal&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s">&quot;equal&quot;</span><span class="p">)</span>
 
 <span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
 <span class="n">Rg</span> <span class="o">=</span> <span class="n">grayscale</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
 <span class="n">imshow</span><span class="p">(</span><span class="n">Rg</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s">&quot;binary_r&quot;</span><span class="p">,</span> <span class="n">extent</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">R</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="p">(</span><span class="n">R</span><span class="p">)[</span><span class="mi">2</span><span class="p">]))</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span>┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
-│   caller = top-level scope at none:0
-└ @ Core none:0
 </pre></div>
 
 
