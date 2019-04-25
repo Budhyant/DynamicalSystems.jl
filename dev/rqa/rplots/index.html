@@ -1046,16 +1046,10 @@ R[i, j] = \begin{cases}
     <span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">coordinates</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
     <span class="n">scatter</span><span class="p">(</span><span class="n">tvec</span><span class="p">[</span><span class="n">x</span><span class="p">],</span> <span class="n">tvec</span><span class="p">[</span><span class="n">y</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s">&quot;C</span><span class="si">$</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
-    <span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span> <span class="n">gca</span><span class="p">()[</span><span class="o">:</span><span class="n">set_aspect</span><span class="p">](</span><span class="s">&quot;equal&quot;</span><span class="p">)</span>
+    <span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span> <span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span> <span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s">&quot;equal&quot;</span><span class="p">)</span>
     <span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">);</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;t&quot;</span><span class="p">);</span>
 <span class="k">end</span>
 <span class="n">PyPlot</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-</pre></div>
-
-
-<div class="codehilite"><pre><span></span>┌ Warning: `getindex(o::PyObject, s::Symbol)` is deprecated in favor of dot overloading (`getproperty`) so elements should now be accessed as e.g. `o.s` instead of `o[:s]`.
-│   caller = top-level scope at none:18
-└ @ Core ./none:18
 </pre></div>
 
 
