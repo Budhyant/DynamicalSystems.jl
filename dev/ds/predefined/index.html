@@ -699,6 +699,44 @@
 
 
 <p>So far, the predefined systems that exist in the <code>Systems</code> sub-module are:</p>
+<p><a id='DynamicalSystemsBase.Systems.antidots' href='#DynamicalSystemsBase.Systems.antidots'>#</a>
+<strong><code>DynamicalSystemsBase.Systems.antidots</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">antidots</span><span class="p">(</span><span class="n">u</span><span class="p">;</span> <span class="n">B</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">d0</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+
+
+<p>An antidot "superlattice" is a Hamiltonian system that corresponds to a smoothened periodic Sinai billiard with disk diameter <code>d0</code> and smooth factor <code>c</code> [1].</p>
+<p>This version is the two dimensional classical form of the system, with quadratic equations of motion and a perpendicular magnetic field. Notice that the equations of motion are with respect to the velocity instead of momentum, i.e.:</p>
+<div>
+<div class="MathJax_Preview">
+\begin{aligned}
+\dot{x} &amp;= v_x \\
+\dot{y} &amp;= v_y \\
+\dot{v_x} &amp;= B*v_y - U_x \\
+\dot{v_y} &amp;= -B*v_x - U_X \\
+\end{aligned}
+</div>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\dot{x} &= v_x \\
+\dot{y} &= v_y \\
+\dot{v_x} &= B*v_y - U_x \\
+\dot{v_y} &= -B*v_x - U_X \\
+\end{aligned}
+</script>
+</div>
+<p>with <span><span class="MathJax_Preview">U</span><script type="math/tex">U</script></span> the potential energy:</p>
+<div>
+<div class="MathJax_Preview">
+U = \left(\tfrac{1}{c^4}\right) \left[\tfrac{d_0}{2} + c - r_a\right]^4
+</div>
+<script type="math/tex; mode=display">
+U = \left(\tfrac{1}{c^4}\right) \left[\tfrac{d_0}{2} + c - r_a\right]^4
+</script>
+</div>
+<p>if <span><span class="MathJax_Preview">r_a = \sqrt{(x%1)^2 + (y%1)^2} &lt; \frac{d_0}{2} + c</span><script type="math/tex">r_a = \sqrt{(x%1)^2 + (y%1)^2} < \frac{d_0}{2} + c</script></span> and 0 otherwise. I.e. the potential is periodic with period 1 in both <span><span class="MathJax_Preview">x, y</span><script type="math/tex">x, y</script></span> and normalized such that for energy value of 1 it is a circle of diameter <span><span class="MathJax_Preview">d0</span><script type="math/tex">d0</script></span>. The magnetic field is also normalized such that for value <code>B=1</code> the cyclotron diameter is 1.</p>
+<p>Fo more details see [1].</p>
+<p>[1] : G. Datseris <em>et al</em>, <a href="https://arxiv.org/abs/1711.05833v3">arXiv:1711.05833v3</a></p>
 <p><a id='DynamicalSystemsBase.Systems.coupledstandardmaps' href='#DynamicalSystemsBase.Systems.coupledstandardmaps'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.coupledstandardmaps</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">coupledstandardmaps</span><span class="p">(</span><span class="n">M</span><span class="o">::</span><span class="kt">Int</span><span class="p">,</span> <span class="n">u0</span> <span class="o">=</span> <span class="mf">0.001</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="n">M</span><span class="p">);</span> <span class="n">ks</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">M</span><span class="p">),</span> <span class="n">Γ</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">)</span>
