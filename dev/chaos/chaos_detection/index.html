@@ -40,7 +40,7 @@
     
     
       
-        <title>Chaos Distinction - DynamicalSystems.jl</title>
+        <title>Chaos Detection - DynamicalSystems.jl</title>
       
     
     
@@ -130,7 +130,7 @@
                 DynamicalSystems.jl
               </span>
               <span class="md-header-nav__topic">
-                Chaos Distinction
+                Chaos Detection
               </span>
             
           
@@ -445,11 +445,11 @@
     
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
-        Chaos Distinction
+        Chaos Detection
       </label>
     
-    <a href="./" title="Chaos Distinction" class="md-nav__link md-nav__link--active">
-      Chaos Distinction
+    <a href="./" title="Chaos Detection" class="md-nav__link md-nav__link--active">
+      Chaos Detection
     </a>
     
       
@@ -846,7 +846,7 @@
                 <p><a id='Chaos-Detection-1'></a></p>
 <h1 id="chaos-detection">Chaos Detection</h1>
 <p>Being able to detect and distinguish chaotic from regular behavior is crucial in the study of dynamical systems. Most of the time a positive maximum <a href="../lyapunovs/#ChaosTools.lyapunov"><code>lyapunov</code></a> exponent and a bounded system indicate chaos.</p>
-<p>However, the convergence of the Lyapunov exponent is often very slow and the computation costly. Not only that, but sometimes the exponent can be misleading, as the types of chaotic behavior vary greatly with respect to their predictability. There are many alternatives that are both more efficient and more accurate in characterizing chaotic and regular motion, some of which are included in <strong>DynamicalSystems.jl</strong>.</p>
+<p>However, the convergence of the Lyapunov exponent can be slow, or even misleading, as the types of chaotic behavior vary greatly with respect to their predictability. There are many alternatives, some more efficient and some more accurate in characterizing chaotic and regular motion. Some of these methods are included in <strong>DynamicalSystems.jl</strong>.</p>
 <div class="admonition info">
 <p class="admonition-title">Performance depends on the solver</p>
 <p>Notice that the performance of functions that use <code>ContinuousDynamicalSystem</code>s depend crucially on the chosen solver. Please see the documentation page on <a href="../choosing/#Choosing-a-solver-1">Choosing a solver</a> for an in-depth discussion.</p>
