@@ -484,22 +484,36 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-gali" title="Using GALI" class="md-nav__link">
+    Using GALI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-orbits-in-the-henon-heiles-system" title="Regular orbits in the Henon-Heiles system" class="md-nav__link">
+    Regular orbits in the Henon-Heiles system
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-gali" title="Using GALI" class="md-nav__link">
-    Using GALI
+  <a href="#predictability-of-a-chaotic-system" title="Predictability of a chaotic system" class="md-nav__link">
+    Predictability of a chaotic system
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#regular-orbits-in-the-henon-heiles-system" title="Regular orbits in the Henon-Heiles system" class="md-nav__link">
-    Regular orbits in the Henon-Heiles system
+  <a href="#example-henon-map" title="Example Hénon Map" class="md-nav__link">
+    Example Hénon Map
   </a>
   
 </li>
@@ -771,22 +785,36 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#using-gali" title="Using GALI" class="md-nav__link">
+    Using GALI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-orbits-in-the-henon-heiles-system" title="Regular orbits in the Henon-Heiles system" class="md-nav__link">
+    Regular orbits in the Henon-Heiles system
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#using-gali" title="Using GALI" class="md-nav__link">
-    Using GALI
+  <a href="#predictability-of-a-chaotic-system" title="Predictability of a chaotic system" class="md-nav__link">
+    Predictability of a chaotic system
   </a>
   
     <nav class="md-nav">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#regular-orbits-in-the-henon-heiles-system" title="Regular orbits in the Henon-Heiles system" class="md-nav__link">
-    Regular orbits in the Henon-Heiles system
+  <a href="#example-henon-map" title="Example Hénon Map" class="md-nav__link">
+    Example Hénon Map
   </a>
   
 </li>
@@ -818,14 +846,14 @@
                 <p><a id='Chaos-Detection-1'></a></p>
 <h1 id="chaos-detection">Chaos Detection</h1>
 <p>Being able to detect and distinguish chaotic from regular behavior is crucial in the study of dynamical systems. Most of the time a positive maximum <a href="../lyapunovs/#ChaosTools.lyapunov"><code>lyapunov</code></a> exponent and a bounded system indicate chaos.</p>
-<p>However, the convergence of the Lyapunov exponent is often very slow and the computation costly. There are many alternatives that are both more efficient and more accurate in characterizing chaotic and regular motion, some of which are included in <strong>DynamicalSystems.jl</strong>.</p>
+<p>However, the convergence of the Lyapunov exponent is often very slow and the computation costly. Not only that, but sometimes the exponent can be misleading, as the types of chaotic behavior vary greatly with respect to their predictability. There are many alternatives that are both more efficient and more accurate in characterizing chaotic and regular motion, some of which are included in <strong>DynamicalSystems.jl</strong>.</p>
 <div class="admonition info">
 <p class="admonition-title">Performance depends on the solver</p>
 <p>Notice that the performance of functions that use <code>ContinuousDynamicalSystem</code>s depend crucially on the chosen solver. Please see the documentation page on <a href="../choosing/#Choosing-a-solver-1">Choosing a solver</a> for an in-depth discussion.</p>
 </div>
 <p><a id='Generalized-Alignment-Index-1'></a></p>
 <h2 id="generalized-alignment-index">Generalized Alignment Index</h2>
-<p>"GALI" for sort, is a method that relies on the fact that initially orthogonal deviation vectors tend to align towards the direction of the maximum Lyapunov exponent for chaotic motion. It is one of the most recent and cheapest methods for distinguishing chaos, introduced first in 2007 by Skokos, Bountis &amp; Antonopoulos.</p>
+<p>"GALI" for sort, is a method that relies on the fact that initially orthogonal deviation vectors tend to align towards the direction of the maximum Lyapunov exponent for chaotic motion. It is one of the most recent and cheapest methods for distinguishing chaotic and regular behavior, introduced first in 2007 by Skokos, Bountis &amp; Antonopoulos.</p>
 <p><a id='ChaosTools.gali' href='#ChaosTools.gali'>#</a>
 <strong><code>ChaosTools.gali</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">gali</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">k</span><span class="o">::</span><span class="kt">Int</span> <span class="o">|</span> <span class="n">Q0</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">GALI_k</span><span class="p">,</span> <span class="n">t</span>
@@ -878,7 +906,7 @@
 <p>Our implementation is not based on the original paper, but rather in the method described in [2], which uses the product of the singular values of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, a matrix that has as <em>columns</em> the deviation vectors.</p>
 <p><strong>Performance Notes</strong></p>
 <p>This function uses a <a href="../../advanced/#DynamicalSystemsBase.tangent_integrator"><code>tangent_integrator</code></a>. For loops over initial conditions and/or parameter values one should use the low level method that accepts an integrator, and <code>reinit!</code> it to new initial conditions. See the "advanced documentation" for info on the integrator object. The low level method is</p>
-<div class="codehilite"><pre><span></span>ChaosTools.gali(tinteg, tmax, dt, threshold)
+<div class="codehilite"><pre><span></span><span class="n">ChaosTools</span><span class="p">.</span><span class="n">gali</span><span class="p">(</span><span class="n">tinteg</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
 </pre></div>
 
 
@@ -899,12 +927,12 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>6-dimensional discrete dynamical system
- state:       [3.24159, 3.24159, 3.24159, 0.11, 0.1, 0.1]
- e.o.m.:      CoupledStandardMaps
- in-place?    true
- jacobian:    CoupledStandardMaps
- parameters:  Tuple
+<div class="codehilite"><pre><span></span><span class="mi">6</span><span class="o">-</span><span class="n">dimensional</span> <span class="n">discrete</span> <span class="n">dynamical</span> <span class="k">system</span>
+ <span class="k">state</span><span class="p">:</span>       <span class="p">[</span><span class="mi">3</span><span class="p">.</span><span class="mi">24159</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">24159</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">24159</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">]</span>
+ <span class="n">e</span><span class="p">.</span><span class="n">o</span><span class="p">.</span><span class="n">m</span><span class="p">.:</span>      <span class="n">CoupledStandardMaps</span>
+ <span class="k">in</span><span class="o">-</span><span class="n">place</span><span class="o">?</span>    <span class="k">true</span>
+ <span class="n">jacobian</span><span class="p">:</span>    <span class="n">CoupledStandardMaps</span>
+ <span class="k">parameters</span><span class="p">:</span>  <span class="n">Tuple</span>
 </pre></div>
 
 
@@ -971,12 +999,12 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span>4-dimensional continuous dynamical system
- state:       [0.0, 0.295456, 0.407308, 0.0]
- e.o.m.:      hheom!
- in-place?    true
- jacobian:    hhjacob!
- parameters:  nothing
+<div class="codehilite"><pre><span></span><span class="mi">4</span><span class="o">-</span><span class="n">dimensional</span> <span class="n">continuous</span> <span class="n">dynamical</span> <span class="k">system</span>
+ <span class="k">state</span><span class="p">:</span>       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">295456</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">407308</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">]</span>
+ <span class="n">e</span><span class="p">.</span><span class="n">o</span><span class="p">.</span><span class="n">m</span><span class="p">.:</span>      <span class="n">hheom</span><span class="o">!</span>
+ <span class="k">in</span><span class="o">-</span><span class="n">place</span><span class="o">?</span>    <span class="k">true</span>
+ <span class="n">jacobian</span><span class="p">:</span>    <span class="n">hhjacob</span><span class="o">!</span>
+ <span class="k">parameters</span><span class="p">:</span>  <span class="k">nothing</span>
 </pre></div>
 
 
@@ -1057,12 +1085,11 @@
 <p><img alt="gali_cont_chaos" src="../gali_cont_chaos.png" /></p>
 <p>As you can see, the results of both discrete and continuous systems match very well the theory described in <a href="./#ChaosTools.gali"><code>gali</code></a>.</p>
 <p><a id='Using-GALI-1'></a></p>
-<h2 id="using-gali">Using GALI</h2>
-<p>No-one in their right mind would try to fit power-laws in order to distinguish between chaotic and regular behavior, like the above examples. These were just demonstrations and proofs that the method works as expected in all cases.</p>
+<h3 id="using-gali">Using GALI</h3>
+<p>No-one in their right mind would try to fit power-laws in order to distinguish between chaotic and regular behavior, like the above examples. These were just proofs that the method works as expected in all cases.</p>
 <p>The most common usage of <span><span class="MathJax_Preview">\text{GALI}_k</span><script type="math/tex">\text{GALI}_k</script></span> is to define a (sufficiently) small amount of time and a (sufficiently) small threshold and see whether <span><span class="MathJax_Preview">\text{GALI}_k</span><script type="math/tex">\text{GALI}_k</script></span> stays below it, for a (sufficiently) big <span><span class="MathJax_Preview">k</span><script type="math/tex">k</script></span>.</p>
 <p>The following is an example of <a href="../advanced">advanced usage</a>:</p>
-<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span>
-<span class="k">using</span> <span class="n">PyPlot</span><span class="p">,</span> <span class="n">StaticArrays</span>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span><span class="p">,</span> <span class="n">PyPlot</span>
 
 <span class="k">function</span> <span class="n">main</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
 
@@ -1109,6 +1136,81 @@
 
 <p>You can download the video using <a href="https://raw.githubusercontent.com/JuliaDynamics/JuliaDynamics/master/videos/chaos/gali_psos_henonhelies.mp4?raw=true">this link</a>.</p>
 <p>You can find the script that produced this animation in <code>DynamicalSystems/docs/coolanimations/gali_psos_henonhelies.jl</code>.</p>
+<p><a id='Predictability-of-a-chaotic-system-1'></a></p>
+<h2 id="predictability-of-a-chaotic-system">Predictability of a chaotic system</h2>
+<p>Even if a system is "formally" chaotic, it can still be in phases where it is very predictable, because the correlation coefficient between nearby trajectories vanishes very slowly with time. <a href="https://www.nature.com/articles/s41598-017-01083-x">Wernecke, Sándor &amp; Gros</a> have developed an algorithm that allows one to classify a dynamical system to one of three categories: strongly chaotic, partially predictable chaos or regular (called <em>laminar</em> in their paper).</p>
+<p>We have implemented their algorithm in the function <a href="./#ChaosTools.predictability"><code>predictability</code></a>. <strong>Note</strong> that we set up the implementation to always return regular behavior for negative Lyapunov exponent. You may want to override this for research purposes.</p>
+<p><a id='ChaosTools.predictability' href='#ChaosTools.predictability'>#</a>
+<strong><code>ChaosTools.predictability</code></strong> &mdash; <em>Function</em>.</p>
+<p>predictability(ds::DynamicalSystem; kwargs...) -&gt; chaos_type, ν, C</p>
+<p>Determine whether <code>ds</code> displays strongly chaotic, partially-predictable chaotic or regular behaviour, using the method by Wernecke et al. described in [1].</p>
+<p>Return the type of the behavior, the cross-distance scaling coefficient <code>ν</code> and the correlation coefficient <code>C</code>. Typical values for <code>ν</code>, <code>C</code> and <code>chaos_type</code> are given in Table 2 of [1]:</p>
+<table>
+<thead>
+<tr>
+<th align="right"><code>chaos_type</code></th>
+<th align="right"><code>ν</code></th>
+<th align="right"><code>C</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right"><code>:SC</code></td>
+<td align="right">0</td>
+<td align="right">0</td>
+</tr>
+<tr>
+<td align="right"><code>:PPC</code></td>
+<td align="right">0</td>
+<td align="right">1</td>
+</tr>
+<tr>
+<td align="right"><code>:REG</code></td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Keyword Arguments</strong></p>
+<ul>
+<li><code>Ttr = 200</code> : Extra "transient" time to evolve the system before sampling from  the trajectory. Should be <code>Int</code> for discrete systems.</li>
+<li><code>T_sample = 1e4</code> : Time to evolve the system for taking samples. Should be <code>Int</code> for discrete systems.</li>
+<li><code>n_samples = 500</code> : Number of samples to take for use in calculating statistics.</li>
+<li><code>λ_max = lyapunov(ds, 5000)</code> : Value to use for largest Lyapunov exponent for finding the Lyapunov prediction time. If it is less than zero a regular result is returned immediatelly.</li>
+<li><code>d_tol = 1e-3</code> : tolerance distance to use for calculating Lyapunov prediction time.</li>
+<li><code>T_multiplier = 10</code> : Multiplier from the Lyapunov prediction time to the evaluation time.</li>
+<li><code>T_max = Inf</code> : Maximum time at which to evaluate trajectory distance. If the internally  computed evaluation time is larger than <code>T_max</code>, stop at <code>T_max</code> instead.</li>
+<li><code>δ_range = 10.0 .^ (-9:-6)</code> : Range of initial condition perturbation distances  to use to determine scaling <code>ν</code>.</li>
+<li><code>diffeq...</code> : Keyword arguments propagated into <code>init</code> of DifferentialEquations.jl. See <a href="../../ds/evolve/#DynamicalSystemsBase.trajectory"><code>trajectory</code></a> for examples. Only valid for continuous systems.</li>
+</ul>
+<p><strong>Description</strong></p>
+<p>Samples points from a trajectory of the system to be used as initial conditions. Each of these initial conditions is randomly perturbed by a distance <code>δ</code>, and the trajectories for both the original and perturbed initial conditions are computed to the 'evaluation time' <code>T</code>.</p>
+<p>The average (over the samples) distance and cross-correlation coefficient of the state at time <code>T</code> is computed. This is repeated for a range of <code>δ</code> (defined by <code>δ_range</code>), and linear regression is used to determine how the distance and cross-correlation scale with <code>δ</code>, allowing for identification of chaos type.</p>
+<p>The evaluation time <code>T</code> is calculated as <code>T = T_multiplier*Tλ</code>, where the Lyapunov prediction time <code>Tλ = log(d_tol/δ)/λ_max</code>. This may be very large if the <code>λ_max</code> is small, e.g. when the system is regular, so this internally computed time <code>T</code> can be overridden by a smaller <code>T_max</code> set by the user.</p>
+<p><strong>Performance Notes</strong></p>
+<p>For continuous systems, it is likely that the <code>maxiters</code> used by the integrators needs to be increased, e.g. to 1e9. This is part of the <code>diffeq</code> kwargs. In addition, be aware that this function does a <em>lot</em> of internal computations. It is operating in a different speed than e.g. <a href="../lyapunovs/#ChaosTools.lyapunov"><code>lyapunov</code></a>.</p>
+<p><strong>References</strong></p>
+<p>[1] : Wernecke, H., Sándor, B. &amp; Gros, C.       <em>How to test for partially predictable chaos</em>. <a href="https://www.nature.com/articles/s41598-017-01083-x">Scientific Reports <strong>7</strong>, (2017)</a>.</p>
+<p><a id='Example-Hénon-Map-1'></a></p>
+<h3 id="example-henon-map">Example Hénon Map</h3>
+<p>We will create something similar to figure 2 of the paper, but for the Hénon map.</p>
+<div class="codehilite"><pre><span></span><span class="n">figure</span><span class="p">()</span>
+<span class="n">he</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">henon</span><span class="p">()</span>
+<span class="n">as</span> <span class="o">=</span> <span class="mf">0.8</span><span class="o">:</span><span class="mf">0.01</span><span class="o">:</span><span class="mf">1.225</span>
+<span class="n">od</span> <span class="o">=</span> <span class="n">orbitdiagram</span><span class="p">(</span><span class="n">he</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">as</span><span class="p">;</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">,</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span><span class="o">:</span><span class="n">REG</span> <span class="o">=&gt;</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="o">:</span><span class="n">PPC</span> <span class="o">=&gt;</span> <span class="s">&quot;g&quot;</span><span class="p">,</span> <span class="o">:</span><span class="n">SC</span> <span class="o">=&gt;</span> <span class="s">&quot;r&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="kp">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">as</span><span class="p">)</span>
+    <span class="n">set_parameter!</span><span class="p">(</span><span class="n">he</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">chaos_type</span><span class="p">,</span> <span class="n">ν</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="n">predictability</span><span class="p">(</span><span class="n">he</span><span class="p">;</span> <span class="n">T_max</span> <span class="o">=</span> <span class="mi">400000</span><span class="p">,</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mi">2000</span><span class="p">)</span>
+    <span class="n">scatter</span><span class="p">(</span><span class="n">a</span> <span class="o">.*</span> <span class="n">ones</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">od</span><span class="p">[</span><span class="n">i</span><span class="p">])),</span> <span class="n">od</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">chaos_type</span><span class="p">],</span> <span class="n">s</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">xlabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">a</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">);</span> <span class="n">ylabel</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">x</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">title</span><span class="p">(</span><span class="s">&quot;predictability of Hénon map&quot;</span><span class="p">);</span> <span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="partial_henon" src="../partial_henon.png" /></p>
                 
                   
                 
