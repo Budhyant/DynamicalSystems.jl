@@ -1142,7 +1142,10 @@
 <p>We have implemented their algorithm in the function <a href="./#ChaosTools.predictability"><code>predictability</code></a>. <strong>Note</strong> that we set up the implementation to always return regular behavior for negative Lyapunov exponent. You may want to override this for research purposes.</p>
 <p><a id='ChaosTools.predictability' href='#ChaosTools.predictability'>#</a>
 <strong><code>ChaosTools.predictability</code></strong> &mdash; <em>Function</em>.</p>
-<p>predictability(ds::DynamicalSystem; kwargs...) -&gt; chaos_type, ν, C</p>
+<div class="codehilite"><pre><span></span><span class="n">predictability</span><span class="p">(</span><span class="n">ds</span><span class="o">::</span><span class="n">DynamicalSystem</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">chaos_type</span><span class="p">,</span> <span class="n">ν</span><span class="p">,</span> <span class="n">C</span>
+</pre></div>
+
+
 <p>Determine whether <code>ds</code> displays strongly chaotic, partially-predictable chaotic or regular behaviour, using the method by Wernecke et al. described in [1].</p>
 <p>Return the type of the behavior, the cross-distance scaling coefficient <code>ν</code> and the correlation coefficient <code>C</code>. Typical values for <code>ν</code>, <code>C</code> and <code>chaos_type</code> are given in Table 2 of [1]:</p>
 <table>
