@@ -813,9 +813,9 @@
 
 
 <div class="codehilite"><pre><span></span><span class="mi">3</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Float64</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
-   <span class="mi">0</span><span class="p">.</span><span class="mi">908578810913997</span>     
-  <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">00023982407076055228</span>
- <span class="o">-</span><span class="mi">14</span><span class="p">.</span><span class="mi">574982498450407</span>     
+   <span class="mi">0</span><span class="p">.</span><span class="mi">9061277794060383</span>   
+  <span class="o">-</span><span class="mi">0</span><span class="p">.</span><span class="mi">0003445080325231808</span>
+ <span class="o">-</span><span class="mi">14</span><span class="p">.</span><span class="mi">572426217247685</span>    
 </pre></div>
 
 
@@ -826,14 +826,16 @@
 <span class="n">b1</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">SimpleATsit5</span><span class="p">(),</span> <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
 <span class="n">b2</span> <span class="o">=</span> <span class="nd">@benchmark</span> <span class="n">lyapunovs</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">2000</span><span class="p">;</span> <span class="n">alg</span> <span class="o">=</span> <span class="n">Vern9</span><span class="p">(),</span>        <span class="n">Ttr</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="n">tols</span><span class="o">...</span><span class="p">);</span>
 <span class="n">println</span><span class="p">(</span><span class="s">&quot;Timing for SimpleATsit5:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">b1</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">b1</span><span class="p">))</span>
 <span class="n">println</span><span class="p">(</span><span class="s">&quot;Timing for Vern9:&quot;</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">b2</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="n">mean</span><span class="p">(</span><span class="n">b2</span><span class="p">))</span>
 </pre></div>
 
 
 <div class="codehilite"><pre><span></span><span class="nv">Timing</span> <span class="k">for</span> <span class="nv">SimpleATsit5</span>:
+<span class="nv">TrialEstimate</span><span class="ss">(</span><span class="mi">63</span>.<span class="mi">498</span> <span class="nv">ms</span><span class="ss">)</span>
 <span class="nv">Timing</span> <span class="k">for</span> <span class="nv">Vern9</span>:
+<span class="nv">TrialEstimate</span><span class="ss">(</span><span class="mi">42</span>.<span class="mi">066</span> <span class="nv">ms</span><span class="ss">)</span>
 </pre></div>
 
 
