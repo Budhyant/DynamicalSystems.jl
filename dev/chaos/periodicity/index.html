@@ -104,7 +104,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#detecting-stable-and-unstable-periodic-orbits-of-maps" tabindex="1" class="md-skip">
+      <a href="#periodicity" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -477,6 +477,8 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Periodicity
@@ -489,6 +491,8 @@
       
 <nav class="md-nav md-nav--secondary">
   
+  
+    
   
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
@@ -505,6 +509,26 @@
           <li class="md-nav__item">
   <a href="#standard-map-example" title="Standard Map example" class="md-nav__link">
     Standard Map example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determining-periodicity" title="Determining Periodicity" class="md-nav__link">
+    Determining Periodicity
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -712,6 +736,8 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
@@ -727,6 +753,26 @@
           <li class="md-nav__item">
   <a href="#standard-map-example" title="Standard Map example" class="md-nav__link">
     Standard Map example
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#determining-periodicity" title="Determining Periodicity" class="md-nav__link">
+    Determining Periodicity
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example" title="Example" class="md-nav__link">
+    Example
   </a>
   
 </li>
@@ -755,11 +801,12 @@
                   <a href="https://github.com/JuliaDynamics/DynamicalSystems.jl/edit/master/docs/chaos/periodicity.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Periodicity</h1>
-                
-                <p><a id='Detecting-Stable-and-Unstable-Periodic-Orbits-of-Maps-1'></a></p>
+                <p><a id='Periodicity-1'></a></p>
+<h1 id="periodicity">Periodicity</h1>
+<p>In this page we describe methods related to the periodic behavior of dynamical systems or univariate timeseries.</p>
+<p><a id='Detecting-Stable-and-Unstable-Periodic-Orbits-of-Maps-1'></a></p>
 <h2 id="detecting-stable-and-unstable-periodic-orbits-of-maps">Detecting Stable and Unstable Periodic Orbits of Maps</h2>
-<p>Chaotic behavior of low dimensional dynamical systems is affected by the position and the stability properties of the <a href="http://www.scholarpedia.org/article/Unstable_periodic_orbits">periodic orbits</a> existing in the chaotic sea.</p>
+<p>Chaotic behavior of low dimensional dynamical systems is affected by the position and the stability properties of the <a href="http://www.scholarpedia.org/article/Unstable_periodic_orbits">periodic orbits</a> of a dynamical system.</p>
 <p>Finding unstable (or stable) periodic orbits of a discrete mapping analytically rapidly becomes impossible for higher orders of fixed points. Fortunately there is a numeric algorithm due to Schmelcher &amp; Diakonos which allows such a computation. Notice that even though the algorithm can find stable fixed points, it is mainly aimed at <em>unstable</em> ones.</p>
 <p>The functions <code>periodicorbits</code> and <code>lambdamatrix</code> implement the algorithm:</p>
 <p><a id='ChaosTools.periodicorbits' href='#ChaosTools.periodicorbits'>#</a>
@@ -903,6 +950,66 @@
 <li>Fixed points of order <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> are also fixed points of order <span><span class="MathJax_Preview">2n, 3n, 4n, ...</span><script type="math/tex">2n, 3n, 4n, ...</script></span></li>
 <li>Besides fixed points of previous orders, <em>original</em> fixed points of order <span><span class="MathJax_Preview">n</span><script type="math/tex">n</script></span> come in (possible multiples of) <span><span class="MathJax_Preview">2n</span><script type="math/tex">2n</script></span>-sized pairs (see e.g. order 5). This is a direct consequence of the Poincaré–Birkhoff theorem.</li>
 </ol>
+<p><a id='Determining-Periodicity-1'></a></p>
+<h2 id="determining-periodicity">Determining Periodicity</h2>
+<p>Once you have determined that your system is periodic, you might want to find out what its period is.  Fortunately, the function <a href="./#ChaosTools.estimate_period"><code>estimate_period</code></a> from <code>ChaosTools</code> offers many ways for you to do this, given the system's timeseries as an input.</p>
+<p><a id='ChaosTools.estimate_period' href='#ChaosTools.estimate_period'>#</a>
+<strong><code>ChaosTools.estimate_period</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">estimate_period</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;,</span> <span class="n">method_specific_kwargs</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Estimate the period of the signal <code>v</code>, with accompanying time vector <code>t</code>, using the given <code>method</code>.</p>
+<p>If <code>t</code> is an AbstractArray, then it is iterated through to ensure that it's evenly sampled (if necessary for the algorithm).  To avoid this, you can pass any <code>AbstractRange</code>, like a <code>UnitRange</code> or a <code>LinRange</code>, which are defined to be evenly sampled.</p>
+<p><strong>Methods requiring evenly sampled data</strong></p>
+<p>These methods are faster, but some are error-prone.</p>
+<ul>
+<li><code>:periodogram</code> or <code>:pg</code>: Use the fast Fourier transform to compute a  periodogram (power-spectrum) of the given data.  Data must be evenly sampled.</li>
+<li><code>:multitaper</code> or <code>mt</code>: The multitaper method reduces estimation bias by using multiple independent estimates from the same sample. Data tapers are then windowed and the power spectra are obtained.  Available keywords follow: <code>nw</code> is the time-bandwidth product, and <code>ntapers</code> is the number of tapers. If <code>window</code> is not specified, the signal is tapered with <code>ntapers</code> discrete prolate spheroidal sequences with time-bandwidth product <code>nw</code>. Each sequence is equally weighted; adaptive multitaper is not (yet) supported. If <code>window</code> is specified, each column is applied as a taper. The sum of periodograms is normalized by the total sum of squares of <code>window</code>.</li>
+<li><code>:autocorrelation</code> or <code>:ac</code>: Use the autocorrelation function (AC). The value where the AC first comes back close to 1 is the period of the signal. The keyword <code>L = length(v)÷10</code> denotes the length of the AC (thus, given the default setting, this method will fail if there less than 10 periods in the signal). The keyword <code>ϵ = 0.2</code> (<code>\epsilon</code>) means that <code>1-ϵ</code> counts as "1" for the AC.</li>
+</ul>
+<p><strong>Methods not requiring evenly sampled data</strong></p>
+<p>These methods tend to be slow, but versatile and low-error.</p>
+<ul>
+<li><code>:lombscargle</code> or <code>:ls</code>: Use the Lomb-Scargle algorithm to compute a periodogram.  The advantage of the Lomb-Scargle method is that it does not require an equally sampled dataset and performs well on undersampled datasets. Constraints have been set on the period, since Lomb-Scargle tends to have false peaks at very low frequencies.  That being said, it's a very flexible method.  It is extremely customizable, and the keyword arguments that can be passed to it are given <a href="https://juliaastro.github.io/LombScargle.jl/stable/index.html#LombScargle.plan">in the documentation</a>.</li>
+<li><code>:zerocrossing</code> or <code>:zc</code>: Find the zero crossings of the data, and use the average difference between zero crossings as the period.  This is a naïve implementation, with only linear interpolation; however, it's useful as a sanity check.  The keyword <code>line</code> controls where the "crossing point" is. It deffaults to <code>mean(v)</code>.</li>
+</ul>
+<p>For more information on the periodogram methods, see the documentation of <code>DSP.jl</code> and <code>LombScargle.jl</code>.</p>
+<p>We offer five methods to estimate periods, some of which work on evenly sampled data only, and others which accept any data.  The figure below summarizes this: <img alt="" src="https://raw.githubusercontent.com/JuliaDynamics/JuliaDynamics/master/videos/chaos/periodestimationmethods.png?raw=true" /></p>
+<p><a id='Example-1'></a></p>
+<h3 id="example">Example</h3>
+<p>Here we will use a modified FitzHugh-Nagumo system that results in periodic behavior, and then try to estimate its period. First, let's see the trajectory:</p>
+<p>```@example sm
+using DynamicalSystems, PyPlot</p>
+<p>function FHN(u, p, t)
+    e, b, g = p
+    v, w = u
+    dv = min(max(-2 - v, v), 2 - v) - w
+    dw = e<em>(v - g</em>w + b)
+    return SVector(dv, dw)
+end</p>
+<p>g, e, b  = 0.8, 0.04, 0.0
+p0 = [e, b, g]</p>
+<p>fhn = ContinuousDynamicalSystem(FHN, SVector(-2, -0.6667), p0)
+T = 1000.0
+v = trajectory(fhn, T; dt = dt)[:, 1]
+t = 0:dt:T</p>
+<p>figure()
+plot(0:dt:T, v)
+savefig("fhn_trajectory.png"); nothing # hide</p>
+<div class="codehilite"><pre><span></span><span class="n">Examining</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">figure</span><span class="p">,</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">period</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">system</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">around</span><span class="w"> </span><span class="err">`</span><span class="mi">91</span><span class="err">`</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="n">units</span><span class="p">.</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="n">estimate</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">numerically</span><span class="w"> </span><span class="n">let</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="ow">some</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nl">methods</span><span class="p">:</span><span class="w"></span>
+
+
+<span class="err">```</span><span class="nv">@example</span><span class="w"> </span><span class="n">sm</span><span class="w"></span>
+<span class="n">estimate_period</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span><span class="w"> </span><span class="err">:</span><span class="n">autocorrelation</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
+</pre></div>
+
+
+<p>```@example sm
+estimate_period(vs, :periodogram, t)</p>
+<div class="codehilite"><pre><span></span><span class="err">```</span><span class="nv">@example</span><span class="w"> </span><span class="n">sm</span><span class="w"></span>
+<span class="n">estimate_period</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span><span class="w"> </span><span class="err">:</span><span class="n">zerocrossing</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
+</pre></div>
                 
                   
                 
