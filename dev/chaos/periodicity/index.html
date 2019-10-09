@@ -952,29 +952,11 @@
 </ol>
 <p><a id='Determining-Periodicity-1'></a></p>
 <h2 id="determining-periodicity">Determining Periodicity</h2>
-<p>Once you have determined that your system is periodic, you might want to find out what its period is.  Fortunately, the function <a href="./#ChaosTools.estimate_period"><code>estimate_period</code></a> from <code>ChaosTools</code> offers many ways for you to do this, given the system's timeseries as an input.</p>
-<p><a id='ChaosTools.estimate_period' href='#ChaosTools.estimate_period'>#</a>
-<strong><code>ChaosTools.estimate_period</code></strong> &mdash; <em>Function</em>.</p>
-<div class="codehilite"><pre><span></span><span class="n">estimate_period</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">v</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">;,</span> <span class="n">method_specific_kwargs</span><span class="o">...</span><span class="p">)</span>
-</pre></div>
-
-
-<p>Estimate the period of the signal <code>v</code>, with accompanying time vector <code>t</code>, using the given <code>method</code>.</p>
-<p>If <code>t</code> is an AbstractArray, then it is iterated through to ensure that it's evenly sampled (if necessary for the algorithm).  To avoid this, you can pass any <code>AbstractRange</code>, like a <code>UnitRange</code> or a <code>LinRange</code>, which are defined to be evenly sampled.</p>
-<p><strong>Methods requiring evenly sampled data</strong></p>
-<p>These methods are faster, but some are error-prone.</p>
-<ul>
-<li><code>:periodogram</code> or <code>:pg</code>: Use the fast Fourier transform to compute a  periodogram (power-spectrum) of the given data.  Data must be evenly sampled.</li>
-<li><code>:multitaper</code> or <code>mt</code>: The multitaper method reduces estimation bias by using multiple independent estimates from the same sample. Data tapers are then windowed and the power spectra are obtained.  Available keywords follow: <code>nw</code> is the time-bandwidth product, and <code>ntapers</code> is the number of tapers. If <code>window</code> is not specified, the signal is tapered with <code>ntapers</code> discrete prolate spheroidal sequences with time-bandwidth product <code>nw</code>. Each sequence is equally weighted; adaptive multitaper is not (yet) supported. If <code>window</code> is specified, each column is applied as a taper. The sum of periodograms is normalized by the total sum of squares of <code>window</code>.</li>
-<li><code>:autocorrelation</code> or <code>:ac</code>: Use the autocorrelation function (AC). The value where the AC first comes back close to 1 is the period of the signal. The keyword <code>L = length(v)÷10</code> denotes the length of the AC (thus, given the default setting, this method will fail if there less than 10 periods in the signal). The keyword <code>ϵ = 0.2</code> (<code>\epsilon</code>) means that <code>1-ϵ</code> counts as "1" for the AC.</li>
-</ul>
-<p><strong>Methods not requiring evenly sampled data</strong></p>
-<p>These methods tend to be slow, but versatile and low-error.</p>
-<ul>
-<li><code>:lombscargle</code> or <code>:ls</code>: Use the Lomb-Scargle algorithm to compute a periodogram.  The advantage of the Lomb-Scargle method is that it does not require an equally sampled dataset and performs well on undersampled datasets. Constraints have been set on the period, since Lomb-Scargle tends to have false peaks at very low frequencies.  That being said, it's a very flexible method.  It is extremely customizable, and the keyword arguments that can be passed to it are given <a href="https://juliaastro.github.io/LombScargle.jl/stable/index.html#LombScargle.plan">in the documentation</a>.</li>
-<li><code>:zerocrossing</code> or <code>:zc</code>: Find the zero crossings of the data, and use the average difference between zero crossings as the period.  This is a naïve implementation, with only linear interpolation; however, it's useful as a sanity check.  The keyword <code>line</code> controls where the "crossing point" is. It deffaults to <code>mean(v)</code>.</li>
-</ul>
-<p>For more information on the periodogram methods, see the documentation of <code>DSP.jl</code> and <code>LombScargle.jl</code>.</p>
+<p>Once you have determined that your system is periodic, you might want to find out what its period is.  Fortunately, the function <a href="../@ref"><code>estimate_period</code></a> from <code>ChaosTools</code> offers many ways for you to do this, given the system's timeseries as an input.</p>
+<div class="admonition warning">
+<p class="admonition-title">Missing docstring.</p>
+<p>Missing docstring for <code>estimate_period</code>. Check Documenter's build log for details.</p>
+</div>
 <p>We offer five methods to estimate periods, some of which work on evenly sampled data only, and others which accept any data.  The figure below summarizes this: <img alt="" src="https://raw.githubusercontent.com/JuliaDynamics/JuliaDynamics/master/videos/chaos/periodestimationmethods.png?raw=true" /></p>
 <p><a id='Example-1'></a></p>
 <h3 id="example">Example</h3>
