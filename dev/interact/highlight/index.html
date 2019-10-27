@@ -753,10 +753,26 @@
 <h1 id="trajectory-highlighter">Trajectory Highlighter</h1>
 <p><a id='Docstrings-1'></a></p>
 <h2 id="docstrings">Docstrings</h2>
-<div class="admonition warning">
-<p class="admonition-title">Missing docstring.</p>
-<p>Missing docstring for <code>trajectory_highlighter</code>. Check Documenter's build log for details.</p>
-</div>
+<p><a id='InteractiveChaos.trajectory_highlighter' href='#InteractiveChaos.trajectory_highlighter'>#</a>
+<strong><code>InteractiveChaos.trajectory_highlighter</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">trajectory_highlighter</span><span class="p">(</span><span class="n">datasets</span><span class="p">,</span> <span class="n">vals</span><span class="p">;</span> <span class="n">kwargs</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Open an interactive application for highlighting specific datasets and properties of these datasets. <code>datasets</code> is a vector of <em>anything</em> from <strong>DynamicalSystems.jl</strong> that supports <code>plot_dataset</code> (currently <code>Dataset</code> or <code>Matrix</code>). Each dataset corresponds to a specific value from <code>vals</code> (a <code>Vector{&lt;:Real}</code>). The value of <code>vals</code> gives each dataset a specific color based on a colormap.</p>
+<p>The application is composed of two scenes: the left scene plots the datasets, while the right scene plots the histogram of the <code>vals</code>. The function returns the two scenes <code>data_scene, hist_scene</code>.</p>
+<p><strong>Interaction</strong></p>
+<p>Clicking on a bin of the histogram plot will "highlight" all data whose value belongs in that bin. Here highlighting actually means "hidding" (i.e. reducing their alpha value) all other data besides the ones you want to highlight. Clicking on empty space on the histogram plot will reset highlighting.</p>
+<p>Clicking on a plotted series in the left window will highlight this series as well as the histogram bin that contains its value. Clicking on empty space will reset the highlighting.</p>
+<p><strong>Keyword Arguments</strong></p>
+<ul>
+<li><code>nbins = 10, closed = :left</code> : used in producing the histogram.</li>
+<li><code>α = 0.05</code> : the alpha value of the hidden data.</li>
+<li><code>hα = 0.2</code> : the alpha value of the hidden histogram bins.</li>
+<li><code>cmap = :viridis</code> : the colormap used.</li>
+<li><code>hname = "value"</code> : name for the histogram axis.</li>
+<li><code>kwargs...</code> : Anything else is propagated to <code>plot_dataset</code>.</li>
+</ul>
 <p><a id='Function-Video-1'></a></p>
 <h2 id="function-video">Function Video</h2>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">InteractiveChaos</span><span class="p">,</span> <span class="n">Makie</span>

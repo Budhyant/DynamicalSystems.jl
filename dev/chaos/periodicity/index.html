@@ -499,8 +499,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#detecting-stable-and-unstable-periodic-orbits-of-maps" title="Detecting Stable and Unstable Periodic Orbits of Maps" class="md-nav__link">
-    Detecting Stable and Unstable Periodic Orbits of Maps
+  <a href="#stable-and-unstable-periodic-orbits-of-maps" title="Stable and Unstable Periodic Orbits of Maps" class="md-nav__link">
+    Stable and Unstable Periodic Orbits of Maps
   </a>
   
     <nav class="md-nav">
@@ -743,8 +743,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#detecting-stable-and-unstable-periodic-orbits-of-maps" title="Detecting Stable and Unstable Periodic Orbits of Maps" class="md-nav__link">
-    Detecting Stable and Unstable Periodic Orbits of Maps
+  <a href="#stable-and-unstable-periodic-orbits-of-maps" title="Stable and Unstable Periodic Orbits of Maps" class="md-nav__link">
+    Stable and Unstable Periodic Orbits of Maps
   </a>
   
     <nav class="md-nav">
@@ -804,8 +804,8 @@
                 <p><a id='Periodicity-1'></a></p>
 <h1 id="periodicity">Periodicity</h1>
 <p>In this page we describe methods related to the periodic behavior of dynamical systems or univariate timeseries.</p>
-<p><a id='Detecting-Stable-and-Unstable-Periodic-Orbits-of-Maps-1'></a></p>
-<h2 id="detecting-stable-and-unstable-periodic-orbits-of-maps">Detecting Stable and Unstable Periodic Orbits of Maps</h2>
+<p><a id='Stable-and-Unstable-Periodic-Orbits-of-Maps-1'></a></p>
+<h2 id="stable-and-unstable-periodic-orbits-of-maps">Stable and Unstable Periodic Orbits of Maps</h2>
 <p>Chaotic behavior of low dimensional dynamical systems is affected by the position and the stability properties of the <a href="http://www.scholarpedia.org/article/Unstable_periodic_orbits">periodic orbits</a> of a dynamical system.</p>
 <p>Finding unstable (or stable) periodic orbits of a discrete mapping analytically rapidly becomes impossible for higher orders of fixed points. Fortunately there is a numeric algorithm due to Schmelcher &amp; Diakonos which allows such a computation. Notice that even though the algorithm can find stable fixed points, it is mainly aimed at <em>unstable</em> ones.</p>
 <p>The functions <code>periodicorbits</code> and <code>lambdamatrix</code> implement the algorithm:</p>
@@ -953,45 +953,48 @@
 <p><a id='Determining-Periodicity-1'></a></p>
 <h2 id="determining-periodicity">Determining Periodicity</h2>
 <p>Once you have determined that your system is periodic, you might want to find out what its period is.  Fortunately, the function <a href="../@ref"><code>estimate_period</code></a> from <code>ChaosTools</code> offers many ways for you to do this, given the system's timeseries as an input.</p>
+<p>We offer five methods to estimate periods, some of which work on evenly sampled data only, and others which accept any data.  The figure below summarizes this: <img alt="" src="https://raw.githubusercontent.com/JuliaDynamics/JuliaDynamics/master/videos/chaos/periodestimationmethods.png?raw=true" /></p>
 <div class="admonition warning">
 <p class="admonition-title">Missing docstring.</p>
 <p>Missing docstring for <code>estimate_period</code>. Check Documenter's build log for details.</p>
 </div>
-<p>We offer five methods to estimate periods, some of which work on evenly sampled data only, and others which accept any data.  The figure below summarizes this: <img alt="" src="https://raw.githubusercontent.com/JuliaDynamics/JuliaDynamics/master/videos/chaos/periodestimationmethods.png?raw=true" /></p>
 <p><a id='Example-1'></a></p>
 <h3 id="example">Example</h3>
 <p>Here we will use a modified FitzHugh-Nagumo system that results in periodic behavior, and then try to estimate its period. First, let's see the trajectory:</p>
-<p>```@example sm
-using DynamicalSystems, PyPlot</p>
-<p>function FHN(u, p, t)
-    e, b, g = p
-    v, w = u
-    dv = min(max(-2 - v, v), 2 - v) - w
-    dw = e<em>(v - g</em>w + b)
-    return SVector(dv, dw)
-end</p>
-<p>g, e, b  = 0.8, 0.04, 0.0
-p0 = [e, b, g]</p>
-<p>fhn = ContinuousDynamicalSystem(FHN, SVector(-2, -0.6667), p0)
-T = 1000.0
-v = trajectory(fhn, T; dt = dt)[:, 1]
-t = 0:dt:T</p>
-<p>figure()
-plot(0:dt:T, v)
-savefig("fhn_trajectory.png"); nothing # hide</p>
-<div class="codehilite"><pre><span></span><span class="n">Examining</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">figure</span><span class="p">,</span><span class="w"> </span><span class="n">one</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">see</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">period</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="k">system</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">around</span><span class="w"> </span><span class="err">`</span><span class="mi">91</span><span class="err">`</span><span class="w"> </span><span class="nc">time</span><span class="w"> </span><span class="n">units</span><span class="p">.</span><span class="w"> </span><span class="k">To</span><span class="w"> </span><span class="n">estimate</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">numerically</span><span class="w"> </span><span class="n">let</span><span class="err">&#39;</span><span class="n">s</span><span class="w"> </span><span class="k">use</span><span class="w"> </span><span class="ow">some</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="nl">methods</span><span class="p">:</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span><span class="p">,</span> <span class="n">PyPlot</span>
 
+<span class="k">function</span> <span class="n">FHN</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+    <span class="nb">e</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">v</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">u</span>
+    <span class="n">dv</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">-</span> <span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">),</span> <span class="mi">2</span> <span class="o">-</span> <span class="n">v</span><span class="p">)</span> <span class="o">-</span> <span class="n">w</span>
+    <span class="n">dw</span> <span class="o">=</span> <span class="nb">e</span><span class="o">*</span><span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">g</span><span class="o">*</span><span class="n">w</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SVector</span><span class="p">(</span><span class="n">dv</span><span class="p">,</span> <span class="n">dw</span><span class="p">)</span>
+<span class="k">end</span>
 
-<span class="err">```</span><span class="nv">@example</span><span class="w"> </span><span class="n">sm</span><span class="w"></span>
-<span class="n">estimate_period</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span><span class="w"> </span><span class="err">:</span><span class="n">autocorrelation</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
+<span class="n">g</span><span class="p">,</span> <span class="nb">e</span><span class="p">,</span> <span class="n">b</span>  <span class="o">=</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="n">p0</span> <span class="o">=</span> <span class="p">[</span><span class="nb">e</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">]</span>
+
+<span class="n">fhn</span> <span class="o">=</span> <span class="n">ContinuousDynamicalSystem</span><span class="p">(</span><span class="n">FHN</span><span class="p">,</span> <span class="n">SVector</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6667</span><span class="p">),</span> <span class="n">p0</span><span class="p">)</span>
+<span class="n">T</span><span class="p">,</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">,</span> <span class="mf">0.1</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">fhn</span><span class="p">,</span> <span class="n">T</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span><span class="p">)[</span><span class="o">:</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mi">0</span><span class="o">:</span><span class="n">dt</span><span class="o">:</span><span class="n">T</span>
+
+<span class="n">figure</span><span class="p">()</span>
+<span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="o">:</span><span class="n">dt</span><span class="o">:</span><span class="n">T</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
 </pre></div>
 
 
+<p><img alt="A periodic trajectory" src="../fhn_trajectory.png" /></p>
+<p>Examining the figure, one can see that the period of the system is around <code>91</code> time units. To estimate it numerically let's use some of the methods:</p>
 <p>```@example sm
-estimate_period(vs, :periodogram, t)</p>
+estimate_period(v, :autocorrelation, t)</p>
 <div class="codehilite"><pre><span></span><span class="err">```</span><span class="nv">@example</span><span class="w"> </span><span class="n">sm</span><span class="w"></span>
-<span class="n">estimate_period</span><span class="p">(</span><span class="n">vs</span><span class="p">,</span><span class="w"> </span><span class="err">:</span><span class="n">zerocrossing</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
+<span class="n">estimate_period</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="err">:</span><span class="n">periodogram</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="p">)</span><span class="w"></span>
 </pre></div>
+
+
+<p><code>@example sm
+estimate_period(v, :zerocrossing, t)</code></p>
                 
                   
                 
