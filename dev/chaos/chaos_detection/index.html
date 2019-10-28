@@ -523,6 +523,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-0-1-test-for-chaos" title="The 0-1 test for chaos" class="md-nav__link">
+    The 0-1 test for chaos
+  </a>
+  
+</li>
+      
       
       
       
@@ -731,18 +738,6 @@
   </li>
 
     
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../../news/" title="News" class="md-nav__link">
-      News
-    </a>
-  </li>
-
-    
   </ul>
 </nav>
                   </div>
@@ -824,6 +819,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#the-0-1-test-for-chaos" title="The 0-1 test for chaos" class="md-nav__link">
+    The 0-1 test for chaos
+  </a>
+  
+</li>
+      
       
       
       
@@ -846,7 +848,7 @@
                 <p><a id='Chaos-Detection-1'></a></p>
 <h1 id="chaos-detection">Chaos Detection</h1>
 <p>Being able to detect and distinguish chaotic from regular behavior is crucial in the study of dynamical systems. Most of the time a positive maximum <a href="../lyapunovs/#ChaosTools.lyapunov"><code>lyapunov</code></a> exponent and a bounded system indicate chaos.</p>
-<p>However, the convergence of the Lyapunov exponent can be slow, or even misleading, as the types of chaotic behavior vary greatly with respect to their predictability. There are many alternatives, some more efficient and some more accurate in characterizing chaotic and regular motion. Some of these methods are included in <strong>DynamicalSystems.jl</strong>.</p>
+<p>However, the convergence of the Lyapunov exponent can be slow, or even misleading, as the types of chaotic behavior vary with respect to their predictability. There are many alternatives, some more efficient and some more accurate in characterizing chaotic and regular motion. Some of these methods are included in <strong>DynamicalSystems.jl</strong>.</p>
 <div class="admonition info">
 <p class="admonition-title">Performance depends on the solver</p>
 <p>Notice that the performance of functions that use <code>ContinuousDynamicalSystem</code>s depend crucially on the chosen solver. Please see the documentation page on <a href="../choosing/#Choosing-a-solver-1">Choosing a solver</a> for an in-depth discussion.</p>
@@ -1214,6 +1216,14 @@
 
 
 <p><img alt="partial_henon" src="../partial_henon.png" /></p>
+<p><a id='The-0-1-test-for-chaos-1'></a></p>
+<h2 id="the-0-1-test-for-chaos">The 0-1 test for chaos</h2>
+<p>The methods mentioned in this page so far require a <code>DynamicalSystem</code> instance. But of course this is not always the case. The so-called "0 to 1" test for chaos, by Gottwald &amp; Melbourne, takes as an input a timeseries and outputs a boolean <code>true</code> if the timeseries is chaotic or <code>false</code> if it is not.</p>
+<p>Notice that the method does have a lot of caveats, so you should read the review paper before using.</p>
+<div class="admonition warning">
+<p class="admonition-title">Missing docstring.</p>
+<p>Missing docstring for <code>testchaos01</code>. Check Documenter's build log for details.</p>
+</div>
                 
                   
                 
