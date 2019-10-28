@@ -1220,10 +1220,20 @@
 <h2 id="the-0-1-test-for-chaos">The 0-1 test for chaos</h2>
 <p>The methods mentioned in this page so far require a <code>DynamicalSystem</code> instance. But of course this is not always the case. The so-called "0 to 1" test for chaos, by Gottwald &amp; Melbourne, takes as an input a timeseries and outputs a boolean <code>true</code> if the timeseries is chaotic or <code>false</code> if it is not.</p>
 <p>Notice that the method does have a lot of caveats, so you should read the review paper before using.</p>
-<div class="admonition warning">
-<p class="admonition-title">Missing docstring.</p>
-<p>Missing docstring for <code>testchaos01</code>. Check Documenter's build log for details.</p>
-</div>
+<p><a id='ChaosTools.testchaos01' href='#ChaosTools.testchaos01'>#</a>
+<strong><code>ChaosTools.testchaos01</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">testchaos01</span><span class="p">(</span><span class="nb">φ</span><span class="o">::</span><span class="kt">Vector</span> <span class="p">[,</span> <span class="n">cs</span><span class="p">,</span> <span class="n">N0</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">chaotic</span><span class="o">?</span>
+</pre></div>
+
+
+<p>Perform the so called "0-1" test for chaos introduced by Gottwald and Melbourne [1] on the timeseries <code>φ</code>. Return <code>true</code> if <code>φ</code> is chaotic, <code>false</code> otherwise.</p>
+<p><strong>Description</strong></p>
+<p>This method tests if the given timeseries is chaotic or not by transforming it into a two-dimensional diffusive process. If the timeseries is chaotic, the mean square displacement of the process grows as <code>sqrt(length(φ))</code>, while it stays constant if the timeseries is regular. The implementation here computes <code>K</code>, the correlation coefficient (median of <code>Kc for c ∈ cs</code>), and simply checks if <code>K &gt; 0.5</code>.</p>
+<p>If you want to access the various <code>Kc</code> you should call the method <code>testchaos01(φ, c::Real, N0)</code> which returns <code>Kc</code>.</p>
+<p><code>cs</code> defaults to <code>3π/5*rand(10) + π/4</code> and <code>N0</code>, the length of the two-dimensional process, is <code>N0 = length(φ)/10</code>.</p>
+<p>Notice that for data sampled from continous dynamical systems, some care must be taken regarding the values of <code>cs</code>, see [1].</p>
+<p><strong>References</strong></p>
+<p>[1] : Gottwald &amp; Melbourne, “The 0-1 test for chaos: A review” <a href="../www.doi.org/10.1007/978-3-662-48410-4_7">Lect. Notes Phys., vol. 915, pp. 221–247, 2016.</a></p>
                 
                   
                 
