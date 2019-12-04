@@ -496,29 +496,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#other-entropies-and-dimensions" title="Other Entropies and Dimensions" class="md-nav__link">
-    Other Entropies and Dimensions
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#permutation-entropy" title="Permutation Entropy" class="md-nav__link">
     Permutation Entropy
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#kaplan-yorke-dimension" title="Kaplan-Yorke Dimension" class="md-nav__link">
     Kaplan-Yorke Dimension
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -760,29 +747,16 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#other-entropies-and-dimensions" title="Other Entropies and Dimensions" class="md-nav__link">
-    Other Entropies and Dimensions
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#permutation-entropy" title="Permutation Entropy" class="md-nav__link">
     Permutation Entropy
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#kaplan-yorke-dimension" title="Kaplan-Yorke Dimension" class="md-nav__link">
     Kaplan-Yorke Dimension
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -811,7 +785,7 @@
 <h2 id="generalized-entropy">Generalized Entropy</h2>
 <p>In the study of dynamical systems there are many quantities that identify as "entropy". Notice that these quantities are not the more commonly known <a href="https://en.wikipedia.org/wiki/Entropy">thermodynamic ones</a>, used in Statistical Physics. Rather, they are more like the to the entropies of <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">information theory</a>, which represents information contained within a dataset, or information about the dimensional scaling of a dataset.</p>
 <hr />
-<p>The main way of computing entropies in <strong>DynamicalSystems.jl</strong> is the "generalized entropy":</p>
+<p>One way of computing entropies in <strong>DynamicalSystems.jl</strong> is the "generalized entropy":</p>
 <p><a id='ChaosTools.genentropy' href='#ChaosTools.genentropy'>#</a>
 <strong><code>ChaosTools.genentropy</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">genentropy</span><span class="p">(</span><span class="n">α</span><span class="p">,</span> <span class="n">ε</span><span class="p">,</span> <span class="n">dataset</span><span class="o">::</span><span class="n">AbstractDataset</span><span class="p">;</span> <span class="n">base</span> <span class="o">=</span> <span class="nb">e</span><span class="p">)</span>
@@ -923,12 +897,12 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">3</span><span class="o">-</span><span class="nv">dimensional</span> <span class="nv">continuous</span> <span class="nv">dynamical</span> <span class="nv">system</span>
- <span class="nv">state</span>:       [<span class="mi">0</span>.<span class="mi">0</span>, <span class="mi">10</span>.<span class="mi">0</span>, <span class="mi">0</span>.<span class="mi">0</span>]
- <span class="nv">e</span>.<span class="nv">o</span>.<span class="nv">m</span>.:      <span class="k">loop</span>
- <span class="nv">in</span><span class="o">-</span><span class="nv">place</span>?    <span class="nv">false</span>
- <span class="nv">jacobian</span>:    <span class="nv">loop_jac</span>
- <span class="nv">parameters</span>:  [<span class="mi">10</span>.<span class="mi">0</span>, <span class="mi">28</span>.<span class="mi">0</span>, <span class="mi">2</span>.<span class="mi">66667</span>]
+<div class="codehilite"><pre><span></span><span class="err">3-dimensional continuous dynamical system</span>
+<span class="err"> state:       [0.0, 10.0, 0.0]</span>
+<span class="err"> e.o.m.:      loop</span>
+<span class="err"> in-place?    false</span>
+<span class="err"> jacobian:    loop_jac</span>
+<span class="err"> parameters:  [10.0, 28.0, 2.66667]</span>
 </pre></div>
 
 
@@ -940,22 +914,22 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">15</span><span class="o">-</span><span class="n">element</span> <span class="nb">Array</span><span class="err">{</span><span class="n">Float64</span><span class="p">,</span><span class="mi">1</span><span class="err">}</span><span class="p">:</span>
- <span class="mi">9</span><span class="p">.</span><span class="mi">210440366976329</span> 
- <span class="mi">9</span><span class="p">.</span><span class="mi">208499748932574</span> 
- <span class="mi">9</span><span class="p">.</span><span class="mi">195140334192946</span> 
- <span class="mi">9</span><span class="p">.</span><span class="mi">136445496766951</span> 
- <span class="mi">8</span><span class="p">.</span><span class="mi">998905310194775</span> 
- <span class="mi">8</span><span class="p">.</span><span class="mi">705004397152349</span> 
- <span class="mi">8</span><span class="p">.</span><span class="mi">1305312663553</span>   
- <span class="mi">7</span><span class="p">.</span><span class="mi">331853533923082</span> 
- <span class="mi">6</span><span class="p">.</span><span class="mi">408657913235563</span> 
- <span class="mi">5</span><span class="p">.</span><span class="mi">453352354803625</span> 
- <span class="mi">4</span><span class="p">.</span><span class="mi">485476740802795</span> 
- <span class="mi">3</span><span class="p">.</span><span class="mi">5260626238745894</span>
- <span class="mi">2</span><span class="p">.</span><span class="mi">6067548710932336</span>
- <span class="mi">1</span><span class="p">.</span><span class="mi">8789633825490644</span>
- <span class="mi">0</span><span class="p">.</span><span class="mi">5375831514462662</span>
+<div class="codehilite"><pre><span></span><span class="err">15-element Array{Float64,1}:</span>
+<span class="err"> 9.210440366976329 </span>
+<span class="err"> 9.208499748932574 </span>
+<span class="err"> 9.195140334192946 </span>
+<span class="err"> 9.136445496766951 </span>
+<span class="err"> 8.998905310194775 </span>
+<span class="err"> 8.705004397152349 </span>
+<span class="err"> 8.1305312663553   </span>
+<span class="err"> 7.331853533923082 </span>
+<span class="err"> 6.408657913235563 </span>
+<span class="err"> 5.453352354803625 </span>
+<span class="err"> 4.485476740802795 </span>
+<span class="err"> 3.5260626238745894</span>
+<span class="err"> 2.6067548710932336</span>
+<span class="err"> 1.8789633825490644</span>
+<span class="err"> 0.5375831514462662</span>
 </pre></div>
 
 
@@ -987,7 +961,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="mi">833384047211349</span>
+<div class="codehilite"><pre><span></span><span class="err">1.833384047211349</span>
 </pre></div>
 
 
@@ -1001,16 +975,14 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="mi">215884931528749</span>
+<div class="codehilite"><pre><span></span><span class="err">1.215884931528749</span>
 </pre></div>
 
 
 <p>As a side note, be sure that you have enough data points, otherwise the values you will get will never be correct, as is demonstrated by J.-P. Eckmann and D. Ruelle (see Physica D <strong>56</strong>, pp 185-187 (1992)).</p>
 <hr />
-<p><a id='Other-Entropies-and-Dimensions-1'></a></p>
-<h2 id="other-entropies-and-dimensions">Other Entropies and Dimensions</h2>
 <p><a id='Permutation-Entropy-1'></a></p>
-<h3 id="permutation-entropy">Permutation Entropy</h3>
+<h2 id="permutation-entropy">Permutation Entropy</h2>
 <p>The permutation entropy is introduced by C. Bandt and B. Pompe as a "A Natural Complexity Measure for Timeseries", which directly applies to arbitrary real-world data and is particularly useful in the presence of dynamical or observational noise.</p>
 <p><a id='ChaosTools.permentropy' href='#ChaosTools.permentropy'>#</a>
 <strong><code>ChaosTools.permentropy</code></strong> &mdash; <em>Function</em>.</p>
@@ -1023,6 +995,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>Optionally use <code>base</code> for the logarithms.</p>
 <p><strong>References</strong></p>
 <p>[1] : C. Bandt, &amp; B. Pompe, <a href="http://doi.org/10.1103/PhysRevLett.88.174102">Phys. Rev. Lett. <strong>88</strong> (17), pp 174102 (2002)</a></p>
+<hr />
 <p>For example, we will compute and compare the <a href="../lyapunovs/#ChaosTools.lyapunov"><code>lyapunov</code></a> exponent of the logistic map with the order-6 permutation entropy, like in the original paper.</p>
 <div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span><span class="p">,</span> <span class="n">PyPlot</span>
 <span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">logistic</span><span class="p">()</span>
@@ -1054,7 +1027,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 <p>Even though the current implementation is fine and runs reasonably fast for moderate orders, it can get slow for high orders. Issue <a href="https://github.com/JuliaDynamics/ChaosTools.jl/issues/22">ChaosTools.jl#22</a> keeps track of this, and contains information on how to improve performance.</p>
 </div>
 <p><a id='Kaplan-Yorke-Dimension-1'></a></p>
-<h3 id="kaplan-yorke-dimension">Kaplan-Yorke Dimension</h3>
+<h2 id="kaplan-yorke-dimension">Kaplan-Yorke Dimension</h2>
 <p><a id='ChaosTools.kaplanyorke_dim' href='#ChaosTools.kaplanyorke_dim'>#</a>
 <strong><code>ChaosTools.kaplanyorke_dim</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">kaplanyorke_dim</span><span class="p">(</span><span class="n">lyapunovs</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span>
@@ -1075,7 +1048,7 @@ H_\alpha(p) = \frac{1}{1-\alpha} \log \left(\sum_i p[i]^\alpha\right)
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">1</span><span class="p">.</span><span class="mi">2587080365088803</span>
+<div class="codehilite"><pre><span></span><span class="err">1.258707225234691</span>
 </pre></div>
                 
                   

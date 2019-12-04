@@ -908,7 +908,7 @@
 <p>Our implementation is not based on the original paper, but rather in the method described in [2], which uses the product of the singular values of <span><span class="MathJax_Preview">A</span><script type="math/tex">A</script></span>, a matrix that has as <em>columns</em> the deviation vectors.</p>
 <p><strong>Performance Notes</strong></p>
 <p>This function uses a <a href="../../advanced/#DynamicalSystemsBase.tangent_integrator"><code>tangent_integrator</code></a>. For loops over initial conditions and/or parameter values one should use the low level method that accepts an integrator, and <code>reinit!</code> it to new initial conditions. See the "advanced documentation" for info on the integrator object. The low level method is</p>
-<div class="codehilite"><pre><span></span><span class="n">ChaosTools</span><span class="p">.</span><span class="n">gali</span><span class="p">(</span><span class="n">tinteg</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">threshold</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="err">ChaosTools.gali(tinteg, tmax, dt, threshold)</span>
 </pre></div>
 
 
@@ -929,12 +929,12 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">6</span><span class="o">-</span><span class="n">dimensional</span> <span class="n">discrete</span> <span class="n">dynamical</span> <span class="k">system</span>
- <span class="k">state</span><span class="p">:</span>       <span class="p">[</span><span class="mi">3</span><span class="p">.</span><span class="mi">24159</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">24159</span><span class="p">,</span> <span class="mi">3</span><span class="p">.</span><span class="mi">24159</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">11</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">1</span><span class="p">]</span>
- <span class="n">e</span><span class="p">.</span><span class="n">o</span><span class="p">.</span><span class="n">m</span><span class="p">.:</span>      <span class="n">CoupledStandardMaps</span>
- <span class="k">in</span><span class="o">-</span><span class="n">place</span><span class="o">?</span>    <span class="k">true</span>
- <span class="n">jacobian</span><span class="p">:</span>    <span class="n">CoupledStandardMaps</span>
- <span class="k">parameters</span><span class="p">:</span>  <span class="n">Tuple</span>
+<div class="codehilite"><pre><span></span><span class="err">6-dimensional discrete dynamical system</span>
+<span class="err"> state:       [3.24159, 3.24159, 3.24159, 0.11, 0.1, 0.1]</span>
+<span class="err"> e.o.m.:      CoupledStandardMaps</span>
+<span class="err"> in-place?    true</span>
+<span class="err"> jacobian:    CoupledStandardMaps</span>
+<span class="err"> parameters:  Tuple</span>
 </pre></div>
 
 
@@ -1001,12 +1001,12 @@
 </pre></div>
 
 
-<div class="codehilite"><pre><span></span><span class="mi">4</span><span class="o">-</span><span class="n">dimensional</span> <span class="n">continuous</span> <span class="n">dynamical</span> <span class="k">system</span>
- <span class="k">state</span><span class="p">:</span>       <span class="p">[</span><span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">295456</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">407308</span><span class="p">,</span> <span class="mi">0</span><span class="p">.</span><span class="mi">0</span><span class="p">]</span>
- <span class="n">e</span><span class="p">.</span><span class="n">o</span><span class="p">.</span><span class="n">m</span><span class="p">.:</span>      <span class="n">hheom</span><span class="o">!</span>
- <span class="k">in</span><span class="o">-</span><span class="n">place</span><span class="o">?</span>    <span class="k">true</span>
- <span class="n">jacobian</span><span class="p">:</span>    <span class="n">hhjacob</span><span class="o">!</span>
- <span class="k">parameters</span><span class="p">:</span>  <span class="k">nothing</span>
+<div class="codehilite"><pre><span></span><span class="err">4-dimensional continuous dynamical system</span>
+<span class="err"> state:       [0.0, 0.295456, 0.407308, 0.0]</span>
+<span class="err"> e.o.m.:      hheom!</span>
+<span class="err"> in-place?    true</span>
+<span class="err"> jacobian:    hhjacob!</span>
+<span class="err"> parameters:  nothing</span>
 </pre></div>
 
 

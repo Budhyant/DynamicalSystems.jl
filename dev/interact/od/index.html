@@ -773,8 +773,8 @@
 <p>Back in the Electron window, you can press <code>reset</code> to bring the OD in the original state (and variable). Pressing <code>back</code> will go back through the history of your exploration History is stored when any change happens (besides transparency).</p>
 <p><strong>Accessing the data</strong></p>
 <p>What is plotted on the application window is a <em>true</em> orbit diagram, not a plotting shorthand. This means that all data are obtainable and usable directly. Internally we always scale the orbit diagram to [0,1]² (to allow <code>Float64</code> precision even though plotting is <code>Float32</code>-based). This however means that it is necessary to transform the data in real scale. This is done through the function <a href="./#InteractiveChaos.scaleod"><code>scaleod</code></a> which accepts the 5 arguments returned from the current function:</p>
-<div class="codehilite"><pre><span></span><span class="n">od</span><span class="p">,</span> <span class="n">pmin</span><span class="p">,</span> <span class="n">pmax</span><span class="p">,</span> <span class="n">umin</span><span class="p">,</span> <span class="n">umax</span> <span class="o">=</span> <span class="n">interactive_orbitdiagram</span><span class="p">(...)</span>
-<span class="n">ps</span><span class="p">,</span> <span class="n">us</span> <span class="o">=</span> <span class="n">scaleod</span><span class="p">(</span><span class="n">od</span><span class="p">,</span> <span class="n">pmin</span><span class="p">,</span> <span class="n">pmax</span><span class="p">,</span> <span class="n">umin</span><span class="p">,</span> <span class="n">umax</span><span class="p">)</span>
+<div class="codehilite"><pre><span></span><span class="err">od, pmin, pmax, umin, umax = interactive_orbitdiagram(...)</span>
+<span class="err">ps, us = scaleod(od, pmin, pmax, umin, umax)</span>
 </pre></div>
 
 
