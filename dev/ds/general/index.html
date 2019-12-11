@@ -868,7 +868,7 @@
 <p>The constructor deduces automatically whether <code>eom</code> is iip or oop. It is not possible however to deduce whether the system is continuous or discrete just from the equations of motion, hence the 2 constructors.</p>
 <p><strong>Jacobian</strong></p>
 <p>The optional argument <code>jacobian</code> for the constructors is a <em>function</em> and (if given) must also be of the same form as the <code>eom</code>, <code>jacobian(x, p, n) -&gt; SMatrix</code> for the out-of-place version and <code>jacobian!(xnew, x, p, n)</code> for the in-place version.</p>
-<p>If <code>jacobian</code> is not given, it is constructed automatically using the module <a href="http://www.juliadiff.org/ForwardDiff.jl/stable/"><code>ForwardDiff</code></a>. It is <strong>heavily</strong> advised to provide a Jacobian function, as it gives <em>multiple</em> orders of magnitude speedup.</p>
+<p>If <code>jacobian</code> is not given, it is constructed automatically using the module <a href="http://www.juliadiff.org/ForwardDiff.jl/stable/"><code>ForwardDiff</code></a>. Even though <code>ForwardDiff</code> is very fast, depending on your exact system you might gain significant speed-up by providing a hand-coded Jacobian and so we recommend it.</p>
 <p><strong>Interface to DifferentialEquations.jl</strong></p>
 <p>Continuous systems are solved using <a href="http://docs.juliadiffeq.org/latest/"><strong>DifferentialEquations.jl</strong></a>. The following two interfaces are provided:</p>
 <div class="codehilite"><pre><span></span><span class="err">ContinuousDynamicalSystem(prob::ODEProblem [, jacobian [, J0]])</span>
@@ -876,7 +876,7 @@
 </pre></div>
 
 
-<p>where in the second case <code>args</code> stands for the <a href="http://docs.juliadiffeq.org/latest/types/ode_types.html#Constructors-1">standard extra arguments</a> of <code>ODEProblem</code>: <code>callback, mass_matrix</code>.</p>
+<p>where in the second case <code>args</code> stands for the standard extra arguments of <code>ODEProblem</code>: <code>callback, mass_matrix</code>.</p>
 <p>If you want to use callbacks with <a href="../../advanced/#DynamicalSystemsBase.tangent_integrator"><code>tangent_integrator</code></a> or <a href="../../advanced/#DynamicalSystemsBase.parallel_integrator"><code>parallel_integrator</code></a>, then invoke them with extra arguments as shown in the <a href="https://juliadynamics.github.io/DynamicalSystems.jl/latest/advanced/">Advanced Documentation</a>.</p>
 <p><strong>Relevant Functions</strong></p>
 <p><a href="../evolve/#DynamicalSystemsBase.trajectory"><code>trajectory</code></a>, <a href="./#DynamicalSystemsBase.set_parameter!"><code>set_parameter!</code></a>.</p>

@@ -855,7 +855,7 @@ y_{n+1} & = bx_n
 </script>
 </div>
 <p>The Hénon–Heiles system [1] was introduced as a simplification of the motion of a star around a galactic center. It was originally intended to study the existence of a "third integral of motion" (which would make this 4D system integrable). In that search, the authors encountered chaos, as the third integral existed for only but a few initial conditions.</p>
-<p>The default initial condition is a typical chaotic orbit.</p>
+<p>The default initial condition is a typical chaotic orbit. The function <code>Systems.henonheiles_ics(E, n)</code> generates a grid of <code>n×n</code> initial conditions, all having the same energy <code>E</code>.</p>
 <p>[1] : Hénon, M. &amp; Heiles, C., The Astronomical Journal <strong>69</strong>, pp 73–79 (1964)</p>
 <p><a id='DynamicalSystemsBase.Systems.labyrinth' href='#DynamicalSystemsBase.Systems.labyrinth'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.labyrinth</code></strong> &mdash; <em>Function</em>.</p>
@@ -963,6 +963,32 @@ x_{n+1} = rx_n(1-x_n)
 </script>
 </div>
 <p>Three dimensional conservative continuous system, taken from the book "Elegant Chaos" by J. C. Sprott.</p>
+<p><a id='DynamicalSystemsBase.Systems.pomeau_manneville' href='#DynamicalSystemsBase.Systems.pomeau_manneville'>#</a>
+<strong><code>DynamicalSystemsBase.Systems.pomeau_manneville</code></strong> &mdash; <em>Function</em>.</p>
+<div class="codehilite"><pre><span></span><span class="n">pomaeu_manneville</span><span class="p">(</span><span class="n">u0</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">;</span> <span class="n">z</span> <span class="o">=</span> <span class="mf">2.5</span><span class="p">)</span>
+</pre></div>
+
+
+<p>The Pomeau-Manneville map is a one dimensional discrete map which is characteristic for displaying intermittency [1]. Specifically, for z &gt; 2 the average time between chaotic bursts diverges, while for z &gt; 2.5, the map iterates are long range correlated [2].</p>
+<p>Notice that here we are providing the "symmetric" version:</p>
+<div>
+<div class="MathJax_Preview">
+x_{n+1} = \begin{cases}
+-4x_n + 3, &amp; \quad x_n \in (0.5, 1] \\
+x_n(1 + |2x_n|^{z-1}), &amp; \quad |x_n| \le 0.5 \\
+-4x_n - 3, &amp; \quad x_n \in [-1, 0.5)
+\end{cases}
+</div>
+<script type="math/tex; mode=display">
+x_{n+1} = \begin{cases}
+-4x_n + 3, & \quad x_n \in (0.5, 1] \\
+x_n(1 + |2x_n|^{z-1}), & \quad |x_n| \le 0.5 \\
+-4x_n - 3, & \quad x_n \in [-1, 0.5)
+\end{cases}
+</script>
+</div>
+<p>[1] : Manneville &amp; Pomeau, Comm. Math. Phys. <strong>74</strong> (1980)</p>
+<p>[2] : Meyer et al., New. J. Phys <strong>20</strong> (2019)</p>
 <p><a id='DynamicalSystemsBase.Systems.qbh' href='#DynamicalSystemsBase.Systems.qbh'>#</a>
 <strong><code>DynamicalSystemsBase.Systems.qbh</code></strong> &mdash; <em>Function</em>.</p>
 <div class="codehilite"><pre><span></span><span class="n">qbh</span><span class="p">([</span><span class="n">u0</span><span class="p">];</span> <span class="n">A</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="mf">0.55</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
@@ -1013,14 +1039,14 @@ H(p_0, p_2, q_0, q_2) = \frac{A}{2}\left(p_0^2+p_2^2\right)+\frac{A}{2}\left(q_0
 \begin{aligned}
 \dot{x} &amp;= -\mu x +yz \\
 \dot{y} &amp;= -\mu y +x(z-\alpha) \\
-\dot{V} &amp;= 1 - xz
+\dot{z} &amp;= 1 - xz
 \end{aligned}
 </div>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \dot{x} &= -\mu x +yz \\
 \dot{y} &= -\mu y +x(z-\alpha) \\
-\dot{V} &= 1 - xz
+\dot{z} &= 1 - xz
 \end{aligned}
 </script>
 </div>
