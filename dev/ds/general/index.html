@@ -356,6 +356,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#a-comment-on-using-automatic-jacobians" title="A comment on using automatic Jacobians" class="md-nav__link">
+    A comment on using automatic Jacobians
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -795,6 +802,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#a-comment-on-using-automatic-jacobians" title="A comment on using automatic Jacobians" class="md-nav__link">
+    A comment on using automatic Jacobians
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1127,6 +1141,23 @@ p_{i}' = p_i + k_i\sin(\theta_i) - \Gamma \left[\sin(\theta_{i+1} - \theta_{i}) 
 <span class="err"> jacobian:    CoupledStandardMaps</span>
 <span class="err"> parameters:  Tuple</span>
 </pre></div>
+
+
+<p><a id='A-comment-on-using-automatic-Jacobians-1'></a></p>
+<h3 id="a-comment-on-using-automatic-jacobians">A comment on using automatic Jacobians</h3>
+<p>Notice that if you are using automatic differentiation for the Jacobian, you should take care to not define your equations of motion so that they explicitly use, or return, <code>Float64</code> numbers. This is because <code>ForwardDiff</code> uses <code>DualNumbers</code> for differentiation. For example, if you did</p>
+<div class="codehilite"><pre><span></span><span class="k">function</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">σ</span><span class="p">,</span> <span class="n">ρ</span><span class="p">,</span> <span class="n">β</span> <span class="o">=</span> <span class="n">p</span>
+    <span class="n">dx</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">du1</span> <span class="o">=</span> <span class="n">σ</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span>
+    <span class="n">du2</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">ρ</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="n">du3</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">β</span><span class="o">*</span><span class="n">u</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">SVector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span> <span class="mi">3</span><span class="p">}(</span><span class="n">du1</span><span class="p">,</span> <span class="n">du2</span><span class="p">,</span> <span class="n">du3</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<p>this function could not be used to autodifferentiate, as you would get an error when adding dual numbers to <code>SVector{Float64}</code>. Instead, leave the number type untyped, or use <code>eltype(u)</code> as the number type.</p>
                 
                   
                 
