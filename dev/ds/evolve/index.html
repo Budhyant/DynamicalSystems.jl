@@ -763,30 +763,52 @@
 <p>Notice that if you want to do repeated evolutions of different states of a continuous system, you should use the <a href="../../advanced/#DynamicalSystemsBase.integrator"><code>integrator</code></a> interface instead.</p>
 <p><a id='Example-1'></a></p>
 <h2 id="example">Example</h2>
-<p>```@example
-ds = Systems.towel()
-tr = trajectory(ds, 100)</p>
-<div class="codehilite"><pre><span></span><span class="k">To</span><span class="w"> </span><span class="k">get</span><span class="w"> </span><span class="k">every</span><span class="w"> </span><span class="mi">3</span><span class="o">-</span><span class="n">rd</span><span class="w"> </span><span class="n">point</span><span class="w"> </span><span class="k">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">trajectory</span><span class="p">,</span><span class="w"> </span><span class="n">do</span><span class="w"></span>
-
-
-<span class="err">```</span><span class="nv">@example</span><span class="w"></span>
-<span class="n">tr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><span class="k">using</span> <span class="n">DynamicalSystems</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">towel</span><span class="p">()</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 </pre></div>
 
 
-<p>Identical syntax is used for continuous systems</p>
+<div class="codehilite"><pre><span></span><span class="err">3-dimensional Dataset{Float64} with 101 points</span>
+<span class="err"> 0.085     -0.121       0.075   </span>
+<span class="err"> 0.285813  -0.0675286   0.238038</span>
+<span class="err"> 0.76827   -0.038933    0.672094</span>
+<span class="err"> 0.681871   0.0508933   0.825263</span>
+<span class="err"> 0.837347   0.0372633   0.555269</span>
+<span class="err"> 0.51969    0.0616256   0.940906</span>
+<span class="err"> 0.966676  -0.00171595  0.2225  </span>
+<span class="err"> 0.112748   0.0674955   0.653573</span>
+<span class="err"> 0.386547  -0.0886542   0.869349</span>
+<span class="err"> 0.910741  -0.0316828   0.411607</span>
+<span class="err"> ⋮                              </span>
+<span class="err"> 0.729743   0.0566836   0.25032 </span>
+<span class="err"> 0.739275   0.0308018   0.720691</span>
+<span class="err"> 0.740845   0.047263    0.767058</span>
+<span class="err"> 0.740185   0.0494093   0.684863</span>
+<span class="err"> 0.738165   0.0466359   0.825703</span>
+<span class="err"> 0.747373   0.0506512   0.553337</span>
+<span class="err"> 0.719603   0.0437958   0.944377</span>
+<span class="err"> 0.784243   0.0495777   0.20732 </span>
+<span class="err"> 0.631288   0.0375437   0.631114</span>
+</pre></div>
+
+
+<p>To get every 3-rd point of the trajectory, do</p>
 <p>```@example
-ds = Systems.lorenz()
-tr = trajectory(ds, 10.0; dt = 0.01)</p>
-<div class="codehilite"><pre><span></span><span class="ow">And</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="n">example</span><span class="w"> </span><span class="n">controlling</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">integrator</span><span class="w"> </span><span class="nl">accuracy</span><span class="p">:</span><span class="w"></span>
+tr = trajectory(ds, 100; dt = 3)</p>
+<div class="codehilite"><pre><span></span><span class="n">Identical</span><span class="w"> </span><span class="n">syntax</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">continuous</span><span class="w"> </span><span class="n">systems</span><span class="w"></span>
 
 
 <span class="err">```</span><span class="nv">@example</span><span class="w"></span>
 <span class="n">ds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Systems</span><span class="p">.</span><span class="n">lorenz</span><span class="p">()</span><span class="w"></span>
-<span class="n">tr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.1</span><span class="p">,</span><span class="w"> </span><span class="n">atol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">,</span><span class="w"> </span><span class="n">rtol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-9</span><span class="p">)</span><span class="w"></span>
+<span class="n">tr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 
 
+<p>And a final example controlling the integrator accuracy:</p>
+<p><code>@example
+ds = Systems.lorenz()
+tr = trajectory(ds, 10.0; dt = 0.1, atol = 1e-9, rtol = 1e-9)</code></p>
 <p><a id='Solution-precision-for-continuous-systems-1'></a></p>
 <h2 id="solution-precision-for-continuous-systems">Solution precision for continuous systems</h2>
 <p>A numerical solution of an ODE is not the "true" solution, uniquely defined by a (well-defined) ODE and an initial condition. Especially for chaotic systems, where deviations are amplified exponentially, one is left worried if the numerical solutions truly are part of the system and can truly give insight in understanding the system.</p>
