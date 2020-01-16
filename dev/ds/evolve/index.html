@@ -794,21 +794,94 @@
 
 
 <p>To get every 3-rd point of the trajectory, do</p>
-<p>```@example
-tr = trajectory(ds, 100; dt = 3)</p>
-<div class="codehilite"><pre><span></span><span class="n">Identical</span><span class="w"> </span><span class="n">syntax</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">continuous</span><span class="w"> </span><span class="n">systems</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mi">100</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
 
 
-<span class="err">```</span><span class="nv">@example</span><span class="w"></span>
-<span class="n">ds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Systems</span><span class="p">.</span><span class="n">lorenz</span><span class="p">()</span><span class="w"></span>
-<span class="n">tr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span><span class="w"> </span><span class="mf">10.0</span><span class="p">;</span><span class="w"> </span><span class="n">dt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.01</span><span class="p">)</span><span class="w"></span>
+<div class="codehilite"><pre><span></span><span class="err">3-dimensional Dataset{Float64} with 34 points</span>
+<span class="err"> 0.085     -0.121       0.075   </span>
+<span class="err"> 0.681871   0.0508933   0.825263</span>
+<span class="err"> 0.966676  -0.00171595  0.2225  </span>
+<span class="err"> 0.910741  -0.0316828   0.411607</span>
+<span class="err"> 0.545332   0.0508239   0.819404</span>
+<span class="err"> 0.544182  -0.0940112   0.270849</span>
+<span class="err"> 0.690701  -0.0679162   0.727605</span>
+<span class="err"> 0.939111   0.010943    0.736301</span>
+<span class="err"> 0.841034   0.0322099   0.689976</span>
+<span class="err"> 0.140788   0.0876455   0.918065</span>
+<span class="err"> ⋮                              </span>
+<span class="err"> 0.223785   0.0902301   0.75948 </span>
+<span class="err"> 0.510326   0.0726233   0.682717</span>
+<span class="err"> 0.529268  -0.069801    0.962927</span>
+<span class="err"> 0.435893  -0.0686173   0.92088 </span>
+<span class="err"> 0.583619  -0.0769684   0.76526 </span>
+<span class="err"> 0.729705  -0.0680752   0.508933</span>
+<span class="err"> 0.739275   0.0308018   0.720691</span>
+<span class="err"> 0.738165   0.0466359   0.825703</span>
+<span class="err"> 0.784243   0.0495777   0.20732 </span>
+</pre></div>
+
+
+<p>Identical syntax is used for continuous systems</p>
+<div class="codehilite"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">()</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="err">3-dimensional Dataset{Float64} with 1001 points</span>
+<span class="err">  0.0       10.0       0.0      </span>
+<span class="err">  0.951226  10.0352    0.0479002</span>
+<span class="err">  1.82768   10.3224    0.18683  </span>
+<span class="err">  2.6593    10.839     0.416592 </span>
+<span class="err">  3.47133   11.5678    0.744804 </span>
+<span class="err">  4.28518   12.496     1.18585  </span>
+<span class="err">  5.1191    13.6125    1.76047  </span>
+<span class="err">  5.98858   14.9063    2.49569  </span>
+<span class="err">  6.90648   16.3638    3.42487  </span>
+<span class="err">  7.88291   17.9659    4.58749  </span>
+<span class="err">  ⋮                             </span>
+<span class="err"> -8.3603    -9.01682  25.9478   </span>
+<span class="err"> -8.42664   -9.09574  26.0152   </span>
+<span class="err"> -8.49391   -9.16911  26.0931   </span>
+<span class="err"> -8.56145   -9.23601  26.1809   </span>
+<span class="err"> -8.62859   -9.29558  26.278    </span>
+<span class="err"> -8.69462   -9.34701  26.3833   </span>
+<span class="err"> -8.75883   -9.38954  26.4959   </span>
+<span class="err"> -8.82053   -9.4225   26.6146   </span>
+<span class="err"> -8.879     -9.44532  26.7382   </span>
 </pre></div>
 
 
 <p>And a final example controlling the integrator accuracy:</p>
-<p><code>@example
-ds = Systems.lorenz()
-tr = trajectory(ds, 10.0; dt = 0.1, atol = 1e-9, rtol = 1e-9)</code></p>
+<div class="codehilite"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">Systems</span><span class="o">.</span><span class="n">lorenz</span><span class="p">()</span>
+<span class="n">tr</span> <span class="o">=</span> <span class="n">trajectory</span><span class="p">(</span><span class="n">ds</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">;</span> <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">atol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">,</span> <span class="n">rtol</span> <span class="o">=</span> <span class="mf">1e-9</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="err">3-dimensional Dataset{Float64} with 101 points</span>
+<span class="err">  0.0      10.0       0.0    </span>
+<span class="err">  8.92478  19.6843    6.02839</span>
+<span class="err"> 20.0553   24.8278   39.9785 </span>
+<span class="err">  9.89834  -7.67213  42.312  </span>
+<span class="err"> -2.67297  -9.86486  30.4531 </span>
+<span class="err"> -6.73013  -8.71064  27.4841 </span>
+<span class="err"> -7.91     -8.6127   26.6731 </span>
+<span class="err"> -8.44188  -8.84913  26.7275 </span>
+<span class="err"> -8.72491  -8.86503  27.1909 </span>
+<span class="err"> -8.70356  -8.53165  27.5098 </span>
+<span class="err">  ⋮                          </span>
+<span class="err"> -7.90031  -8.12215  25.9823 </span>
+<span class="err"> -8.35258  -8.96853  25.9951 </span>
+<span class="err"> -8.94423  -9.40349  26.9656 </span>
+<span class="err"> -9.09671  -8.90393  27.9988 </span>
+<span class="err"> -8.62374  -7.96528  28.0069 </span>
+<span class="err"> -8.01075  -7.54849  27.038  </span>
+<span class="err"> -7.8329   -7.96259  26.0287 </span>
+<span class="err"> -8.23296  -8.84597  25.8467 </span>
+<span class="err"> -8.879    -9.44531  26.7382 </span>
+</pre></div>
+
+
 <p><a id='Solution-precision-for-continuous-systems-1'></a></p>
 <h2 id="solution-precision-for-continuous-systems">Solution precision for continuous systems</h2>
 <p>A numerical solution of an ODE is not the "true" solution, uniquely defined by a (well-defined) ODE and an initial condition. Especially for chaotic systems, where deviations are amplified exponentially, one is left worried if the numerical solutions truly are part of the system and can truly give insight in understanding the system.</p>
